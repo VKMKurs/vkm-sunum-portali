@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VKM Sunum Portalı</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', 'Segoe UI', sans-serif; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // VKM Renk Paleti
+        const colors = {
+            vkmRed: '#e31e1b',
+            vkmCoral: '#ee7673',
+            darkAnthracite: '#1e262e',
+            lightBg: '#f5f5f5'
+        };
+
+        // Sunum Veritabanı - Çalışan Embed URL'leri
+        const sunumDatabase = {
+            siniflar: [
+                { id: '5-sinif', title: '5. Sınıf Tanıtım', subtitle: 'Ortaokula Hazırlık', icon: '5️⃣', color: '#4CAF50', embedUrl: null },
+                { id: '6-sinif', title: '6. Sınıf Sunumu', subtitle: '18 sayfa', icon: '6️⃣', color: '#2196F3', embedUrl: 'https://www.canva.com/design/DAGgqWPspec/I1tWDruRidS8Ht-oa1cXyQ/view?embed', pageCount: 18 },
+                { id: '7-sinif', title: '7. Sınıf Sunumu', subtitle: '18 sayfa', icon: '7️⃣', color: '#9C27B0', embedUrl: 'https://www.canva.com/design/DAGgqRDhh3U/7o8ueOqTRoo36qmaJeqqWA/view?embed', pageCount: 18 },
+                { id: '8-sinif-lgs', title: 'LGS Veli Sunumu', subtitle: '8. Sınıf • 18 sayfa', icon: '🎯', color: '#e31e1b', embedUrl: 'https://www.canva.com/design/DAGgqRlOqfc/xkpTxmimUctuMyTaEP_vfg/view?embed', pageCount: 18 },
+                { id: '10-sinif', title: '10. Sınıf Veli Sunumu', subtitle: '18 sayfa', icon: '🔟', color: '#FF9800', embedUrl: 'https://www.canva.com/design/DAGgkm_Ii0c/Te2ZEwJOqQ3jf5X9L5imeg/view?embed', pageCount: 18 },
+                { id: '11-sinif', title: '11. Sınıf Veli Sunumu', subtitle: '18 sayfa', icon: '1️⃣1️⃣', color: '#E91E63', embedUrl: 'https://www.canva.com/design/DAGgqv-EMgc/9osLkKRbgjbxqQUcsLZVwA/view?embed', pageCount: 18 },
+                { id: 'yks-veli', title: 'YKS Veli Sunumu', subtitle: 'TYT-AYT • 19 sayfa', icon: '🎓', color: '#673AB7', embedUrl: 'https://www.canva.com/design/DAGgqUbFXgQ/yrLxa2TkYAQQepnIIgSNvg/view?embed', pageCount: 19 },
+            ],
+            hizmetler: [
+                { id: 'ozel-ders', title: 'VKM Özel Ders', subtitle: 'Birebir eğitim', icon: '👤', color: '#2196F3', embedUrl: null },
+                { id: 'deneme-kulubu', title: 'VKM Deneme Kulübü', subtitle: '19+ yayın', icon: '📝', color: '#4CAF50', embedUrl: null },
+                { id: 'benim-kocum', title: 'VKM Benim Koçum', subtitle: 'Öğrenci koçluğu', icon: '🎯', color: '#9C27B0', embedUrl: null },
+                { id: 'vkm-app', title: 'VKM App', subtitle: 'Mobil uygulama', icon: '📱', color: '#FF9800', embedUrl: null },
+            ],
+            genel: [
+                { id: 'kurum', title: 'Kurum Tanıtımı', subtitle: '2013\'ten günümüze', icon: '🏛️', color: '#e31e1b', embedUrl: null },
+                { id: 'kadro', title: 'Öğretmen Kadromuz', subtitle: 'Uzman kadro', icon: '👨‍🏫', color: '#2196F3', embedUrl: null },
+                { id: 'basari', title: 'Başarılarımız', subtitle: 'Başarı hikayeleri', icon: '🏆', color: '#FFD700', embedUrl: null },
+                { id: 'fiyat', title: 'Fiyat & Kampanyalar', subtitle: 'Güncel fiyatlar', icon: '💰', color: '#4CAF50', embedUrl: null },
+            ],
+            burs: [
+                { id: 'burs-2026', title: 'Burs Sınavı 2026', subtitle: '4 Ocak 2026', icon: '🏆', color: '#FFD700', embedUrl: null },
+            ]
+        };
+
+        // Giriş Ekranı
+        const LoginScreen = ({ onLogin }) => {
+            const [pin, setPin] = useState('');
+            const [error, setError] = useState('');
+            const inputRef = useRef(null);
+
+            useEffect(() => { inputRef.current?.focus(); }, []);
+
+            const handleSubmit = () => {
+                if (pin === '2013') onLogin();
+                else { setError('Hatalı PIN!'); setPin(''); }
+            };
+
+            return (
+                <div style={{
+                    minHeight: '100vh',
+                    background: `linear-gradient(135deg, ${colors.darkAnthracite} 0%, #2a3441 100%)`,
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                    padding: '40px'
+                }}>
+                    <div style={{
+                        width: '140px', height: '140px', borderRadius: '50%', background: colors.vkmRed,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        marginBottom: '20px', border: '5px solid white',
+                        boxShadow: '0 12px 40px rgba(227, 30, 27, 0.5)'
+                    }}>
+                        <span style={{ color: 'white', fontSize: '42px', fontWeight: 'bold' }}>VKM</span>
+                    </div>
+                    
+                    <h1 style={{ color: 'white', fontSize: '36px', marginBottom: '6px' }}>VadiTepe</h1>
+                    <p style={{ color: colors.vkmCoral, fontSize: '20px', fontStyle: 'italic', marginBottom: '40px' }}>Kurs Merkezi</p>
+                    
+                    <div style={{
+                        background: 'white', borderRadius: '20px', padding: '48px',
+                        width: '100%', maxWidth: '420px', textAlign: 'center',
+                        boxShadow: '0 20px 60px rgba(0,0,0,0.3)'
+                    }}>
+                        <h2 style={{ color: colors.darkAnthracite, marginBottom: '32px', fontSize: '28px' }}>🔐 Personel Girişi</h2>
+                        
+                        <input
+                            ref={inputRef} type="password" value={pin}
+                            onChange={(e) => setPin(e.target.value)}
+                            onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
+                            placeholder="PIN Kodu"
+                            style={{
+                                width: '100%', padding: '24px', fontSize: '28px', textAlign: 'center',
+                                border: `3px solid ${colors.vkmCoral}`, borderRadius: '14px',
+                                marginBottom: '20px', outline: 'none', letterSpacing: '10px'
+                            }}
+                        />
+                        
+                        {error && <p style={{ color: colors.vkmRed, marginBottom: '16px', fontSize: '18px' }}>{error}</p>}
+                        
+                        <button onClick={handleSubmit} style={{
+                            width: '100%', padding: '24px', fontSize: '22px', fontWeight: 'bold',
+                            color: 'white', background: colors.vkmRed, border: 'none', borderRadius: '14px', cursor: 'pointer'
+                        }}>GİRİŞ YAP</button>
+                    </div>
+                </div>
+            );
+        };
+
+        // Menü Butonu
+        const MenuButton = ({ icon, title, subtitle, onClick, isSelected, color, hasContent }) => (
+            <button onClick={onClick} style={{
+                width: '100%', padding: '28px 36px',
+                background: isSelected ? color : 'white',
+                color: isSelected ? 'white' : colors.darkAnthracite,
+                border: `4px solid ${color}`, borderRadius: '20px', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', gap: '24px',
+                transition: 'all 0.2s ease',
+                transform: isSelected ? 'scale(1.02)' : 'scale(1)',
+                boxShadow: isSelected ? `0 12px 36px ${color}50` : '0 4px 16px rgba(0,0,0,0.1)',
+                opacity: hasContent === false ? 0.5 : 1
+            }}>
+                <div style={{
+                    width: '70px', height: '70px', borderRadius: '16px',
+                    background: isSelected ? 'rgba(255,255,255,0.2)' : `${color}15`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '32px', flexShrink: 0
+                }}>{icon}</div>
+                <div style={{ textAlign: 'left', flex: 1 }}>
+                    <div style={{ fontSize: '24px', fontWeight: 'bold' }}>{title}</div>
+                    {subtitle && <div style={{ fontSize: '16px', opacity: 0.8, marginTop: '6px' }}>{subtitle}</div>}
+                </div>
+                {hasContent && (
+                    <div style={{
+                        background: isSelected ? 'rgba(255,255,255,0.3)' : color,
+                        color: 'white', padding: '8px 16px', borderRadius: '20px', fontSize: '14px', fontWeight: 'bold'
+                    }}>✓ HAZIR</div>
+                )}
+            </button>
+        );
+
+        // Canva Viewer
+        const CanvaViewer = ({ presentation, onBack }) => {
+            const [isLoading, setIsLoading] = useState(true);
+
+            useEffect(() => {
+                const handleKeyDown = (e) => {
+                    if (e.key === 'Backspace' || e.key === 'Escape') onBack();
+                };
+                window.addEventListener('keydown', handleKeyDown);
+                return () => window.removeEventListener('keydown', handleKeyDown);
+            }, [onBack]);
+
+            if (!presentation.embedUrl) {
+                return (
+                    <div style={{
+                        minHeight: '100vh', background: colors.darkAnthracite,
+                        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'white'
+                    }}>
+                        <div style={{ fontSize: '80px', marginBottom: '32px' }}>🚧</div>
+                        <h1 style={{ fontSize: '36px', marginBottom: '16px' }}>{presentation.title}</h1>
+                        <p style={{ fontSize: '24px', opacity: 0.7, marginBottom: '48px' }}>Bu sunum henüz eklenmedi</p>
+                        <button onClick={onBack} style={{
+                            background: colors.vkmRed, color: 'white', border: 'none',
+                            padding: '20px 48px', fontSize: '20px', borderRadius: '14px', cursor: 'pointer'
+                        }}>← Geri Dön</button>
+                    </div>
+                );
+            }
+
+            return (
+                <div style={{ minHeight: '100vh', background: '#000', display: 'flex', flexDirection: 'column' }}>
+                    <div style={{
+                        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                        padding: '14px 28px', background: 'rgba(30,38,46,0.95)',
+                        borderBottom: `3px solid ${colors.vkmRed}`
+                    }}>
+                        <button onClick={onBack} style={{
+                            background: colors.vkmRed, border: 'none', color: 'white',
+                            padding: '14px 32px', borderRadius: '10px', cursor: 'pointer',
+                            fontSize: '16px', fontWeight: 'bold'
+                        }}>← Geri Dön</button>
+                        
+                        <div style={{ color: 'white', fontSize: '20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                            <span style={{ fontSize: '26px' }}>{presentation.icon}</span>
+                            <span style={{ fontWeight: 'bold' }}>{presentation.title}</span>
+                            {presentation.pageCount && (
+                                <span style={{ background: 'rgba(255,255,255,0.15)', padding: '5px 12px', borderRadius: '14px', fontSize: '14px' }}>
+                                    {presentation.pageCount} sayfa
+                                </span>
+                            )}
+                        </div>
+                        
+                        <div style={{ color: colors.vkmCoral, fontSize: '14px' }}>ESC = Geri</div>
+                    </div>
+                    
+                    <div style={{ flex: 1, position: 'relative', background: '#000' }}>
+                        {isLoading && (
+                            <div style={{
+                                position: 'absolute', top: '50%', left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                color: 'white', fontSize: '22px',
+                                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', zIndex: 10
+                            }}>
+                                <div style={{
+                                    width: '60px', height: '60px',
+                                    border: '4px solid rgba(255,255,255,0.2)',
+                                    borderTopColor: colors.vkmRed,
+                                    borderRadius: '50%',
+                                    animation: 'spin 1s linear infinite'
+                                }} />
+                                <span>Sunum yükleniyor...</span>
+                            </div>
+                        )}
+
+                        <iframe
+                            loading="lazy"
+                            src={presentation.embedUrl}
+                            allowFullScreen
+                            allow="fullscreen"
+                            onLoad={() => setIsLoading(false)}
+                            style={{
+                                width: '100%',
+                                height: 'calc(100vh - 70px)',
+                                border: 'none'
+                            }}
+                            title={presentation.title}
+                        />
+                    </div>
+                </div>
+            );
+        };
+
+        // Kategori Sayfası
+        const CategoryPage = ({ title, icon, items, onBack, onSelectPresentation }) => {
+            const [selectedIndex, setSelectedIndex] = useState(0);
+
+            useEffect(() => {
+                const handleKeyDown = (e) => {
+                    const cols = 2;
+                    if (e.key === 'ArrowUp') setSelectedIndex(prev => Math.max(0, prev - cols));
+                    else if (e.key === 'ArrowDown') setSelectedIndex(prev => Math.min(items.length - 1, prev + cols));
+                    else if (e.key === 'ArrowLeft') setSelectedIndex(prev => Math.max(0, prev - 1));
+                    else if (e.key === 'ArrowRight') setSelectedIndex(prev => Math.min(items.length - 1, prev + 1));
+                    else if (e.key === 'Enter') onSelectPresentation(items[selectedIndex]);
+                    else if (e.key === 'Backspace' || e.key === 'Escape') onBack();
+                };
+                window.addEventListener('keydown', handleKeyDown);
+                return () => window.removeEventListener('keydown', handleKeyDown);
+            }, [selectedIndex, items, onBack, onSelectPresentation]);
+
+            const readyCount = items.filter(i => i.embedUrl).length;
+
+            return (
+                <div style={{ minHeight: '100vh', background: colors.lightBg, padding: '40px' }}>
+                    <button onClick={onBack} style={{
+                        background: colors.vkmRed, border: 'none', color: 'white', fontSize: '18px',
+                        cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px',
+                        marginBottom: '32px', fontWeight: 'bold', padding: '14px 28px', borderRadius: '10px'
+                    }}>← Ana Menü</button>
+                    
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px' }}>
+                        <h1 style={{
+                            color: colors.darkAnthracite, fontSize: '40px',
+                            display: 'flex', alignItems: 'center', gap: '16px', margin: 0
+                        }}><span>{icon}</span> {title}</h1>
+                        
+                        <div style={{
+                            background: colors.vkmRed, color: 'white', padding: '10px 20px',
+                            borderRadius: '24px', fontSize: '18px', fontWeight: 'bold'
+                        }}>{readyCount} / {items.length} hazır</div>
+                    </div>
+                    
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', maxWidth: '1200px' }}>
+                        {items.map((item, index) => (
+                            <MenuButton
+                                key={item.id} icon={item.icon} title={item.title} subtitle={item.subtitle}
+                                isSelected={selectedIndex === index} color={item.color}
+                                hasContent={!!item.embedUrl} onClick={() => onSelectPresentation(item)}
+                            />
+                        ))}
+                    </div>
+                    
+                    <p style={{ marginTop: '40px', color: '#666', fontSize: '18px' }}>
+                        💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön
+                    </p>
+                </div>
+            );
+        };
+
+        // Ana Sayfa
+        const Dashboard = ({ onSelectCategory, onLogout }) => {
+            const [selectedIndex, setSelectedIndex] = useState(0);
+            
+            const categories = [
+                { id: 'siniflar', title: 'Sınıf Sunumları', subtitle: '6, 7, 8, 10, 11 & YKS', icon: '📖', color: colors.vkmRed,
+                    count: sunumDatabase.siniflar.filter(s => s.embedUrl).length, total: sunumDatabase.siniflar.length },
+                { id: 'hizmetler', title: 'Hizmet Sunumları', subtitle: 'Özel Ders, Deneme, Koçluk', icon: '🎁', color: '#4CAF50',
+                    count: sunumDatabase.hizmetler.filter(s => s.embedUrl).length, total: sunumDatabase.hizmetler.length },
+                { id: 'genel', title: 'Genel Tanıtım', subtitle: 'Kurum, Kadro, Başarılar', icon: '🏢', color: '#2196F3',
+                    count: sunumDatabase.genel.filter(s => s.embedUrl).length, total: sunumDatabase.genel.length },
+                { id: 'burs', title: 'Burs Sınavı 2026', subtitle: '4 Ocak 2026', icon: '🏆', color: '#FFD700',
+                    count: sunumDatabase.burs.filter(s => s.embedUrl).length, total: sunumDatabase.burs.length },
+            ];
+
+            const totalReady = categories.reduce((sum, c) => sum + c.count, 0);
+            const totalAll = categories.reduce((sum, c) => sum + c.total, 0);
+
+            useEffect(() => {
+                const handleKeyDown = (e) => {
+                    const cols = 2;
+                    if (e.key === 'ArrowUp') setSelectedIndex(prev => Math.max(0, prev - cols));
+                    else if (e.key === 'ArrowDown') setSelectedIndex(prev => Math.min(categories.length - 1, prev + cols));
+                    else if (e.key === 'ArrowLeft') setSelectedIndex(prev => Math.max(0, prev - 1));
+                    else if (e.key === 'ArrowRight') setSelectedIndex(prev => Math.min(categories.length - 1, prev + 1));
+                    else if (e.key === 'Enter') onSelectCategory(categories[selectedIndex].id);
+                };
+                window.addEventListener('keydown', handleKeyDown);
+                return () => window.removeEventListener('keydown', handleKeyDown);
+            }, [selectedIndex, onSelectCategory]);
+
+            return (
+                <div style={{ minHeight: '100vh', background: colors.lightBg, padding: '48px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '56px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+                            <div style={{
+                                width: '100px', height: '100px', borderRadius: '50%', background: colors.vkmRed,
+                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                border: '4px solid white', boxShadow: '0 10px 28px rgba(227, 30, 27, 0.4)'
+                            }}>
+                                <span style={{ color: 'white', fontSize: '34px', fontWeight: 'bold' }}>VKM</span>
+                            </div>
+                            
+                            <div>
+                                <h1 style={{ color: colors.darkAnthracite, fontSize: '40px', margin: 0 }}>VKM Sunum Portalı</h1>
+                                <p style={{ color: colors.vkmRed, margin: 0, fontSize: '20px', fontStyle: 'italic', marginTop: '6px' }}>
+                                    Tecrübenin Gücü, Başarının Adresi
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                            <div style={{ background: 'white', padding: '14px 24px', borderRadius: '14px', boxShadow: '0 4px 14px rgba(0,0,0,0.1)' }}>
+                                <div style={{ fontSize: '14px', color: '#666' }}>Hazır Sunum</div>
+                                <div style={{ fontSize: '28px', fontWeight: 'bold', color: colors.vkmRed }}>{totalReady} / {totalAll}</div>
+                            </div>
+                            
+                            <button onClick={onLogout} style={{
+                                background: 'transparent', border: `3px solid ${colors.vkmCoral}`,
+                                color: colors.darkAnthracite, padding: '16px 32px', borderRadius: '12px',
+                                cursor: 'pointer', fontSize: '18px', fontWeight: 'bold'
+                            }}>Çıkış</button>
+                        </div>
+                    </div>
+                    
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px', maxWidth: '1100px', margin: '0 auto' }}>
+                        {categories.map((cat, index) => (
+                            <MenuButton
+                                key={cat.id} icon={cat.icon} title={cat.title}
+                                subtitle={`${cat.subtitle} • ${cat.count}/${cat.total}`}
+                                isSelected={selectedIndex === index} color={cat.color}
+                                onClick={() => onSelectCategory(cat.id)}
+                            />
+                        ))}
+                    </div>
+                    
+                    <div style={{ marginTop: '56px', textAlign: 'center', color: '#666' }}>
+                        <p style={{ fontSize: '20px', marginBottom: '12px' }}>💡 TV Kumandası: ↑↓←→ seçim • OK/Enter aç</p>
+                        <p style={{ fontSize: '16px', color: '#999' }}>Bahçeşehir | Atakent | 2013</p>
+                    </div>
+                </div>
+            );
+        };
+
+        // Ana Uygulama
+        const App = () => {
+            const [isLoggedIn, setIsLoggedIn] = useState(false);
+            const [currentPage, setCurrentPage] = useState('dashboard');
+            const [selectedPresentation, setSelectedPresentation] = useState(null);
+            const [previousCategory, setPreviousCategory] = useState(null);
+
+            const handleSelectCategory = (categoryId) => {
+                setPreviousCategory(categoryId);
+                setCurrentPage(categoryId);
+            };
+
+            const handleSelectPresentation = (presentation) => {
+                setSelectedPresentation(presentation);
+                setCurrentPage('viewer');
+            };
+
+            const handleBack = () => {
+                if (currentPage === 'viewer' && previousCategory) {
+                    setSelectedPresentation(null);
+                    setCurrentPage(previousCategory);
+                } else {
+                    setCurrentPage('dashboard');
+                }
+            };
+
+            if (!isLoggedIn) return <LoginScreen onLogin={() => setIsLoggedIn(true)} />;
+
+            switch (currentPage) {
+                case 'siniflar':
+                    return <CategoryPage title="Sınıf Sunumları" icon="📖" items={sunumDatabase.siniflar} onBack={handleBack} onSelectPresentation={handleSelectPresentation} />;
+                case 'hizmetler':
+                    return <CategoryPage title="Hizmet Sunumları" icon="🎁" items={sunumDatabase.hizmetler} onBack={handleBack} onSelectPresentation={handleSelectPresentation} />;
+                case 'genel':
+                    return <CategoryPage title="Genel Tanıtım" icon="🏢" items={sunumDatabase.genel} onBack={handleBack} onSelectPresentation={handleSelectPresentation} />;
+                case 'burs':
+                    return <CategoryPage title="Burs Sınavı 2026" icon="🏆" items={sunumDatabase.burs} onBack={handleBack} onSelectPresentation={handleSelectPresentation} />;
+                case 'viewer':
+                    return <CanvaViewer presentation={selectedPresentation} onBack={handleBack} />;
+                default:
+                    return <Dashboard onSelectCategory={handleSelectCategory} onLogout={() => setIsLoggedIn(false)} />;
+            }
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
