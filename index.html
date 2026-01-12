@@ -433,7 +433,7 @@
                     <div class="title">Sınıf Sunumları</div>
                     <div class="subtitle">6, 7, 8, 10, 11 & YKS</div>
                 </div>
-                <div class="badge">1 hazır</div>
+                <div class="badge">2 hazır</div>
             </button>
             
             <button class="menu-btn green" onclick="showCategory('hizmetler')">
@@ -473,7 +473,7 @@
         
         <div class="category-header">
             <h1>📖 Sınıf Sunumları</h1>
-            <div class="count">1 / 7 hazır</div>
+            <div class="count">2 / 7 hazır</div>
         </div>
         
         <div class="menu-grid">
@@ -494,12 +494,13 @@
                 <div class="badge">✓ HAZIR</div>
             </button>
             
-            <button class="menu-btn purple disabled">
+            <button class="menu-btn purple" onclick="showPresentation('7-sinif')">
                 <div class="icon">7️⃣</div>
                 <div class="text">
                     <div class="title">7. Sınıf Sunumu</div>
-                    <div class="subtitle">Yakında</div>
+                    <div class="subtitle">18 slayt</div>
                 </div>
+                <div class="badge">✓ HAZIR</div>
             </button>
             
             <button class="menu-btn disabled">
@@ -612,8 +613,13 @@
                 icon: '6️⃣',
                 slides: 18,
                 folder: 'slides/6-sinif'
+            },
+            '7-sinif': {
+                title: '7. Sınıf Sunumu',
+                icon: '7️⃣',
+                slides: 18,
+                folder: 'slides/7-sinif'
             }
-            // Diğer sunumlar eklenecek
         };
         
         let currentPresentation = null;
