@@ -433,7 +433,7 @@
                     <div class="title">Sınıf Sunumları</div>
                     <div class="subtitle">6, 7, 8, 10, 11 & YKS</div>
                 </div>
-                <div class="badge">2 hazır</div>
+                <div class="badge">3 hazır</div>
             </button>
             
             <button class="menu-btn green" onclick="showCategory('hizmetler')">
@@ -473,7 +473,7 @@
         
         <div class="category-header">
             <h1>📖 Sınıf Sunumları</h1>
-            <div class="count">2 / 7 hazır</div>
+            <div class="count">3 / 7 hazır</div>
         </div>
         
         <div class="menu-grid">
@@ -503,12 +503,13 @@
                 <div class="badge">✓ HAZIR</div>
             </button>
             
-            <button class="menu-btn disabled">
+            <button class="menu-btn" onclick="showPresentation('lgs')">
                 <div class="icon">🎯</div>
                 <div class="text">
                     <div class="title">LGS Veli Sunumu</div>
-                    <div class="subtitle">8. Sınıf • Yakında</div>
+                    <div class="subtitle">8. Sınıf • 18 slayt</div>
                 </div>
+                <div class="badge">✓ HAZIR</div>
             </button>
             
             <button class="menu-btn orange disabled">
@@ -619,6 +620,12 @@
                 icon: '7️⃣',
                 slides: 18,
                 folder: 'slides/7-sinif'
+            },
+            'lgs': {
+                title: 'LGS Veli Sunumu',
+                icon: '🎯',
+                slides: 18,
+                folder: 'slides/LGS'
             }
         };
         
