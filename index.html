@@ -4,430 +4,732 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VKM Sunum Portalı</title>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Nunito', 'Segoe UI', sans-serif; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        body { font-family: 'Nunito', 'Segoe UI', sans-serif; overflow: hidden; }
+        
+        /* Renkler */
+        :root {
+            --vkm-red: #e31e1b;
+            --vkm-coral: #ee7673;
+            --dark: #1e262e;
+            --light-bg: #f5f5f5;
+        }
+        
+        /* Giriş Ekranı */
+        .login-screen {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--dark) 0%, #2a3441 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        
+        .logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--vkm-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border: 5px solid white;
+            box-shadow: 0 12px 40px rgba(227, 30, 27, 0.5);
+        }
+        
+        .logo span {
+            color: white;
+            font-size: 42px;
+            font-weight: bold;
+        }
+        
+        .login-box {
+            background: white;
+            border-radius: 20px;
+            padding: 48px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .login-box h2 {
+            color: var(--dark);
+            margin-bottom: 32px;
+            font-size: 28px;
+        }
+        
+        .login-box input {
+            width: 100%;
+            padding: 24px;
+            font-size: 28px;
+            text-align: center;
+            border: 3px solid var(--vkm-coral);
+            border-radius: 14px;
+            margin-bottom: 20px;
+            outline: none;
+            letter-spacing: 10px;
+        }
+        
+        .login-box button {
+            width: 100%;
+            padding: 24px;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            background: var(--vkm-red);
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+        }
+        
+        .error { color: var(--vkm-red); margin-bottom: 16px; font-size: 18px; }
+        
+        /* Dashboard */
+        .dashboard {
+            min-height: 100vh;
+            background: var(--light-bg);
+            padding: 48px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .header .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 0;
+        }
+        
+        .header .logo span {
+            font-size: 34px;
+        }
+        
+        .header h1 {
+            color: var(--dark);
+            font-size: 40px;
+        }
+        
+        .header p {
+            color: var(--vkm-red);
+            font-size: 20px;
+            font-style: italic;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .menu-btn {
+            width: 100%;
+            padding: 28px 36px;
+            background: white;
+            border: 4px solid var(--vkm-red);
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            transition: all 0.2s ease;
+        }
+        
+        .menu-btn:hover, .menu-btn.selected {
+            background: var(--vkm-red);
+            color: white;
+            transform: scale(1.02);
+            box-shadow: 0 12px 36px rgba(227, 30, 27, 0.4);
+        }
+        
+        .menu-btn .icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            background: rgba(227, 30, 27, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+        
+        .menu-btn:hover .icon, .menu-btn.selected .icon {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .menu-btn .text {
+            text-align: left;
+        }
+        
+        .menu-btn .title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .menu-btn .subtitle {
+            font-size: 16px;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+        
+        .menu-btn .badge {
+            margin-left: auto;
+            background: var(--vkm-red);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .menu-btn:hover .badge, .menu-btn.selected .badge {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .footer {
+            margin-top: 48px;
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+        }
+        
+        /* Kategori Sayfası */
+        .category-page {
+            min-height: 100vh;
+            background: var(--light-bg);
+            padding: 40px;
+        }
+        
+        .back-btn {
+            background: var(--vkm-red);
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 32px;
+            font-weight: bold;
+            padding: 14px 28px;
+            border-radius: 10px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+        
+        .category-header h1 {
+            color: var(--dark);
+            font-size: 40px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .category-header .count {
+            background: var(--vkm-red);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        /* Sunum Görüntüleyici */
+        .viewer {
+            min-height: 100vh;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .viewer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            background: rgba(30,38,46,0.95);
+            border-bottom: 3px solid var(--vkm-red);
+        }
+        
+        .viewer-header .back-btn {
+            margin-bottom: 0;
+            padding: 14px 32px;
+        }
+        
+        .viewer-header .info {
+            color: white;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .viewer-header .info .icon {
+            font-size: 30px;
+        }
+        
+        .viewer-header .page-info {
+            background: rgba(255,255,255,0.15);
+            padding: 6px 14px;
+            border-radius: 14px;
+            font-size: 16px;
+        }
+        
+        .viewer-header .hint {
+            color: var(--vkm-coral);
+            font-size: 14px;
+        }
+        
+        .slide-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-container img {
+            max-width: 100%;
+            max-height: calc(100vh - 80px);
+            object-fit: contain;
+        }
+        
+        .slide-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(227, 30, 27, 0.8);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 100px;
+            font-size: 32px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        
+        .slide-nav:hover {
+            background: var(--vkm-red);
+        }
+        
+        .slide-nav.prev { left: 0; border-radius: 0 12px 12px 0; }
+        .slide-nav.next { right: 0; border-radius: 12px 0 0 12px; }
+        
+        .slide-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        
+        .slide-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .slide-dots .dot.active {
+            background: var(--vkm-red);
+            width: 32px;
+            border-radius: 6px;
+        }
+        
+        /* Gizli */
+        .hidden { display: none !important; }
+        
+        /* Mavi butonlar için */
+        .menu-btn.blue { border-color: #2196F3; }
+        .menu-btn.blue:hover, .menu-btn.blue.selected { background: #2196F3; }
+        .menu-btn.blue .badge { background: #2196F3; }
+        
+        .menu-btn.green { border-color: #4CAF50; }
+        .menu-btn.green:hover, .menu-btn.green.selected { background: #4CAF50; }
+        .menu-btn.green .badge { background: #4CAF50; }
+        
+        .menu-btn.purple { border-color: #9C27B0; }
+        .menu-btn.purple:hover, .menu-btn.purple.selected { background: #9C27B0; }
+        .menu-btn.purple .badge { background: #9C27B0; }
+        
+        .menu-btn.orange { border-color: #FF9800; }
+        .menu-btn.orange:hover, .menu-btn.orange.selected { background: #FF9800; }
+        .menu-btn.orange .badge { background: #FF9800; }
+        
+        .menu-btn.pink { border-color: #E91E63; }
+        .menu-btn.pink:hover, .menu-btn.pink.selected { background: #E91E63; }
+        .menu-btn.pink .badge { background: #E91E63; }
+        
+        .menu-btn.gold { border-color: #FFD700; }
+        .menu-btn.gold:hover, .menu-btn.gold.selected { background: #FFD700; color: #333; }
+        .menu-btn.gold .badge { background: #FFD700; color: #333; }
+        
+        .menu-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
-    <div id="root"></div>
+    <!-- Giriş Ekranı -->
+    <div id="loginScreen" class="login-screen">
+        <div class="logo"><span>VKM</span></div>
+        <h1 style="color: white; font-size: 36px; margin-bottom: 6px;">VadiTepe</h1>
+        <p style="color: #ee7673; font-size: 20px; font-style: italic; margin-bottom: 40px;">Kurs Merkezi</p>
+        
+        <div class="login-box">
+            <h2>🔐 Personel Girişi</h2>
+            <div id="errorMsg" class="error hidden"></div>
+            <input type="password" id="pinInput" placeholder="PIN Kodu" maxlength="4">
+            <button onclick="login()">GİRİŞ YAP</button>
+        </div>
+    </div>
     
-    <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
-
-        // VKM Renk Paleti
-        const colors = {
-            vkmRed: '#e31e1b',
-            vkmCoral: '#ee7673',
-            darkAnthracite: '#1e262e',
-            lightBg: '#f5f5f5'
-        };
-
-        // Sunum Veritabanı - Çalışan Embed URL'leri
-        const sunumDatabase = {
-            siniflar: [
-                { id: '5-sinif', title: '5. Sınıf Tanıtım', subtitle: 'Ortaokula Hazırlık', icon: '5️⃣', color: '#4CAF50', embedUrl: null },
-                { id: '6-sinif', title: '6. Sınıf Sunumu', subtitle: '18 sayfa', icon: '6️⃣', color: '#2196F3', embedUrl: 'https://www.canva.com/design/DAGgqWPspec/I1tWDruRidS8Ht-oa1cXyQ/view?embed', pageCount: 18 },
-                { id: '7-sinif', title: '7. Sınıf Sunumu', subtitle: '18 sayfa', icon: '7️⃣', color: '#9C27B0', embedUrl: 'https://www.canva.com/design/DAGgqRDhh3U/7o8ueOqTRoo36qmaJeqqWA/view?embed', pageCount: 18 },
-                { id: '8-sinif-lgs', title: 'LGS Veli Sunumu', subtitle: '8. Sınıf • 18 sayfa', icon: '🎯', color: '#e31e1b', embedUrl: 'https://www.canva.com/design/DAGgqRlOqfc/xkpTxmimUctuMyTaEP_vfg/view?embed', pageCount: 18 },
-                { id: '10-sinif', title: '10. Sınıf Veli Sunumu', subtitle: '18 sayfa', icon: '🔟', color: '#FF9800', embedUrl: 'https://www.canva.com/design/DAGgkm_Ii0c/Te2ZEwJOqQ3jf5X9L5imeg/view?embed', pageCount: 18 },
-                { id: '11-sinif', title: '11. Sınıf Veli Sunumu', subtitle: '18 sayfa', icon: '1️⃣1️⃣', color: '#E91E63', embedUrl: 'https://www.canva.com/design/DAGgqv-EMgc/9osLkKRbgjbxqQUcsLZVwA/view?embed', pageCount: 18 },
-                { id: 'yks-veli', title: 'YKS Veli Sunumu', subtitle: 'TYT-AYT • 19 sayfa', icon: '🎓', color: '#673AB7', embedUrl: 'https://www.canva.com/design/DAGgqUbFXgQ/yrLxa2TkYAQQepnIIgSNvg/view?embed', pageCount: 19 },
-            ],
-            hizmetler: [
-                { id: 'ozel-ders', title: 'VKM Özel Ders', subtitle: 'Birebir eğitim', icon: '👤', color: '#2196F3', embedUrl: null },
-                { id: 'deneme-kulubu', title: 'VKM Deneme Kulübü', subtitle: '19+ yayın', icon: '📝', color: '#4CAF50', embedUrl: null },
-                { id: 'benim-kocum', title: 'VKM Benim Koçum', subtitle: 'Öğrenci koçluğu', icon: '🎯', color: '#9C27B0', embedUrl: null },
-                { id: 'vkm-app', title: 'VKM App', subtitle: 'Mobil uygulama', icon: '📱', color: '#FF9800', embedUrl: null },
-            ],
-            genel: [
-                { id: 'kurum', title: 'Kurum Tanıtımı', subtitle: '2013\'ten günümüze', icon: '🏛️', color: '#e31e1b', embedUrl: null },
-                { id: 'kadro', title: 'Öğretmen Kadromuz', subtitle: 'Uzman kadro', icon: '👨‍🏫', color: '#2196F3', embedUrl: null },
-                { id: 'basari', title: 'Başarılarımız', subtitle: 'Başarı hikayeleri', icon: '🏆', color: '#FFD700', embedUrl: null },
-                { id: 'fiyat', title: 'Fiyat & Kampanyalar', subtitle: 'Güncel fiyatlar', icon: '💰', color: '#4CAF50', embedUrl: null },
-            ],
-            burs: [
-                { id: 'burs-2026', title: 'Burs Sınavı 2026', subtitle: '4 Ocak 2026', icon: '🏆', color: '#FFD700', embedUrl: null },
-            ]
-        };
-
-        // Giriş Ekranı
-        const LoginScreen = ({ onLogin }) => {
-            const [pin, setPin] = useState('');
-            const [error, setError] = useState('');
-            const inputRef = useRef(null);
-
-            useEffect(() => { inputRef.current?.focus(); }, []);
-
-            const handleSubmit = () => {
-                if (pin === '2013') onLogin();
-                else { setError('Hatalı PIN!'); setPin(''); }
-            };
-
-            return (
-                <div style={{
-                    minHeight: '100vh',
-                    background: `linear-gradient(135deg, ${colors.darkAnthracite} 0%, #2a3441 100%)`,
-                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                    padding: '40px'
-                }}>
-                    <div style={{
-                        width: '140px', height: '140px', borderRadius: '50%', background: colors.vkmRed,
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        marginBottom: '20px', border: '5px solid white',
-                        boxShadow: '0 12px 40px rgba(227, 30, 27, 0.5)'
-                    }}>
-                        <span style={{ color: 'white', fontSize: '42px', fontWeight: 'bold' }}>VKM</span>
-                    </div>
-                    
-                    <h1 style={{ color: 'white', fontSize: '36px', marginBottom: '6px' }}>VadiTepe</h1>
-                    <p style={{ color: colors.vkmCoral, fontSize: '20px', fontStyle: 'italic', marginBottom: '40px' }}>Kurs Merkezi</p>
-                    
-                    <div style={{
-                        background: 'white', borderRadius: '20px', padding: '48px',
-                        width: '100%', maxWidth: '420px', textAlign: 'center',
-                        boxShadow: '0 20px 60px rgba(0,0,0,0.3)'
-                    }}>
-                        <h2 style={{ color: colors.darkAnthracite, marginBottom: '32px', fontSize: '28px' }}>🔐 Personel Girişi</h2>
-                        
-                        <input
-                            ref={inputRef} type="password" value={pin}
-                            onChange={(e) => setPin(e.target.value)}
-                            onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-                            placeholder="PIN Kodu"
-                            style={{
-                                width: '100%', padding: '24px', fontSize: '28px', textAlign: 'center',
-                                border: `3px solid ${colors.vkmCoral}`, borderRadius: '14px',
-                                marginBottom: '20px', outline: 'none', letterSpacing: '10px'
-                            }}
-                        />
-                        
-                        {error && <p style={{ color: colors.vkmRed, marginBottom: '16px', fontSize: '18px' }}>{error}</p>}
-                        
-                        <button onClick={handleSubmit} style={{
-                            width: '100%', padding: '24px', fontSize: '22px', fontWeight: 'bold',
-                            color: 'white', background: colors.vkmRed, border: 'none', borderRadius: '14px', cursor: 'pointer'
-                        }}>GİRİŞ YAP</button>
-                    </div>
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard hidden">
+        <div class="header">
+            <div class="header-left">
+                <div class="logo"><span>VKM</span></div>
+                <div>
+                    <h1>VKM Sunum Portalı</h1>
+                    <p>Tecrübenin Gücü, Başarının Adresi</p>
                 </div>
-            );
-        };
-
-        // Menü Butonu
-        const MenuButton = ({ icon, title, subtitle, onClick, isSelected, color, hasContent }) => (
-            <button onClick={onClick} style={{
-                width: '100%', padding: '28px 36px',
-                background: isSelected ? color : 'white',
-                color: isSelected ? 'white' : colors.darkAnthracite,
-                border: `4px solid ${color}`, borderRadius: '20px', cursor: 'pointer',
-                display: 'flex', alignItems: 'center', gap: '24px',
-                transition: 'all 0.2s ease',
-                transform: isSelected ? 'scale(1.02)' : 'scale(1)',
-                boxShadow: isSelected ? `0 12px 36px ${color}50` : '0 4px 16px rgba(0,0,0,0.1)',
-                opacity: hasContent === false ? 0.5 : 1
-            }}>
-                <div style={{
-                    width: '70px', height: '70px', borderRadius: '16px',
-                    background: isSelected ? 'rgba(255,255,255,0.2)' : `${color}15`,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: '32px', flexShrink: 0
-                }}>{icon}</div>
-                <div style={{ textAlign: 'left', flex: 1 }}>
-                    <div style={{ fontSize: '24px', fontWeight: 'bold' }}>{title}</div>
-                    {subtitle && <div style={{ fontSize: '16px', opacity: 0.8, marginTop: '6px' }}>{subtitle}</div>}
+            </div>
+            <button class="back-btn" onclick="logout()" style="background: transparent; border: 3px solid #ee7673; color: #1e262e;">Çıkış</button>
+        </div>
+        
+        <div class="menu-grid">
+            <button class="menu-btn" onclick="showCategory('siniflar')">
+                <div class="icon">📖</div>
+                <div class="text">
+                    <div class="title">Sınıf Sunumları</div>
+                    <div class="subtitle">6, 7, 8, 10, 11 & YKS</div>
                 </div>
-                {hasContent && (
-                    <div style={{
-                        background: isSelected ? 'rgba(255,255,255,0.3)' : color,
-                        color: 'white', padding: '8px 16px', borderRadius: '20px', fontSize: '14px', fontWeight: 'bold'
-                    }}>✓ HAZIR</div>
-                )}
+                <div class="badge">1 hazır</div>
             </button>
-        );
-
-        // Canva Viewer
-        const CanvaViewer = ({ presentation, onBack }) => {
-            const [isLoading, setIsLoading] = useState(true);
-
-            useEffect(() => {
-                const handleKeyDown = (e) => {
-                    if (e.key === 'Backspace' || e.key === 'Escape') onBack();
-                };
-                window.addEventListener('keydown', handleKeyDown);
-                return () => window.removeEventListener('keydown', handleKeyDown);
-            }, [onBack]);
-
-            if (!presentation.embedUrl) {
-                return (
-                    <div style={{
-                        minHeight: '100vh', background: colors.darkAnthracite,
-                        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'white'
-                    }}>
-                        <div style={{ fontSize: '80px', marginBottom: '32px' }}>🚧</div>
-                        <h1 style={{ fontSize: '36px', marginBottom: '16px' }}>{presentation.title}</h1>
-                        <p style={{ fontSize: '24px', opacity: 0.7, marginBottom: '48px' }}>Bu sunum henüz eklenmedi</p>
-                        <button onClick={onBack} style={{
-                            background: colors.vkmRed, color: 'white', border: 'none',
-                            padding: '20px 48px', fontSize: '20px', borderRadius: '14px', cursor: 'pointer'
-                        }}>← Geri Dön</button>
-                    </div>
-                );
-            }
-
-            return (
-                <div style={{ minHeight: '100vh', background: '#000', display: 'flex', flexDirection: 'column' }}>
-                    <div style={{
-                        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                        padding: '14px 28px', background: 'rgba(30,38,46,0.95)',
-                        borderBottom: `3px solid ${colors.vkmRed}`
-                    }}>
-                        <button onClick={onBack} style={{
-                            background: colors.vkmRed, border: 'none', color: 'white',
-                            padding: '14px 32px', borderRadius: '10px', cursor: 'pointer',
-                            fontSize: '16px', fontWeight: 'bold'
-                        }}>← Geri Dön</button>
-                        
-                        <div style={{ color: 'white', fontSize: '20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                            <span style={{ fontSize: '26px' }}>{presentation.icon}</span>
-                            <span style={{ fontWeight: 'bold' }}>{presentation.title}</span>
-                            {presentation.pageCount && (
-                                <span style={{ background: 'rgba(255,255,255,0.15)', padding: '5px 12px', borderRadius: '14px', fontSize: '14px' }}>
-                                    {presentation.pageCount} sayfa
-                                </span>
-                            )}
-                        </div>
-                        
-                        <div style={{ color: colors.vkmCoral, fontSize: '14px' }}>ESC = Geri</div>
-                    </div>
-                    
-                    <div style={{ flex: 1, position: 'relative', background: '#000' }}>
-                        {isLoading && (
-                            <div style={{
-                                position: 'absolute', top: '50%', left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                color: 'white', fontSize: '22px',
-                                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', zIndex: 10
-                            }}>
-                                <div style={{
-                                    width: '60px', height: '60px',
-                                    border: '4px solid rgba(255,255,255,0.2)',
-                                    borderTopColor: colors.vkmRed,
-                                    borderRadius: '50%',
-                                    animation: 'spin 1s linear infinite'
-                                }} />
-                                <span>Sunum yükleniyor...</span>
-                            </div>
-                        )}
-
-                        <iframe
-                            loading="lazy"
-                            src={presentation.embedUrl}
-                            allowFullScreen
-                            allow="fullscreen"
-                            onLoad={() => setIsLoading(false)}
-                            style={{
-                                width: '100%',
-                                height: 'calc(100vh - 70px)',
-                                border: 'none'
-                            }}
-                            title={presentation.title}
-                        />
-                    </div>
-                </div>
-            );
-        };
-
-        // Kategori Sayfası
-        const CategoryPage = ({ title, icon, items, onBack, onSelectPresentation }) => {
-            const [selectedIndex, setSelectedIndex] = useState(0);
-
-            useEffect(() => {
-                const handleKeyDown = (e) => {
-                    const cols = 2;
-                    if (e.key === 'ArrowUp') setSelectedIndex(prev => Math.max(0, prev - cols));
-                    else if (e.key === 'ArrowDown') setSelectedIndex(prev => Math.min(items.length - 1, prev + cols));
-                    else if (e.key === 'ArrowLeft') setSelectedIndex(prev => Math.max(0, prev - 1));
-                    else if (e.key === 'ArrowRight') setSelectedIndex(prev => Math.min(items.length - 1, prev + 1));
-                    else if (e.key === 'Enter') onSelectPresentation(items[selectedIndex]);
-                    else if (e.key === 'Backspace' || e.key === 'Escape') onBack();
-                };
-                window.addEventListener('keydown', handleKeyDown);
-                return () => window.removeEventListener('keydown', handleKeyDown);
-            }, [selectedIndex, items, onBack, onSelectPresentation]);
-
-            const readyCount = items.filter(i => i.embedUrl).length;
-
-            return (
-                <div style={{ minHeight: '100vh', background: colors.lightBg, padding: '40px' }}>
-                    <button onClick={onBack} style={{
-                        background: colors.vkmRed, border: 'none', color: 'white', fontSize: '18px',
-                        cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px',
-                        marginBottom: '32px', fontWeight: 'bold', padding: '14px 28px', borderRadius: '10px'
-                    }}>← Ana Menü</button>
-                    
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px' }}>
-                        <h1 style={{
-                            color: colors.darkAnthracite, fontSize: '40px',
-                            display: 'flex', alignItems: 'center', gap: '16px', margin: 0
-                        }}><span>{icon}</span> {title}</h1>
-                        
-                        <div style={{
-                            background: colors.vkmRed, color: 'white', padding: '10px 20px',
-                            borderRadius: '24px', fontSize: '18px', fontWeight: 'bold'
-                        }}>{readyCount} / {items.length} hazır</div>
-                    </div>
-                    
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', maxWidth: '1200px' }}>
-                        {items.map((item, index) => (
-                            <MenuButton
-                                key={item.id} icon={item.icon} title={item.title} subtitle={item.subtitle}
-                                isSelected={selectedIndex === index} color={item.color}
-                                hasContent={!!item.embedUrl} onClick={() => onSelectPresentation(item)}
-                            />
-                        ))}
-                    </div>
-                    
-                    <p style={{ marginTop: '40px', color: '#666', fontSize: '18px' }}>
-                        💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön
-                    </p>
-                </div>
-            );
-        };
-
-        // Ana Sayfa
-        const Dashboard = ({ onSelectCategory, onLogout }) => {
-            const [selectedIndex, setSelectedIndex] = useState(0);
             
-            const categories = [
-                { id: 'siniflar', title: 'Sınıf Sunumları', subtitle: '6, 7, 8, 10, 11 & YKS', icon: '📖', color: colors.vkmRed,
-                    count: sunumDatabase.siniflar.filter(s => s.embedUrl).length, total: sunumDatabase.siniflar.length },
-                { id: 'hizmetler', title: 'Hizmet Sunumları', subtitle: 'Özel Ders, Deneme, Koçluk', icon: '🎁', color: '#4CAF50',
-                    count: sunumDatabase.hizmetler.filter(s => s.embedUrl).length, total: sunumDatabase.hizmetler.length },
-                { id: 'genel', title: 'Genel Tanıtım', subtitle: 'Kurum, Kadro, Başarılar', icon: '🏢', color: '#2196F3',
-                    count: sunumDatabase.genel.filter(s => s.embedUrl).length, total: sunumDatabase.genel.length },
-                { id: 'burs', title: 'Burs Sınavı 2026', subtitle: '4 Ocak 2026', icon: '🏆', color: '#FFD700',
-                    count: sunumDatabase.burs.filter(s => s.embedUrl).length, total: sunumDatabase.burs.length },
-            ];
-
-            const totalReady = categories.reduce((sum, c) => sum + c.count, 0);
-            const totalAll = categories.reduce((sum, c) => sum + c.total, 0);
-
-            useEffect(() => {
-                const handleKeyDown = (e) => {
-                    const cols = 2;
-                    if (e.key === 'ArrowUp') setSelectedIndex(prev => Math.max(0, prev - cols));
-                    else if (e.key === 'ArrowDown') setSelectedIndex(prev => Math.min(categories.length - 1, prev + cols));
-                    else if (e.key === 'ArrowLeft') setSelectedIndex(prev => Math.max(0, prev - 1));
-                    else if (e.key === 'ArrowRight') setSelectedIndex(prev => Math.min(categories.length - 1, prev + 1));
-                    else if (e.key === 'Enter') onSelectCategory(categories[selectedIndex].id);
-                };
-                window.addEventListener('keydown', handleKeyDown);
-                return () => window.removeEventListener('keydown', handleKeyDown);
-            }, [selectedIndex, onSelectCategory]);
-
-            return (
-                <div style={{ minHeight: '100vh', background: colors.lightBg, padding: '48px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '56px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-                            <div style={{
-                                width: '100px', height: '100px', borderRadius: '50%', background: colors.vkmRed,
-                                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                border: '4px solid white', boxShadow: '0 10px 28px rgba(227, 30, 27, 0.4)'
-                            }}>
-                                <span style={{ color: 'white', fontSize: '34px', fontWeight: 'bold' }}>VKM</span>
-                            </div>
-                            
-                            <div>
-                                <h1 style={{ color: colors.darkAnthracite, fontSize: '40px', margin: 0 }}>VKM Sunum Portalı</h1>
-                                <p style={{ color: colors.vkmRed, margin: 0, fontSize: '20px', fontStyle: 'italic', marginTop: '6px' }}>
-                                    Tecrübenin Gücü, Başarının Adresi
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                            <div style={{ background: 'white', padding: '14px 24px', borderRadius: '14px', boxShadow: '0 4px 14px rgba(0,0,0,0.1)' }}>
-                                <div style={{ fontSize: '14px', color: '#666' }}>Hazır Sunum</div>
-                                <div style={{ fontSize: '28px', fontWeight: 'bold', color: colors.vkmRed }}>{totalReady} / {totalAll}</div>
-                            </div>
-                            
-                            <button onClick={onLogout} style={{
-                                background: 'transparent', border: `3px solid ${colors.vkmCoral}`,
-                                color: colors.darkAnthracite, padding: '16px 32px', borderRadius: '12px',
-                                cursor: 'pointer', fontSize: '18px', fontWeight: 'bold'
-                            }}>Çıkış</button>
-                        </div>
-                    </div>
-                    
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px', maxWidth: '1100px', margin: '0 auto' }}>
-                        {categories.map((cat, index) => (
-                            <MenuButton
-                                key={cat.id} icon={cat.icon} title={cat.title}
-                                subtitle={`${cat.subtitle} • ${cat.count}/${cat.total}`}
-                                isSelected={selectedIndex === index} color={cat.color}
-                                onClick={() => onSelectCategory(cat.id)}
-                            />
-                        ))}
-                    </div>
-                    
-                    <div style={{ marginTop: '56px', textAlign: 'center', color: '#666' }}>
-                        <p style={{ fontSize: '20px', marginBottom: '12px' }}>💡 TV Kumandası: ↑↓←→ seçim • OK/Enter aç</p>
-                        <p style={{ fontSize: '16px', color: '#999' }}>Bahçeşehir | Atakent | 2013</p>
-                    </div>
+            <button class="menu-btn green" onclick="showCategory('hizmetler')">
+                <div class="icon">🎁</div>
+                <div class="text">
+                    <div class="title">Hizmet Sunumları</div>
+                    <div class="subtitle">Özel Ders, Deneme, Koçluk</div>
                 </div>
-            );
-        };
+            </button>
+            
+            <button class="menu-btn blue" onclick="showCategory('genel')">
+                <div class="icon">🏢</div>
+                <div class="text">
+                    <div class="title">Genel Tanıtım</div>
+                    <div class="subtitle">Kurum, Kadro, Başarılar</div>
+                </div>
+            </button>
+            
+            <button class="menu-btn gold" onclick="showCategory('burs')">
+                <div class="icon">🏆</div>
+                <div class="text">
+                    <div class="title">Burs Sınavı 2026</div>
+                    <div class="subtitle">4 Ocak 2026</div>
+                </div>
+            </button>
+        </div>
+        
+        <div class="footer">
+            💡 TV Kumandası: ↑↓←→ seçim • OK/Enter aç<br>
+            <span style="font-size: 16px; color: #999;">Bahçeşehir | Atakent | 2013</span>
+        </div>
+    </div>
+    
+    <!-- Kategori: Sınıflar -->
+    <div id="siniflarPage" class="category-page hidden">
+        <button class="back-btn" onclick="showDashboard()">← Ana Menü</button>
+        
+        <div class="category-header">
+            <h1>📖 Sınıf Sunumları</h1>
+            <div class="count">1 / 7 hazır</div>
+        </div>
+        
+        <div class="menu-grid">
+            <button class="menu-btn disabled">
+                <div class="icon">5️⃣</div>
+                <div class="text">
+                    <div class="title">5. Sınıf Tanıtım</div>
+                    <div class="subtitle">Ortaokula Hazırlık</div>
+                </div>
+            </button>
+            
+            <button class="menu-btn blue" onclick="showPresentation('6-sinif')">
+                <div class="icon">6️⃣</div>
+                <div class="text">
+                    <div class="title">6. Sınıf Sunumu</div>
+                    <div class="subtitle">18 slayt</div>
+                </div>
+                <div class="badge">✓ HAZIR</div>
+            </button>
+            
+            <button class="menu-btn purple disabled">
+                <div class="icon">7️⃣</div>
+                <div class="text">
+                    <div class="title">7. Sınıf Sunumu</div>
+                    <div class="subtitle">Yakında</div>
+                </div>
+            </button>
+            
+            <button class="menu-btn disabled">
+                <div class="icon">🎯</div>
+                <div class="text">
+                    <div class="title">LGS Veli Sunumu</div>
+                    <div class="subtitle">8. Sınıf • Yakında</div>
+                </div>
+            </button>
+            
+            <button class="menu-btn orange disabled">
+                <div class="icon">🔟</div>
+                <div class="text">
+                    <div class="title">10. Sınıf Veli Sunumu</div>
+                    <div class="subtitle">Yakında</div>
+                </div>
+            </button>
+            
+            <button class="menu-btn pink disabled">
+                <div class="icon">1️⃣1️⃣</div>
+                <div class="text">
+                    <div class="title">11. Sınıf Veli Sunumu</div>
+                    <div class="subtitle">Yakında</div>
+                </div>
+            </button>
+            
+            <button class="menu-btn purple disabled">
+                <div class="icon">🎓</div>
+                <div class="text">
+                    <div class="title">YKS Veli Sunumu</div>
+                    <div class="subtitle">Yakında</div>
+                </div>
+            </button>
+        </div>
+        
+        <div class="footer">💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön</div>
+    </div>
+    
+    <!-- Kategori: Hizmetler -->
+    <div id="hizmetlerPage" class="category-page hidden">
+        <button class="back-btn" onclick="showDashboard()">← Ana Menü</button>
+        <div class="category-header">
+            <h1>🎁 Hizmet Sunumları</h1>
+            <div class="count">0 / 4 hazır</div>
+        </div>
+        <div class="menu-grid">
+            <button class="menu-btn blue disabled"><div class="icon">👤</div><div class="text"><div class="title">VKM Özel Ders</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn green disabled"><div class="icon">📝</div><div class="text"><div class="title">VKM Deneme Kulübü</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn purple disabled"><div class="icon">🎯</div><div class="text"><div class="title">VKM Benim Koçum</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn orange disabled"><div class="icon">📱</div><div class="text"><div class="title">VKM App</div><div class="subtitle">Yakında</div></div></button>
+        </div>
+        <div class="footer">💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön</div>
+    </div>
+    
+    <!-- Kategori: Genel -->
+    <div id="genelPage" class="category-page hidden">
+        <button class="back-btn" onclick="showDashboard()">← Ana Menü</button>
+        <div class="category-header">
+            <h1>🏢 Genel Tanıtım</h1>
+            <div class="count">0 / 4 hazır</div>
+        </div>
+        <div class="menu-grid">
+            <button class="menu-btn disabled"><div class="icon">🏛️</div><div class="text"><div class="title">Kurum Tanıtımı</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn blue disabled"><div class="icon">👨‍🏫</div><div class="text"><div class="title">Öğretmen Kadromuz</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn gold disabled"><div class="icon">🏆</div><div class="text"><div class="title">Başarılarımız</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn green disabled"><div class="icon">💰</div><div class="text"><div class="title">Fiyat & Kampanyalar</div><div class="subtitle">Yakında</div></div></button>
+        </div>
+        <div class="footer">💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön</div>
+    </div>
+    
+    <!-- Kategori: Burs -->
+    <div id="bursPage" class="category-page hidden">
+        <button class="back-btn" onclick="showDashboard()">← Ana Menü</button>
+        <div class="category-header">
+            <h1>🏆 Burs Sınavı 2026</h1>
+            <div class="count">0 / 1 hazır</div>
+        </div>
+        <div class="menu-grid">
+            <button class="menu-btn gold disabled"><div class="icon">🏆</div><div class="text"><div class="title">Burs Sınavı 2026</div><div class="subtitle">4 Ocak 2026 • Yakında</div></div></button>
+        </div>
+        <div class="footer">💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön</div>
+    </div>
+    
+    <!-- Sunum Görüntüleyici -->
+    <div id="viewer" class="viewer hidden">
+        <div class="viewer-header">
+            <button class="back-btn" onclick="closePresentation()">← Geri Dön</button>
+            <div class="info">
+                <span class="icon" id="viewerIcon">6️⃣</span>
+                <span id="viewerTitle">6. Sınıf Sunumu</span>
+                <span class="page-info"><span id="currentSlide">1</span> / <span id="totalSlides">18</span></span>
+            </div>
+            <div class="hint">← → ok tuşları veya tıkla</div>
+        </div>
+        
+        <div class="slide-container">
+            <button class="slide-nav prev" onclick="prevSlide()">❮</button>
+            <img id="slideImage" src="" alt="Slayt">
+            <button class="slide-nav next" onclick="nextSlide()">❯</button>
+            
+            <div class="slide-dots" id="slideDots"></div>
+        </div>
+    </div>
 
-        // Ana Uygulama
-        const App = () => {
-            const [isLoggedIn, setIsLoggedIn] = useState(false);
-            const [currentPage, setCurrentPage] = useState('dashboard');
-            const [selectedPresentation, setSelectedPresentation] = useState(null);
-            const [previousCategory, setPreviousCategory] = useState(null);
-
-            const handleSelectCategory = (categoryId) => {
-                setPreviousCategory(categoryId);
-                setCurrentPage(categoryId);
-            };
-
-            const handleSelectPresentation = (presentation) => {
-                setSelectedPresentation(presentation);
-                setCurrentPage('viewer');
-            };
-
-            const handleBack = () => {
-                if (currentPage === 'viewer' && previousCategory) {
-                    setSelectedPresentation(null);
-                    setCurrentPage(previousCategory);
-                } else {
-                    setCurrentPage('dashboard');
-                }
-            };
-
-            if (!isLoggedIn) return <LoginScreen onLogin={() => setIsLoggedIn(true)} />;
-
-            switch (currentPage) {
-                case 'siniflar':
-                    return <CategoryPage title="Sınıf Sunumları" icon="📖" items={sunumDatabase.siniflar} onBack={handleBack} onSelectPresentation={handleSelectPresentation} />;
-                case 'hizmetler':
-                    return <CategoryPage title="Hizmet Sunumları" icon="🎁" items={sunumDatabase.hizmetler} onBack={handleBack} onSelectPresentation={handleSelectPresentation} />;
-                case 'genel':
-                    return <CategoryPage title="Genel Tanıtım" icon="🏢" items={sunumDatabase.genel} onBack={handleBack} onSelectPresentation={handleSelectPresentation} />;
-                case 'burs':
-                    return <CategoryPage title="Burs Sınavı 2026" icon="🏆" items={sunumDatabase.burs} onBack={handleBack} onSelectPresentation={handleSelectPresentation} />;
-                case 'viewer':
-                    return <CanvaViewer presentation={selectedPresentation} onBack={handleBack} />;
-                default:
-                    return <Dashboard onSelectCategory={handleSelectCategory} onLogout={() => setIsLoggedIn(false)} />;
+    <script>
+        // Sunum verileri
+        const presentations = {
+            '6-sinif': {
+                title: '6. Sınıf Sunumu',
+                icon: '6️⃣',
+                slides: 18,
+                folder: 'slides/6-sinif'
             }
+            // Diğer sunumlar eklenecek
         };
-
-        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+        
+        let currentPresentation = null;
+        let currentSlideIndex = 0;
+        
+        // Giriş
+        function login() {
+            const pin = document.getElementById('pinInput').value;
+            if (pin === '2013') {
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+            } else {
+                document.getElementById('errorMsg').textContent = 'Hatalı PIN!';
+                document.getElementById('errorMsg').classList.remove('hidden');
+                document.getElementById('pinInput').value = '';
+            }
+        }
+        
+        function logout() {
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('pinInput').value = '';
+        }
+        
+        // Enter tuşu ile giriş
+        document.getElementById('pinInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') login();
+        });
+        
+        // Sayfa geçişleri
+        function showDashboard() {
+            document.querySelectorAll('.category-page').forEach(p => p.classList.add('hidden'));
+            document.getElementById('dashboard').classList.remove('hidden');
+        }
+        
+        function showCategory(category) {
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById(category + 'Page').classList.remove('hidden');
+        }
+        
+        // Sunum göster
+        function showPresentation(id) {
+            if (!presentations[id]) return;
+            
+            currentPresentation = presentations[id];
+            currentSlideIndex = 0;
+            
+            document.getElementById('viewerIcon').textContent = currentPresentation.icon;
+            document.getElementById('viewerTitle').textContent = currentPresentation.title;
+            document.getElementById('totalSlides').textContent = currentPresentation.slides;
+            
+            // Dots oluştur
+            const dotsContainer = document.getElementById('slideDots');
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < currentPresentation.slides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+            
+            updateSlide();
+            
+            document.querySelectorAll('.category-page').forEach(p => p.classList.add('hidden'));
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('viewer').classList.remove('hidden');
+        }
+        
+        function closePresentation() {
+            document.getElementById('viewer').classList.add('hidden');
+            document.getElementById('siniflarPage').classList.remove('hidden');
+        }
+        
+        function updateSlide() {
+            const slideNum = currentSlideIndex + 1;
+            document.getElementById('slideImage').src = currentPresentation.folder + '/' + slideNum + '.png';
+            document.getElementById('currentSlide').textContent = slideNum;
+            
+            // Dots güncelle
+            document.querySelectorAll('.slide-dots .dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlideIndex);
+            });
+        }
+        
+        function nextSlide() {
+            if (currentSlideIndex < currentPresentation.slides - 1) {
+                currentSlideIndex++;
+                updateSlide();
+            }
+        }
+        
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                updateSlide();
+            }
+        }
+        
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateSlide();
+        }
+        
+        // Klavye kontrolü
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('viewer').classList.contains('hidden')) {
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
+                else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
+                else if (e.key === 'Escape' || e.key === 'Backspace') closePresentation();
+            }
+        });
+        
+        // Sayfa yüklenince PIN inputuna focus
+        window.onload = function() {
+            document.getElementById('pinInput').focus();
+        };
     </script>
 </body>
 </html>
