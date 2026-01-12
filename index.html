@@ -433,7 +433,7 @@
                     <div class="title">Sınıf Sunumları</div>
                     <div class="subtitle">6, 7, 8, 10, 11 & YKS</div>
                 </div>
-                <div class="badge">3 hazır</div>
+                <div class="badge">6 hazır</div>
             </button>
             
             <button class="menu-btn green" onclick="showCategory('hizmetler')">
@@ -473,18 +473,10 @@
         
         <div class="category-header">
             <h1>📖 Sınıf Sunumları</h1>
-            <div class="count">3 / 7 hazır</div>
+            <div class="count">6 / 6 hazır</div>
         </div>
         
         <div class="menu-grid">
-            <button class="menu-btn disabled">
-                <div class="icon">5️⃣</div>
-                <div class="text">
-                    <div class="title">5. Sınıf Tanıtım</div>
-                    <div class="subtitle">Ortaokula Hazırlık</div>
-                </div>
-            </button>
-            
             <button class="menu-btn blue" onclick="showPresentation('6-sinif')">
                 <div class="icon">6️⃣</div>
                 <div class="text">
@@ -512,28 +504,31 @@
                 <div class="badge">✓ HAZIR</div>
             </button>
             
-            <button class="menu-btn orange disabled">
+            <button class="menu-btn orange" onclick="showPresentation('10-sinif')">
                 <div class="icon">🔟</div>
                 <div class="text">
                     <div class="title">10. Sınıf Veli Sunumu</div>
-                    <div class="subtitle">Yakında</div>
+                    <div class="subtitle">18 slayt</div>
                 </div>
+                <div class="badge">✓ HAZIR</div>
             </button>
-            
-            <button class="menu-btn pink disabled">
+
+            <button class="menu-btn pink" onclick="showPresentation('11-sinif')">
                 <div class="icon">1️⃣1️⃣</div>
                 <div class="text">
                     <div class="title">11. Sınıf Veli Sunumu</div>
-                    <div class="subtitle">Yakında</div>
+                    <div class="subtitle">18 slayt</div>
                 </div>
+                <div class="badge">✓ HAZIR</div>
             </button>
-            
-            <button class="menu-btn purple disabled">
+
+            <button class="menu-btn purple" onclick="showPresentation('yks')">
                 <div class="icon">🎓</div>
                 <div class="text">
                     <div class="title">YKS Veli Sunumu</div>
-                    <div class="subtitle">Yakında</div>
+                    <div class="subtitle">19 slayt</div>
                 </div>
+                <div class="badge">✓ HAZIR</div>
             </button>
         </div>
         
@@ -626,6 +621,24 @@
                 icon: '🎯',
                 slides: 18,
                 folder: 'slides/LGS'
+            },
+            '10-sinif': {
+                title: '10. Sınıf Veli Sunumu',
+                icon: '🔟',
+                slides: 18,
+                folder: 'slides/10-Sinif'
+            },
+            '11-sinif': {
+                title: '11. Sınıf Veli Sunumu',
+                icon: '1️⃣1️⃣',
+                slides: 18,
+                folder: 'slides/11-Sinif'
+            },
+            'yks': {
+                title: 'YKS Veli Sunumu',
+                icon: '🎓',
+                slides: 19,
+                folder: 'slides/YKS'
             }
         };
         
