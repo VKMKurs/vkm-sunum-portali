@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VadiTepe Kurs Merkezi Sunum Portalı - Tecrübenin Gücü, Başarının Adresi">
+    <meta name="theme-color" content="#e31e1b">
     <title>VKM Sunum Portalı</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e31e1b'/%3E%3Ctext x='50' y='62' font-family='Arial,sans-serif' font-size='32' font-weight='bold' fill='white' text-anchor='middle'%3EVKM%3C/text%3E%3C/svg%3E">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -17,17 +20,7 @@
             --light-bg: #f5f5f5;
         }
         
-        /* Giriş Ekranı */
-        .login-screen {
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--dark) 0%, #2a3441 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-        }
-        
+        /* Logo */
         .logo {
             width: 140px;
             height: 140px;
@@ -40,55 +33,13 @@
             border: 5px solid white;
             box-shadow: 0 12px 40px rgba(227, 30, 27, 0.5);
         }
-        
+
         .logo span {
             color: white;
             font-size: 42px;
             font-weight: bold;
         }
-        
-        .login-box {
-            background: white;
-            border-radius: 20px;
-            padding: 48px;
-            width: 100%;
-            max-width: 420px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        
-        .login-box h2 {
-            color: var(--dark);
-            margin-bottom: 32px;
-            font-size: 28px;
-        }
-        
-        .login-box input {
-            width: 100%;
-            padding: 24px;
-            font-size: 28px;
-            text-align: center;
-            border: 3px solid var(--vkm-coral);
-            border-radius: 14px;
-            margin-bottom: 20px;
-            outline: none;
-            letter-spacing: 10px;
-        }
-        
-        .login-box button {
-            width: 100%;
-            padding: 24px;
-            font-size: 22px;
-            font-weight: bold;
-            color: white;
-            background: var(--vkm-red);
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-        }
-        
-        .error { color: var(--vkm-red); margin-bottom: 16px; font-size: 18px; }
-        
+
         /* Dashboard */
         .dashboard {
             min-height: 100vh;
@@ -314,6 +265,22 @@
             max-width: 100%;
             max-height: calc(100vh - 80px);
             object-fit: contain;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .slide-container img.slide-out-left {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .slide-container img.slide-out-right {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .slide-container img.slide-in {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .slide-nav {
@@ -363,7 +330,87 @@
             width: 32px;
             border-radius: 6px;
         }
-        
+
+        /* Loading Spinner */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            border-top-color: var(--vkm-red);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Fullscreen butonu */
+        .fullscreen-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 10px 16px;
+            border-radius: 10px;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .fullscreen-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .fullscreen-btn span {
+            font-size: 14px;
+        }
+
+        /* Fullscreen modunda header gizleme */
+        .viewer.fullscreen-mode .viewer-header {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .viewer.fullscreen-mode:hover .viewer-header {
+            opacity: 1;
+        }
+
+        .viewer.fullscreen-mode .slide-nav {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .viewer.fullscreen-mode:hover .slide-nav {
+            opacity: 1;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--vkm-red);
+            transition: width 0.3s ease;
+            z-index: 5;
+        }
+
         /* Gizli */
         .hidden { display: none !important; }
         
@@ -399,22 +446,8 @@
     </style>
 </head>
 <body>
-    <!-- Giriş Ekranı -->
-    <div id="loginScreen" class="login-screen">
-        <div class="logo"><span>VKM</span></div>
-        <h1 style="color: white; font-size: 36px; margin-bottom: 6px;">VadiTepe</h1>
-        <p style="color: #ee7673; font-size: 20px; font-style: italic; margin-bottom: 40px;">Kurs Merkezi</p>
-        
-        <div class="login-box">
-            <h2>🔐 Personel Girişi</h2>
-            <div id="errorMsg" class="error hidden"></div>
-            <input type="password" id="pinInput" placeholder="PIN Kodu" maxlength="4">
-            <button onclick="login()">GİRİŞ YAP</button>
-        </div>
-    </div>
-    
     <!-- Dashboard -->
-    <div id="dashboard" class="dashboard hidden">
+    <div id="dashboard" class="dashboard">
         <div class="header">
             <div class="header-left">
                 <div class="logo"><span>VKM</span></div>
@@ -423,7 +456,6 @@
                     <p>Tecrübenin Gücü, Başarının Adresi</p>
                 </div>
             </div>
-            <button class="back-btn" onclick="logout()" style="background: transparent; border: 3px solid #ee7673; color: #1e262e;">Çıkış</button>
         </div>
         
         <div class="menu-grid">
@@ -463,7 +495,7 @@
         
         <div class="footer">
             💡 TV Kumandası: ↑↓←→ seçim • OK/Enter aç<br>
-            <span style="font-size: 16px; color: #999;">Bahçeşehir | Atakent | 2013</span>
+            <span style="font-size: 16px; color: #999;">Bahçeşehir | Atakent</span>
         </div>
     </div>
     
@@ -583,14 +615,27 @@
                 <span id="viewerTitle">6. Sınıf Sunumu</span>
                 <span class="page-info"><span id="currentSlide">1</span> / <span id="totalSlides">18</span></span>
             </div>
-            <div class="hint">← → ok tuşları veya tıkla</div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <div class="hint">← → slayt • F tam ekran • P/Space oynat</div>
+                <button class="fullscreen-btn" onclick="toggleAutoplay()" title="Otomatik Oynat (P)" id="autoplayBtn">
+                    <span id="autoplayIcon">▶</span>
+                    <span id="autoplayText">Oynat</span>
+                </button>
+                <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Tam Ekran (F)">
+                    <span id="fullscreenIcon">⛶</span>
+                </button>
+            </div>
         </div>
         
         <div class="slide-container">
+            <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+            <div id="loadingOverlay" class="loading-overlay hidden">
+                <div class="spinner"></div>
+            </div>
             <button class="slide-nav prev" onclick="prevSlide()">❮</button>
             <img id="slideImage" src="" alt="Slayt">
             <button class="slide-nav next" onclick="nextSlide()">❯</button>
-            
+
             <div class="slide-dots" id="slideDots"></div>
         </div>
     </div>
@@ -638,31 +683,35 @@
         
         let currentPresentation = null;
         let currentSlideIndex = 0;
-        
-        // Giriş
-        function login() {
-            const pin = document.getElementById('pinInput').value;
-            if (pin === '2013') {
-                document.getElementById('loginScreen').classList.add('hidden');
-                document.getElementById('dashboard').classList.remove('hidden');
-            } else {
-                document.getElementById('errorMsg').textContent = 'Hatalı PIN!';
-                document.getElementById('errorMsg').classList.remove('hidden');
-                document.getElementById('pinInput').value = '';
-            }
+        const preloadedImages = {};
+        let autoplayInterval = null;
+        let isAutoplayOn = false;
+        const AUTOPLAY_DELAY = 5000; // 5 saniye
+
+        // Slayt preloading fonksiyonu
+        function preloadSlides() {
+            if (!currentPresentation) return;
+
+            // Sonraki 2 ve önceki 1 slaytı preload et
+            const slidesToPreload = [
+                currentSlideIndex + 1,
+                currentSlideIndex + 2,
+                currentSlideIndex - 1
+            ];
+
+            slidesToPreload.forEach(index => {
+                if (index >= 0 && index < currentPresentation.slides) {
+                    const slideNum = index + 1;
+                    const src = currentPresentation.folder + '/' + slideNum + '.png';
+                    if (!preloadedImages[src]) {
+                        const img = new Image();
+                        img.src = src;
+                        preloadedImages[src] = img;
+                    }
+                }
+            });
         }
-        
-        function logout() {
-            document.getElementById('dashboard').classList.add('hidden');
-            document.getElementById('loginScreen').classList.remove('hidden');
-            document.getElementById('pinInput').value = '';
-        }
-        
-        // Enter tuşu ile giriş
-        document.getElementById('pinInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') login();
-        });
-        
+
         // Sayfa geçişleri
         function showDashboard() {
             document.querySelectorAll('.category-page').forEach(p => p.classList.add('hidden'));
@@ -703,33 +752,77 @@
         }
         
         function closePresentation() {
+            stopAutoplay();
             document.getElementById('viewer').classList.add('hidden');
             document.getElementById('siniflarPage').classList.remove('hidden');
         }
         
         function updateSlide() {
             const slideNum = currentSlideIndex + 1;
-            document.getElementById('slideImage').src = currentPresentation.folder + '/' + slideNum + '.png';
+            const slideImage = document.getElementById('slideImage');
+            const loadingOverlay = document.getElementById('loadingOverlay');
+
+            // Loading göster
+            loadingOverlay.classList.remove('hidden');
+
+            // Yeni resim yükle
+            const newSrc = currentPresentation.folder + '/' + slideNum + '.png';
+            slideImage.onload = function() {
+                loadingOverlay.classList.add('hidden');
+            };
+            slideImage.onerror = function() {
+                loadingOverlay.classList.add('hidden');
+            };
+            slideImage.src = newSrc;
+
             document.getElementById('currentSlide').textContent = slideNum;
-            
+
             // Dots güncelle
             document.querySelectorAll('.slide-dots .dot').forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentSlideIndex);
             });
+
+            // Sonraki slaytları preload et
+            preloadSlides();
+
+            // Progress bar güncelle
+            const progress = ((currentSlideIndex + 1) / currentPresentation.slides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
         }
-        
+
         function nextSlide() {
             if (currentSlideIndex < currentPresentation.slides - 1) {
-                currentSlideIndex++;
-                updateSlide();
+                animateSlide('left', () => {
+                    currentSlideIndex++;
+                    updateSlide();
+                });
             }
         }
-        
+
         function prevSlide() {
             if (currentSlideIndex > 0) {
-                currentSlideIndex--;
-                updateSlide();
+                animateSlide('right', () => {
+                    currentSlideIndex--;
+                    updateSlide();
+                });
             }
+        }
+
+        function animateSlide(direction, callback) {
+            const slideImage = document.getElementById('slideImage');
+            const outClass = direction === 'left' ? 'slide-out-left' : 'slide-out-right';
+
+            slideImage.classList.add(outClass);
+
+            setTimeout(() => {
+                callback();
+                slideImage.classList.remove(outClass);
+                slideImage.classList.add('slide-in');
+
+                setTimeout(() => {
+                    slideImage.classList.remove('slide-in');
+                }, 300);
+            }, 150);
         }
         
         function goToSlide(index) {
@@ -742,14 +835,119 @@
             if (!document.getElementById('viewer').classList.contains('hidden')) {
                 if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
                 else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
-                else if (e.key === 'Escape' || e.key === 'Backspace') closePresentation();
+                else if (e.key === 'Escape' || e.key === 'Backspace') {
+                    if (document.fullscreenElement) {
+                        document.exitFullscreen();
+                    } else {
+                        closePresentation();
+                    }
+                }
+                else if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+                else if (e.key === 'p' || e.key === 'P' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleAutoplay();
+                }
             }
         });
-        
-        // Sayfa yüklenince PIN inputuna focus
-        window.onload = function() {
-            document.getElementById('pinInput').focus();
-        };
+
+        // Touch/Swipe desteği
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+
+        const slideContainer = document.querySelector('.slide-container');
+
+        slideContainer.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        slideContainer.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+            const minSwipeDistance = 50;
+
+            // Yatay swipe daha baskınsa
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+                if (diffX > 0) {
+                    nextSlide(); // Sola kaydır = ileri
+                } else {
+                    prevSlide(); // Sağa kaydır = geri
+                }
+            }
+        }
+
+        // Fullscreen fonksiyonları
+        function toggleFullscreen() {
+            const viewer = document.getElementById('viewer');
+
+            if (!document.fullscreenElement) {
+                viewer.requestFullscreen().then(() => {
+                    viewer.classList.add('fullscreen-mode');
+                    document.getElementById('fullscreenIcon').textContent = '⛶';
+                }).catch(err => {
+                    console.log('Fullscreen error:', err);
+                });
+            } else {
+                document.exitFullscreen().then(() => {
+                    viewer.classList.remove('fullscreen-mode');
+                    document.getElementById('fullscreenIcon').textContent = '⛶';
+                });
+            }
+        }
+
+        // Fullscreen değişikliğini dinle
+        document.addEventListener('fullscreenchange', function() {
+            const viewer = document.getElementById('viewer');
+            if (!document.fullscreenElement) {
+                viewer.classList.remove('fullscreen-mode');
+            }
+        });
+
+        // Autoplay fonksiyonları
+        function toggleAutoplay() {
+            if (isAutoplayOn) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
+            }
+        }
+
+        function startAutoplay() {
+            isAutoplayOn = true;
+            document.getElementById('autoplayIcon').textContent = '⏸';
+            document.getElementById('autoplayText').textContent = 'Durdur';
+            document.getElementById('autoplayBtn').style.background = 'rgba(227, 30, 27, 0.6)';
+
+            autoplayInterval = setInterval(() => {
+                if (currentSlideIndex < currentPresentation.slides - 1) {
+                    nextSlide();
+                } else {
+                    // Son slayta gelince başa dön veya dur
+                    goToSlide(0);
+                }
+            }, AUTOPLAY_DELAY);
+        }
+
+        function stopAutoplay() {
+            isAutoplayOn = false;
+            document.getElementById('autoplayIcon').textContent = '▶';
+            document.getElementById('autoplayText').textContent = 'Oynat';
+            document.getElementById('autoplayBtn').style.background = '';
+
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
+        }
+
     </script>
 </body>
 </html>
