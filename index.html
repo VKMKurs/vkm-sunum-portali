@@ -465,7 +465,7 @@
                     <div class="title">Sınıf Sunumları</div>
                     <div class="subtitle">6, 7, 8, 10, 11 & YKS</div>
                 </div>
-                <div class="badge">6 hazır</div>
+                <div class="badge">7 hazır</div>
             </button>
             
             <button class="menu-btn green" onclick="showCategory('hizmetler')">
@@ -505,7 +505,7 @@
         
         <div class="category-header">
             <h1>📖 Sınıf Sunumları</h1>
-            <div class="count">6 / 6 hazır</div>
+            <div class="count">7 / 7 hazır</div>
         </div>
         
         <div class="menu-grid">
@@ -556,11 +556,19 @@
                     <div class="subtitle">19 slayt</div>
                 </div>
             </button>
+
+            <button class="menu-btn gold" onclick="showPresentation('3-4-5-allstar')">
+                <div class="icon">⭐</div>
+                <div class="text">
+                    <div class="title">3-4-5 All Star</div>
+                    <div class="subtitle">2 slayt</div>
+                </div>
+            </button>
         </div>
-        
+
         <div class="footer">💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön</div>
     </div>
-    
+
     <!-- Kategori: Hizmetler -->
     <div id="hizmetlerPage" class="category-page hidden">
         <button class="back-btn" onclick="showDashboard()">← Ana Menü</button>
@@ -678,6 +686,12 @@
                 icon: '🎓',
                 slides: 19,
                 folder: 'slides/YKS'
+            },
+            '3-4-5-allstar': {
+                title: '3-4-5 All Star',
+                icon: '⭐',
+                slides: 2,
+                folder: 'slides/3-4-5-allstar'
             }
         };
         
