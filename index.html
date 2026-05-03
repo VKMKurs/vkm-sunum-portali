@@ -566,12 +566,12 @@
         <button class="back-btn" onclick="showDashboard()">← Ana Menü</button>
         <div class="category-header">
             <h1>🎁 Hizmet Sunumları</h1>
-            <div class="count">0 / 4 hazır</div>
+            <div class="count">1 / 4 hazır</div>
         </div>
         <div class="menu-grid">
             <button class="menu-btn blue disabled"><div class="icon">👤</div><div class="text"><div class="title">VKM Özel Ders</div><div class="subtitle">Yakında</div></div></button>
             <button class="menu-btn green disabled"><div class="icon">📝</div><div class="text"><div class="title">VKM Deneme Kulübü</div><div class="subtitle">Yakında</div></div></button>
-            <button class="menu-btn purple disabled"><div class="icon">🎯</div><div class="text"><div class="title">VKM Benim Koçum</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn purple" onclick="openHtmlPresentation('vkm-pusulam')"><div class="icon">🧭</div><div class="text"><div class="title">VKM Pusulam</div><div class="subtitle">Tanıtım Sunumu</div></div></button>
             <button class="menu-btn orange disabled"><div class="icon">📱</div><div class="text"><div class="title">VKM App</div><div class="subtitle">Yakında</div></div></button>
         </div>
         <div class="footer">💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön</div>
@@ -606,6 +606,22 @@
         <div class="footer">💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön</div>
     </div>
     
+    <!-- HTML Sunum Görüntüleyici (iframe) -->
+    <div id="htmlViewer" class="hidden" style="position:fixed; inset:0; background:#000; z-index:1000; display:flex; flex-direction:column;">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 24px; background:rgba(30,38,46,0.95); border-bottom:3px solid var(--vkm-red);">
+            <button class="back-btn" style="margin-bottom:0;" onclick="closeHtmlPresentation()">← Geri Dön</button>
+            <div style="color:white; font-size:20px; display:flex; align-items:center; gap:12px;">
+                <span style="font-size:26px;">🧭</span>
+                <span id="htmlViewerTitle">VKM Pusulam</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;">
+                <span style="color:var(--vkm-coral); font-size:13px;">ESC çık • F tam ekran</span>
+                <button class="fullscreen-btn" onclick="toggleHtmlFullscreen()" title="Tam Ekran (F)">⛶</button>
+            </div>
+        </div>
+        <iframe id="htmlViewerFrame" src="about:blank" style="flex:1; width:100%; border:0; background:#0d1117;"></iframe>
+    </div>
+
     <!-- Sunum Görüntüleyici -->
     <div id="viewer" class="viewer hidden">
         <div class="viewer-header">
@@ -680,6 +696,65 @@
                 folder: 'slides/YKS'
             }
         };
+
+        // HTML tabanlı sunumlar (kendi içinde slayt navigasyonu olan tek dosya)
+        const htmlPresentations = {
+            'vkm-pusulam': {
+                title: 'VKM Pusulam',
+                icon: '🧭',
+                url: 'presentations/vkm-pusulam/01_sunum_tanitim.html'
+            }
+        };
+
+        function openHtmlPresentation(id) {
+            const p = htmlPresentations[id];
+            if (!p) return;
+            document.getElementById('htmlViewerTitle').textContent = p.title;
+            document.querySelectorAll('.category-page').forEach(el => el.classList.add('hidden'));
+            document.getElementById('dashboard').classList.add('hidden');
+            // Önce viewer'ı görünür yap — iframe'in dimensions'ı olsun
+            // (display:none parent içinde yüklenirse deck-stage scale(0) hesaplıyor)
+            document.getElementById('htmlViewer').classList.remove('hidden');
+            const frame = document.getElementById('htmlViewerFrame');
+            frame.onload = function() {
+                // deck-stage'in fit() metodunu yeniden tetikle
+                try {
+                    frame.contentWindow.dispatchEvent(new Event('resize'));
+                } catch (e) { /* cross-origin değil ama yine de güvenli */ }
+            };
+            // Layout'un yerleşmesi için bir frame bekle, sonra yükle
+            requestAnimationFrame(() => { frame.src = p.url; });
+        }
+
+        function closeHtmlPresentation() {
+            const viewer = document.getElementById('htmlViewer');
+            if (document.fullscreenElement) document.exitFullscreen();
+            viewer.classList.add('hidden');
+            document.getElementById('htmlViewerFrame').src = 'about:blank';
+            document.getElementById('hizmetlerPage').classList.remove('hidden');
+        }
+
+        function toggleHtmlFullscreen() {
+            const viewer = document.getElementById('htmlViewer');
+            if (!document.fullscreenElement) {
+                viewer.requestFullscreen().catch(err => console.log('Fullscreen error:', err));
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('htmlViewer').classList.contains('hidden')) {
+                if (e.key === 'Escape') {
+                    if (!document.fullscreenElement) {
+                        e.preventDefault();
+                        closeHtmlPresentation();
+                    }
+                } else if (e.key === 'f' || e.key === 'F') {
+                    toggleHtmlFullscreen();
+                }
+            }
+        });
         
         let currentPresentation = null;
         let currentSlideIndex = 0;
