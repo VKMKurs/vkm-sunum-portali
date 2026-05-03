@@ -10,7 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Nunito', 'Segoe UI', sans-serif; overflow: hidden; }
+        html { min-height: 100%; }
+        body {
+            font-family: 'Nunito', 'Segoe UI', sans-serif;
+            background: var(--light-bg);
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
         
         /* Renkler */
         :root {
@@ -52,6 +58,9 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 48px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .header-left {
@@ -83,7 +92,7 @@
         
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 28px;
             max-width: 1100px;
             margin: 0 auto;
@@ -100,13 +109,16 @@
             align-items: center;
             gap: 24px;
             transition: all 0.2s ease;
+            min-height: 150px;
         }
         
-        .menu-btn:hover, .menu-btn.selected {
+        .menu-btn:hover, .menu-btn.selected, .menu-btn:focus-visible {
             background: var(--vkm-red);
             color: white;
             transform: scale(1.02);
             box-shadow: 0 12px 36px rgba(227, 30, 27, 0.4);
+            outline: 4px solid rgba(227, 30, 27, 0.18);
+            outline-offset: 4px;
         }
         
         .menu-btn .icon {
@@ -118,6 +130,7 @@
             align-items: center;
             justify-content: center;
             font-size: 32px;
+            flex: 0 0 70px;
         }
         
         .menu-btn:hover .icon, .menu-btn.selected .icon {
@@ -126,6 +139,7 @@
         
         .menu-btn .text {
             text-align: left;
+            min-width: 0;
         }
         
         .menu-btn .title {
@@ -147,6 +161,7 @@
             border-radius: 20px;
             font-size: 14px;
             font-weight: bold;
+            white-space: nowrap;
         }
         
         .menu-btn:hover .badge, .menu-btn.selected .badge {
@@ -218,6 +233,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
             padding: 16px 32px;
             background: rgba(30,38,46,0.95);
             border-bottom: 3px solid var(--vkm-red);
@@ -234,6 +251,7 @@
             display: flex;
             align-items: center;
             gap: 14px;
+            flex-wrap: wrap;
         }
         
         .viewer-header .info .icon {
@@ -251,9 +269,18 @@
             color: var(--vkm-coral);
             font-size: 14px;
         }
+
+        .viewer-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
         
         .slide-container {
             flex: 1;
+            min-height: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -264,6 +291,8 @@
         .slide-container img {
             max-width: 100%;
             max-height: calc(100vh - 80px);
+            width: auto;
+            height: auto;
             object-fit: contain;
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
@@ -442,6 +471,113 @@
         .menu-btn.disabled {
             opacity: 0.5;
             cursor: not-allowed;
+            pointer-events: none;
+            filter: grayscale(0.2);
+        }
+
+        .menu-btn.disabled:hover, .menu-btn.disabled.selected, .menu-btn.disabled:focus-visible {
+            background: white;
+            color: inherit;
+            transform: none;
+            box-shadow: none;
+            outline: none;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard, .category-page {
+                padding: 30px;
+            }
+
+            .header {
+                margin-bottom: 32px;
+            }
+
+            .header-left, .category-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .header h1, .category-header h1 {
+                font-size: 34px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .menu-btn {
+                min-height: 130px;
+                padding: 24px;
+            }
+
+            .viewer-header {
+                padding: 14px 20px;
+            }
+
+            .viewer-actions {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .dashboard, .category-page {
+                padding: 22px;
+            }
+
+            .header .logo {
+                width: 84px;
+                height: 84px;
+            }
+
+            .header .logo span {
+                font-size: 28px;
+            }
+
+            .header h1, .category-header h1 {
+                font-size: 28px;
+            }
+
+            .header p {
+                font-size: 17px;
+            }
+
+            .menu-btn {
+                gap: 16px;
+                padding: 20px;
+                min-height: 118px;
+            }
+
+            .menu-btn .icon {
+                width: 56px;
+                height: 56px;
+                flex-basis: 56px;
+                font-size: 26px;
+            }
+
+            .menu-btn .title {
+                font-size: 21px;
+            }
+
+            .menu-btn .badge {
+                padding: 7px 12px;
+            }
+
+            .slide-nav {
+                width: 48px;
+                height: 78px;
+                font-size: 26px;
+            }
+
+            .slide-dots {
+                gap: 6px;
+                bottom: 12px;
+            }
+
+            .slide-dots .dot {
+                width: 9px;
+                height: 9px;
+            }
         }
     </style>
 </head>
@@ -476,20 +612,22 @@
                 </div>
             </button>
             
-            <button class="menu-btn blue" onclick="showCategory('genel')">
+            <button class="menu-btn blue disabled" disabled aria-disabled="true" tabindex="-1">
                 <div class="icon">🏢</div>
                 <div class="text">
                     <div class="title">Genel Tanıtım</div>
                     <div class="subtitle">Kurum, Kadro, Başarılar</div>
                 </div>
+                <div class="badge">Yakında</div>
             </button>
             
-            <button class="menu-btn gold" onclick="showCategory('burs')">
+            <button class="menu-btn gold disabled" disabled aria-disabled="true" tabindex="-1">
                 <div class="icon">🏆</div>
                 <div class="text">
                     <div class="title">Burs Sınavı 2026</div>
-                    <div class="subtitle">4 Ocak 2026</div>
+                    <div class="subtitle">Yeni tarih duyurulacak</div>
                 </div>
+                <div class="badge">Yakında</div>
             </button>
         </div>
         
@@ -569,10 +707,10 @@
             <div class="count">1 / 4 hazır</div>
         </div>
         <div class="menu-grid">
-            <button class="menu-btn blue disabled"><div class="icon">👤</div><div class="text"><div class="title">VKM Özel Ders</div><div class="subtitle">Yakında</div></div></button>
-            <button class="menu-btn green disabled"><div class="icon">📝</div><div class="text"><div class="title">VKM Deneme Kulübü</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn blue disabled" disabled aria-disabled="true" tabindex="-1"><div class="icon">👤</div><div class="text"><div class="title">VKM Özel Ders</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn green disabled" disabled aria-disabled="true" tabindex="-1"><div class="icon">📝</div><div class="text"><div class="title">VKM Deneme Kulübü</div><div class="subtitle">Yakında</div></div></button>
             <button class="menu-btn purple" onclick="openHtmlPresentation('vkm-pusulam')"><div class="icon">🧭</div><div class="text"><div class="title">VKM Pusulam</div><div class="subtitle">Tanıtım Sunumu</div></div></button>
-            <button class="menu-btn orange disabled"><div class="icon">📱</div><div class="text"><div class="title">VKM App</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn orange disabled" disabled aria-disabled="true" tabindex="-1"><div class="icon">📱</div><div class="text"><div class="title">VKM App</div><div class="subtitle">Yakında</div></div></button>
         </div>
         <div class="footer">💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön</div>
     </div>
@@ -585,10 +723,10 @@
             <div class="count">0 / 4 hazır</div>
         </div>
         <div class="menu-grid">
-            <button class="menu-btn disabled"><div class="icon">🏛️</div><div class="text"><div class="title">Kurum Tanıtımı</div><div class="subtitle">Yakında</div></div></button>
-            <button class="menu-btn blue disabled"><div class="icon">👨‍🏫</div><div class="text"><div class="title">Öğretmen Kadromuz</div><div class="subtitle">Yakında</div></div></button>
-            <button class="menu-btn gold disabled"><div class="icon">🏆</div><div class="text"><div class="title">Başarılarımız</div><div class="subtitle">Yakında</div></div></button>
-            <button class="menu-btn green disabled"><div class="icon">💰</div><div class="text"><div class="title">Fiyat & Kampanyalar</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn disabled" disabled aria-disabled="true" tabindex="-1"><div class="icon">🏛️</div><div class="text"><div class="title">Kurum Tanıtımı</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn blue disabled" disabled aria-disabled="true" tabindex="-1"><div class="icon">👨‍🏫</div><div class="text"><div class="title">Öğretmen Kadromuz</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn gold disabled" disabled aria-disabled="true" tabindex="-1"><div class="icon">🏆</div><div class="text"><div class="title">Başarılarımız</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn green disabled" disabled aria-disabled="true" tabindex="-1"><div class="icon">💰</div><div class="text"><div class="title">Fiyat & Kampanyalar</div><div class="subtitle">Yakında</div></div></button>
         </div>
         <div class="footer">💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön</div>
     </div>
@@ -601,7 +739,7 @@
             <div class="count">0 / 1 hazır</div>
         </div>
         <div class="menu-grid">
-            <button class="menu-btn gold disabled"><div class="icon">🏆</div><div class="text"><div class="title">Burs Sınavı 2026</div><div class="subtitle">4 Ocak 2026 • Yakında</div></div></button>
+            <button class="menu-btn gold disabled" disabled aria-disabled="true" tabindex="-1"><div class="icon">🏆</div><div class="text"><div class="title">Burs Sınavı</div><div class="subtitle">Yeni tarih duyurulacak</div></div></button>
         </div>
         <div class="footer">💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön</div>
     </div>
@@ -631,7 +769,7 @@
                 <span id="viewerTitle">6. Sınıf Sunumu</span>
                 <span class="page-info"><span id="currentSlide">1</span> / <span id="totalSlides">18</span></span>
             </div>
-            <div style="display: flex; align-items: center; gap: 16px;">
+            <div class="viewer-actions">
                 <div class="hint">← → slayt • F tam ekran • P/Space oynat</div>
                 <button class="fullscreen-btn" onclick="toggleAutoplay()" title="Otomatik Oynat (P)" id="autoplayBtn">
                     <span id="autoplayIcon">▶</span>
@@ -706,6 +844,109 @@
             }
         };
 
+        let selectedMenuIndex = 0;
+        let currentReturnPage = 'siniflarPage';
+
+        function getVisibleMenuContainer() {
+            const dashboard = document.getElementById('dashboard');
+            if (!dashboard.classList.contains('hidden')) return dashboard;
+
+            const pages = document.querySelectorAll('.category-page');
+            for (const page of pages) {
+                if (!page.classList.contains('hidden')) return page;
+            }
+            return null;
+        }
+
+        function getVisibleMenuButtons() {
+            const container = getVisibleMenuContainer();
+            if (!container) return [];
+            return Array.from(container.querySelectorAll('.menu-btn:not(.disabled):not(:disabled)'));
+        }
+
+        function clearMenuSelection() {
+            document.querySelectorAll('.menu-btn.selected').forEach(btn => btn.classList.remove('selected'));
+        }
+
+        function setSelectedMenu(index) {
+            const buttons = getVisibleMenuButtons();
+            clearMenuSelection();
+
+            if (!buttons.length) {
+                selectedMenuIndex = 0;
+                return;
+            }
+
+            if (index < 0) index = buttons.length - 1;
+            if (index >= buttons.length) index = 0;
+
+            selectedMenuIndex = index;
+            buttons[selectedMenuIndex].classList.add('selected');
+            buttons[selectedMenuIndex].focus({ preventScroll: true });
+        }
+
+        function getVisibleColumnCount(buttons) {
+            if (!buttons.length) return 1;
+            const firstTop = buttons[0].offsetTop;
+            let columns = 0;
+
+            for (const button of buttons) {
+                if (Math.abs(button.offsetTop - firstTop) < 12) columns++;
+                else break;
+            }
+
+            return Math.max(columns, 1);
+        }
+
+        function handleMenuKeydown(e) {
+            if (!document.getElementById('viewer').classList.contains('hidden')) return;
+            if (!document.getElementById('htmlViewer').classList.contains('hidden')) return;
+
+            const buttons = getVisibleMenuButtons();
+            if (!buttons.length) return;
+
+            const columns = getVisibleColumnCount(buttons);
+            let handled = true;
+
+            if (e.key === 'ArrowRight') setSelectedMenu(selectedMenuIndex + 1);
+            else if (e.key === 'ArrowLeft') setSelectedMenu(selectedMenuIndex - 1);
+            else if (e.key === 'ArrowDown') setSelectedMenu(selectedMenuIndex + columns);
+            else if (e.key === 'ArrowUp') setSelectedMenu(selectedMenuIndex - columns);
+            else if (e.key === 'Enter' || e.key === ' ') buttons[selectedMenuIndex].click();
+            else if (e.key === 'Escape' || e.key === 'Backspace') {
+                if (document.getElementById('dashboard').classList.contains('hidden')) showDashboard();
+                else handled = false;
+            } else {
+                handled = false;
+            }
+
+            if (handled) e.preventDefault();
+        }
+
+        function initMenuNavigation() {
+            document.querySelectorAll('.menu-btn.disabled').forEach(btn => {
+                btn.disabled = true;
+                btn.setAttribute('aria-disabled', 'true');
+                btn.setAttribute('tabindex', '-1');
+            });
+
+            document.querySelectorAll('.menu-btn:not(.disabled):not(:disabled)').forEach(btn => {
+                btn.setAttribute('tabindex', '0');
+                btn.addEventListener('focus', () => {
+                    const buttons = getVisibleMenuButtons();
+                    const index = buttons.indexOf(btn);
+                    if (index >= 0) setSelectedMenu(index);
+                });
+                btn.addEventListener('mouseenter', () => {
+                    const buttons = getVisibleMenuButtons();
+                    const index = buttons.indexOf(btn);
+                    if (index >= 0) setSelectedMenu(index);
+                });
+            });
+
+            setSelectedMenu(0);
+        }
+
         function openHtmlPresentation(id) {
             const p = htmlPresentations[id];
             if (!p) return;
@@ -732,6 +973,7 @@
             viewer.classList.add('hidden');
             document.getElementById('htmlViewerFrame').src = 'about:blank';
             document.getElementById('hizmetlerPage').classList.remove('hidden');
+            setSelectedMenu(0);
         }
 
         function toggleHtmlFullscreen() {
@@ -791,11 +1033,13 @@
         function showDashboard() {
             document.querySelectorAll('.category-page').forEach(p => p.classList.add('hidden'));
             document.getElementById('dashboard').classList.remove('hidden');
+            setSelectedMenu(0);
         }
         
         function showCategory(category) {
             document.getElementById('dashboard').classList.add('hidden');
             document.getElementById(category + 'Page').classList.remove('hidden');
+            setSelectedMenu(0);
         }
         
         // Sunum göster
@@ -804,6 +1048,9 @@
             
             currentPresentation = presentations[id];
             currentSlideIndex = 0;
+
+            const visiblePage = Array.from(document.querySelectorAll('.category-page')).find(p => !p.classList.contains('hidden'));
+            currentReturnPage = visiblePage ? visiblePage.id : 'siniflarPage';
             
             document.getElementById('viewerIcon').textContent = currentPresentation.icon;
             document.getElementById('viewerTitle').textContent = currentPresentation.title;
@@ -829,7 +1076,8 @@
         function closePresentation() {
             stopAutoplay();
             document.getElementById('viewer').classList.add('hidden');
-            document.getElementById('siniflarPage').classList.remove('hidden');
+            document.getElementById(currentReturnPage).classList.remove('hidden');
+            setSelectedMenu(0);
         }
         
         function updateSlide() {
@@ -924,6 +1172,8 @@
                 }
             }
         });
+
+        document.addEventListener('keydown', handleMenuKeydown);
 
         // Touch/Swipe desteği
         let touchStartX = 0;
@@ -1022,6 +1272,8 @@
                 autoplayInterval = null;
             }
         }
+
+        initMenuNavigation();
 
     </script>
 </body>
