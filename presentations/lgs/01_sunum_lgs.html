@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VKM LGS Hazırlık Sistemi · Veli Sunumu</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="../vkm-pusulam/deck-stage.js"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          vkm: {
+            red: '#e31e1b',
+            coral: '#ee7673',
+            powder: '#cfb4b5',
+            ink: '#0d1117',
+            ink2: '#1e262e',
+            teal: '#00bcd4',
+            yellow: '#ffca28',
+            bg: '#f6f7fb',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'Nunito', 'sans-serif'],
+          display: ['Nunito', 'Inter', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html, body { background: #0d1117; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+  h1, h2, h3, h4, .display {
+    font-family: 'Nunito', 'Inter', sans-serif;
+    letter-spacing: -0.025em;
+  }
+  .display-xl { letter-spacing: -0.04em; }
+
+  deck-stage > section {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    background: #0d1117;
+    color: #fff;
+  }
+
+  .grad-red { background: linear-gradient(135deg, #e31e1b 0%, #ee7673 100%); }
+  .grad-red-ink { background: linear-gradient(135deg, #e31e1b 0%, #1e262e 100%); }
+  .grad-tech { background: linear-gradient(135deg, #0d1117 0%, #1a1f2e 50%, #0d1117 100%); }
+  .grad-radial-red { background: radial-gradient(ellipse at center, rgba(227,30,27,0.25) 0%, transparent 70%); }
+  .grad-radial-teal { background: radial-gradient(ellipse at center, rgba(0,188,212,0.22) 0%, transparent 70%); }
+
+  .text-grad-red {
+    background: linear-gradient(135deg, #e31e1b 0%, #ee7673 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-grad-tech {
+    background: linear-gradient(135deg, #ee7673 0%, #ffca28 50%, #00bcd4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .tech-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .tech-grid-fine {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  @keyframes pulseRing {
+    0% { transform: scale(0.85); opacity: 0.9; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+  .pulse-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid #e31e1b;
+    animation: pulseRing 2.6s ease-out infinite;
+  }
+  .pulse-ring.delay-1 { animation-delay: 0.9s; }
+  .pulse-ring.delay-2 { animation-delay: 1.8s; }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .blink-dot { animation: blink 1.4s ease-in-out infinite; }
+
+  @keyframes scanLine {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+  .scan-line {
+    position: absolute;
+    left: 0; right: 0;
+    height: 200px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,188,212,0.15) 50%, transparent 100%);
+    animation: scanLine 6s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  .float-soft { animation: float 5s ease-in-out infinite; }
+
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 40px rgba(227,30,27,0.4), 0 0 80px rgba(227,30,27,0.2); }
+    50%      { box-shadow: 0 0 60px rgba(227,30,27,0.7), 0 0 120px rgba(227,30,27,0.35); }
+  }
+  .glow-red { animation: glowPulse 3.2s ease-in-out infinite; }
+
+  @keyframes barGrow {
+    0%   { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+  }
+  .bar-grow { transform-origin: bottom; animation: barGrow 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+
+  @keyframes drawLine { to { stroke-dashoffset: 0; } }
+  .draw-line {
+    stroke-dasharray: 800;
+    stroke-dashoffset: 800;
+    animation: drawLine 2.4s ease-out forwards;
+    animation-delay: 0.3s;
+  }
+
+  @keyframes dataFlow {
+    0%   { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -40; }
+  }
+  .data-flow {
+    stroke-dasharray: 6 6;
+    animation: dataFlow 1.4s linear infinite;
+  }
+
+  .chip-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 8px 14px;
+    border-radius: 8px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .slide-chrome {
+    position: absolute;
+    top: 48px;
+    left: 64px;
+    right: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 20;
+  }
+  .slide-counter {
+    position: absolute;
+    bottom: 48px;
+    right: 64px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    z-index: 20;
+  }
+  .slide-footer {
+    position: absolute;
+    bottom: 48px;
+    left: 64px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.1em;
+    z-index: 20;
+  }
+
+  .chrome-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: rgba(255,255,255,0.85);
+  }
+  .chrome-logo .lwm {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-size: 24px;
+  }
+  .chrome-logo .lwm em {
+    font-style: italic;
+    font-weight: 700;
+    color: #ee7673;
+    margin-left: 8px;
+  }
+
+  .step-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  .section-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .glow-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+    border-radius: 24px;
+  }
+  .glow-card-red {
+    background: linear-gradient(145deg, rgba(227,30,27,0.12), rgba(227,30,27,0.04));
+    border: 1px solid rgba(227,30,27,0.25);
+  }
+
+  .feat-num {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    -webkit-text-stroke: 2px rgba(255,255,255,0.05);
+    color: transparent;
+    line-height: 0.9;
+    pointer-events: none;
+    user-select: none;
+  }
+  .deco-num { aria-hidden: true; }
+</style>
+</head>
+<body>
+
+<deck-stage>
+
+<!-- ============================================================== -->
+<!-- 01 · KAPAK -->
+<!-- ============================================================== -->
+<section data-screen-label="01 Kapak" class="grad-tech">
+  <div class="absolute inset-0 tech-grid"></div>
+  <div class="absolute inset-0 grad-radial-red"></div>
+  <div class="absolute inset-0 scan-line"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="56" height="56">
+        <circle cx="50" cy="50" r="45" fill="#e31e1b"/>
+        <text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text>
+      </svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="chip-mono">2025 — 2026 · LGS Veli Sunumu</div>
+  </div>
+
+  <div class="absolute inset-0 flex flex-col justify-center px-32">
+    <div class="max-w-5xl">
+      <div class="flex items-center gap-3 mb-10">
+        <span class="w-3 h-3 rounded-full bg-vkm-red blink-dot"></span>
+        <span class="step-tag">2013'ten günümüze</span>
+      </div>
+
+      <div class="text-5xl text-white/80 mb-6 leading-tight">
+        Tecrübenin Gücü,<br/>
+        <span class="text-white font-semibold">Başarının Adresi</span>
+      </div>
+
+      <h1 class="display-xl font-display font-black leading-[0.95] text-[200px] mt-4">
+        <span class="text-grad-red">LGS</span>
+      </h1>
+      <div class="mt-6 text-5xl text-white/85 font-semibold">
+        Hazırlık Sistemi
+      </div>
+
+      <div class="mt-14 flex items-center gap-6 flex-wrap">
+        <div class="chip-mono flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 blink-dot"></span>
+          Öğrenci Koçluğu
+        </div>
+        <div class="chip-mono">Atakent · Bahçeşehir</div>
+        <div class="chip-mono">Veli Sunumu</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute top-1/2 right-32 -translate-y-1/2 w-[520px] h-[520px]">
+    <div class="absolute inset-0 rounded-full grad-radial-red"></div>
+    <div class="absolute inset-12">
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring delay-1"></div>
+      <div class="pulse-ring delay-2"></div>
+    </div>
+    <svg viewBox="0 0 520 520" class="absolute inset-0 w-full h-full">
+      <defs>
+        <linearGradient id="lgsArrow" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#e31e1b"/>
+          <stop offset="100%" stop-color="#ee7673"/>
+        </linearGradient>
+      </defs>
+      <circle cx="260" cy="260" r="200" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+      <circle cx="260" cy="260" r="160" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 6"/>
+      <circle cx="260" cy="260" r="120" fill="none" stroke="rgba(227,30,27,0.3)" stroke-width="1"/>
+      <g style="transform-origin:260px 260px;animation: spin 18s linear infinite;">
+        <polygon points="260,90 248,260 272,260" fill="url(#lgsArrow)"/>
+        <polygon points="260,430 248,260 272,260" fill="rgba(255,255,255,0.4)"/>
+      </g>
+      <circle cx="260" cy="260" r="14" fill="#0d1117" stroke="#e31e1b" stroke-width="3"/>
+      <circle cx="260" cy="260" r="5" fill="#e31e1b"/>
+    </svg>
+    <style>@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }</style>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 02 · VKM YANINIZDA -->
+<!-- ============================================================== -->
+<section data-screen-label="02 Misyon" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-red" style="background-position:80% 50%"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">02 / 15 · Misyon</div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center px-32 gap-20 pt-24">
+    <div class="w-[820px]">
+      <div class="step-tag mb-6">VKM Sizin Her Konuda Yanınızda</div>
+      <h2 class="font-display font-black text-[88px] leading-[0.98] mb-10">
+        Çünkü <span class="text-grad-red">başarı,</span><br/>
+        güçlü bir destekle<br/>mümkündür.
+      </h2>
+      <p class="text-2xl text-white/75 leading-[1.55] max-w-3xl">
+        Vaditepe Kurs Merkezi olarak, öğrencilerimizin başarı yolculuğunda yalnız olmadıklarını hissettirmeyi amaçlıyoruz. Akademik destekten rehberlik hizmetlerine, sınav hazırlık süreçlerinden bireysel gelişim programlarına kadar her alanda yanınızdayız.
+      </p>
+    </div>
+
+    <div class="flex-1 grid grid-cols-2 gap-5">
+      <div class="glow-card glow-card-red p-7">
+        <div class="w-14 h-14 rounded-xl grad-red grid place-items-center mb-4">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="font-display font-extrabold text-2xl mb-2">Akademik Destek</div>
+        <div class="text-base text-white/60 leading-snug">Konu anlatımı, soru çözümü, etüt — sınava ders ders hazırlık.</div>
+      </div>
+      <div class="glow-card p-7">
+        <div class="w-14 h-14 rounded-xl bg-vkm-teal grid place-items-center mb-4">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg>
+        </div>
+        <div class="font-display font-extrabold text-2xl mb-2">Rehberlik</div>
+        <div class="text-base text-white/60 leading-snug">Birebir öğrenci koçluğu — motivasyon, plan, yön.</div>
+      </div>
+      <div class="glow-card p-7">
+        <div class="w-14 h-14 rounded-xl bg-vkm-yellow grid place-items-center mb-4">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0d1117" stroke-width="2.4" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="font-display font-extrabold text-2xl mb-2">Sınav Hazırlık</div>
+        <div class="text-base text-white/60 leading-snug">Deneme kulübü, kamp programları, son sprint odaklılığı.</div>
+      </div>
+      <div class="glow-card p-7">
+        <div class="w-14 h-14 rounded-xl bg-emerald-500 grid place-items-center mb-4">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        </div>
+        <div class="font-display font-extrabold text-2xl mb-2">Bireysel Gelişim</div>
+        <div class="text-base text-white/60 leading-snug">Özgüven, plan disiplini, çalışma alışkanlıkları.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 03 · ÇALIŞMA TAKVİMİ -->
+<!-- ============================================================== -->
+<section data-screen-label="03 Takvim" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-red" style="background-position:20% 30%"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">03 / 15 · Takvim</div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
+    <div class="w-[680px]">
+      <div class="step-tag mb-6">Çalışma Takvimi</div>
+      <h2 class="font-display font-black text-[80px] leading-[0.95] mb-8">
+        Yıl boyunca<br/>
+        <span class="text-grad-red">planlı çalışma.</span>
+      </h2>
+      <p class="text-2xl text-white/70 leading-[1.5] mb-8">
+        Kursun başlangıcından LGS gününe — her dönem belirli, her tatilin son üç günü ek tekrar için ayrılmış.
+      </p>
+      <div class="space-y-4">
+        <div class="flex items-start gap-4">
+          <div class="w-7 h-7 rounded-full grad-red grid place-items-center text-xs font-black mt-0.5 shrink-0">A</div>
+          <div class="text-xl text-white/80">1. ve 2. ara tatilde son 3 gün ek tekrar planlıyoruz.</div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-7 h-7 rounded-full grad-red grid place-items-center text-xs font-black mt-0.5 shrink-0">B</div>
+          <div class="text-xl text-white/80">Sömestr'da 2. hafta yoğunlaşma haftasıdır.</div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-7 h-7 rounded-full grad-red grid place-items-center text-xs font-black mt-0.5 shrink-0">C</div>
+          <div class="text-xl text-white/80">Diğer tatil günlerini öğrencilerin dinlenme ve kişisel tekrarları için ayırıyoruz.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-1 flex justify-center">
+      <div class="relative">
+        <div class="absolute -inset-8 grad-red rounded-[40px] blur-3xl opacity-20"></div>
+        <div class="relative bg-[#161c26] rounded-[28px] border border-white/10 p-8 w-[640px] shadow-2xl">
+          <div class="flex items-center justify-between mb-6 pb-5 border-b border-white/10">
+            <div>
+              <div class="font-mono text-xs text-vkm-coral uppercase tracking-widest">Yıllık Akış</div>
+              <div class="font-display font-extrabold text-2xl mt-1">Eylül → Haziran</div>
+            </div>
+            <div class="chip-mono text-xs">10 ay</div>
+          </div>
+
+          <div class="relative pl-8 space-y-5">
+            <div class="absolute left-[15px] top-3 bottom-3 w-0.5 bg-gradient-to-b from-vkm-red via-vkm-coral to-emerald-400"></div>
+
+            <div class="relative">
+              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full grad-red grid place-items-center text-[11px] font-black ring-4 ring-[#161c26]">1</div>
+              <div class="text-sm font-mono text-vkm-coral mb-1">17 AĞUSTOS</div>
+              <div class="text-lg font-semibold">Kursun Başlangıcı</div>
+            </div>
+            <div class="relative">
+              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-vkm-coral grid place-items-center text-[11px] font-black ring-4 ring-[#161c26]">2</div>
+              <div class="text-sm font-mono text-vkm-coral mb-1">ARA TATİLLER</div>
+              <div class="text-lg font-semibold">Son 3 gün ek tekrar</div>
+            </div>
+            <div class="relative">
+              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-vkm-yellow grid place-items-center text-[11px] font-black text-vkm-ink ring-4 ring-[#161c26]">3</div>
+              <div class="text-sm font-mono text-vkm-yellow mb-1">SÖMESTR</div>
+              <div class="text-lg font-semibold">2. Hafta yoğunlaşma</div>
+            </div>
+            <div class="relative">
+              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-vkm-red grid place-items-center text-[11px] font-black glow-red ring-4 ring-[#161c26]">4</div>
+              <div class="text-sm font-mono text-vkm-coral mb-1">HAZİRAN</div>
+              <div class="text-lg font-semibold">LGS Kampı · son sprint</div>
+            </div>
+            <div class="relative">
+              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-emerald-500 grid place-items-center text-[11px] font-black ring-4 ring-[#161c26]">★</div>
+              <div class="text-sm font-mono text-emerald-400 mb-1">14 HAZİRAN 2026</div>
+              <div class="text-lg font-semibold">LGS</div>
+            </div>
+            <div class="relative">
+              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-vkm-teal grid place-items-center text-[11px] font-black ring-4 ring-[#161c26]">6</div>
+              <div class="text-sm font-mono text-vkm-teal mb-1">15 HAZ — 19 AĞU</div>
+              <div class="text-lg font-semibold">Tatil + Yaz Ödevi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 04 · DERSLER -->
+<!-- ============================================================== -->
+<section data-screen-label="04 Dersler" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-red" style="background-position:80% 70%"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">04 / 15 · Dersler</div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center px-32 gap-20 pt-24">
+    <div class="w-[640px]">
+      <div class="step-tag mb-6">Dersler</div>
+      <h2 class="font-display font-black text-[88px] leading-[0.95] mb-8">
+        LGS'in altı dersi,<br/>
+        <span class="text-grad-red">artı destek.</span>
+      </h2>
+      <p class="text-2xl text-white/70 leading-[1.5] mb-8">
+        LGS müfredatının altı temel dersi, mantık-muhakeme çalışmaları ve günlük etüt programıyla birlikte yürür.
+      </p>
+      <div class="space-y-2.5">
+        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-vkm-red"></span>Konu anlatımı + soru çözümü</div>
+        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-vkm-yellow"></span>Günlük etüt — birebir destek saati</div>
+        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-vkm-teal"></span>Mantık-muhakeme — ayrı çalışma bloğu</div>
+      </div>
+    </div>
+
+    <div class="flex-1 grid grid-cols-3 gap-4 max-w-[700px]">
+      <div class="glow-card glow-card-red p-5 text-center">
+        <div class="w-12 h-12 rounded-xl grad-red grid place-items-center mx-auto mb-3">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4" cy="6" r="1.5"/><circle cx="4" cy="12" r="1.5"/><circle cx="4" cy="18" r="1.5"/></svg>
+        </div>
+        <div class="font-display font-extrabold text-lg">Matematik</div>
+      </div>
+      <div class="glow-card p-5 text-center" style="border-color:rgba(0,188,212,0.3)">
+        <div class="w-12 h-12 rounded-xl bg-vkm-teal grid place-items-center mx-auto mb-3">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="font-display font-extrabold text-lg">Türkçe</div>
+      </div>
+      <div class="glow-card p-5 text-center" style="border-color:rgba(34,197,94,0.3)">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500 grid place-items-center mx-auto mb-3">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><path d="M9 3v18M9 7l6-4v18l-6-4"/><circle cx="18" cy="12" r="3"/></svg>
+        </div>
+        <div class="font-display font-extrabold text-lg">Fen Bilgisi</div>
+      </div>
+      <div class="glow-card p-5 text-center" style="border-color:rgba(238,118,115,0.3)">
+        <div class="w-12 h-12 rounded-xl bg-vkm-coral grid place-items-center mx-auto mb-3">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><path d="M3 21V7l9-4 9 4v14"/><path d="M9 21v-8h6v8"/></svg>
+        </div>
+        <div class="font-display font-extrabold text-lg">İnkılap</div>
+      </div>
+      <div class="glow-card p-5 text-center" style="border-color:rgba(255,202,40,0.3)">
+        <div class="w-12 h-12 rounded-xl bg-vkm-yellow grid place-items-center mx-auto mb-3">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0d1117" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+        </div>
+        <div class="font-display font-extrabold text-lg">Din Kültürü</div>
+      </div>
+      <div class="glow-card p-5 text-center" style="border-color:rgba(168,85,247,0.3)">
+        <div class="w-12 h-12 rounded-xl bg-purple-500 grid place-items-center mx-auto mb-3">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        </div>
+        <div class="font-display font-extrabold text-lg">İngilizce</div>
+      </div>
+      <div class="glow-card col-span-3 p-5 text-center" style="border-color:rgba(227,30,27,0.3); background: linear-gradient(145deg, rgba(227,30,27,0.08), rgba(227,30,27,0.02));">
+        <div class="flex items-center justify-center gap-4">
+          <div class="w-12 h-12 rounded-xl grad-red grid place-items-center shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/></svg>
+          </div>
+          <div class="text-left">
+            <div class="font-display font-extrabold text-xl">Mantık & Muhakeme</div>
+            <div class="text-sm text-white/55">Yeni nesil sorulara özel çalışma bloğu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 05 · ÖRNEK PROGRAM -->
+<!-- ============================================================== -->
+<section data-screen-label="05 Plan" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-red"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">05 / 15 · Plan</div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center px-32 gap-12 pt-24">
+    <div class="w-[600px]">
+      <div class="step-tag mb-6">Örnek Program</div>
+      <h2 class="font-display font-black text-[76px] leading-[0.95] mb-8">
+        Sabah okul,<br/>
+        <span class="text-grad-red">akşam VKM.</span>
+      </h2>
+      <p class="text-2xl text-white/70 leading-[1.5] mb-8">
+        17:00–20:00 ders bloğu, hafta sonu yoğun çalışma. Boş kareler kişisel çalışma için planlanmıştır.
+      </p>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-1">▸</span><span class="text-lg text-white/80">Hafta içi 3 ders bloğu + her gün etüt</span></div>
+        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-1">▸</span><span class="text-lg text-white/80">Cumartesi deneme + Pazar tekrar & analiz</span></div>
+        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-1">▸</span><span class="text-lg text-white/80">Boş kareler kişisel çalışma için planlanmıştır</span></div>
+      </div>
+    </div>
+
+    <div class="flex-1 flex justify-center">
+      <div class="relative">
+        <div class="absolute -inset-8 grad-red rounded-[40px] blur-3xl opacity-20"></div>
+        <div class="relative bg-[#161c26] rounded-[28px] border border-white/10 p-6 w-[760px] shadow-2xl">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="font-mono text-xs text-white/50 uppercase tracking-widest">Haftalık Program</div>
+              <div class="font-display font-extrabold text-2xl mt-1">8-A · Örnek</div>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="chip-mono text-xs">17:00–20:00</div>
+              <div class="chip-mono text-xs flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>aktif</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-8 gap-1.5 text-xs">
+            <div></div>
+            <div class="text-center font-mono text-white/55 py-2">17:00</div>
+            <div class="text-center font-mono text-white/55 py-2">17:50</div>
+            <div class="text-center font-mono text-white/55 py-2">18:50</div>
+            <div class="text-center font-mono text-white/55 py-2">19:30</div>
+            <div class="text-center font-mono text-white/55 py-2">CMT</div>
+            <div class="text-center font-mono text-white/55 py-2">PAZ</div>
+            <div></div>
+          </div>
+
+          <div class="space-y-1.5">
+            <!-- Sa -->
+            <div class="grid grid-cols-8 gap-1.5">
+              <div class="text-center font-mono text-white/60 py-2 text-xs">Sa</div>
+              <div class="bg-vkm-teal/15 border border-vkm-teal/30 rounded p-2 text-[11px] font-semibold text-center">TÜRKÇE</div>
+              <div class="bg-purple-500/15 border border-purple-500/30 rounded p-2 text-[11px] font-semibold text-center">MANTIK</div>
+              <div class="bg-vkm-red/15 border border-vkm-red/30 rounded p-2 text-[11px] font-semibold text-center">MAT</div>
+              <div></div>
+              <div class="bg-emerald-500/15 border border-emerald-500/30 rounded p-2 text-[11px] font-semibold text-center row-span-2">DENEME</div>
+              <div class="bg-vkm-yellow/15 border border-vkm-yellow/30 rounded p-2 text-[11px] font-semibold text-center row-span-2">TEKRAR</div>
+              <div></div>
+            </div>
+            <!-- Ça -->
+            <div class="grid grid-cols-8 gap-1.5">
+              <div class="text-center font-mono text-white/60 py-2 text-xs">Ça</div>
+              <div class="bg-vkm-coral/15 border border-vkm-coral/30 rounded p-2 text-[11px] font-semibold text-center col-span-2">SORU ÇÖZÜMÜ</div>
+              <div class="bg-vkm-yellow/20 border border-vkm-yellow/50 rounded p-2 text-[11px] font-semibold text-center text-vkm-yellow">ETÜT</div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <!-- Pe -->
+            <div class="grid grid-cols-8 gap-1.5">
+              <div class="text-center font-mono text-white/60 py-2 text-xs">Pe</div>
+              <div></div>
+              <div class="bg-vkm-coral/15 border border-vkm-coral/30 rounded p-2 text-[11px] font-semibold text-center">İNK</div>
+              <div class="bg-emerald-500/15 border border-emerald-500/30 rounded p-2 text-[11px] font-semibold text-center">FEN</div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <!-- Cu -->
+            <div class="grid grid-cols-8 gap-1.5">
+              <div class="text-center font-mono text-white/60 py-2 text-xs">Cu</div>
+              <div></div>
+              <div class="bg-vkm-red/15 border border-vkm-red/30 rounded p-2 text-[11px] font-semibold text-center">MAT</div>
+              <div class="bg-purple-500/15 border border-purple-500/30 rounded p-2 text-[11px] font-semibold text-center">İNG</div>
+              <div class="bg-vkm-yellow/20 border border-vkm-yellow/40 rounded p-2 text-[11px] font-semibold text-center">DİN</div>
+              <div></div>
+              <div></div>
+            </div>
+            <!-- Pa -->
+            <div class="grid grid-cols-8 gap-1.5">
+              <div class="text-center font-mono text-white/60 py-2 text-xs">Pa</div>
+              <div class="bg-emerald-500/15 border border-emerald-500/30 rounded p-2 text-[11px] font-semibold text-center col-span-2">LGS DENEMESİ</div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
+            <div class="font-mono text-[11px] text-white/50">boş kareler · kişisel çalışma</div>
+            <div class="font-mono text-[11px] text-vkm-coral">📌 etüt = birebir destek</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 06 · DENEME KULÜBÜ -->
+<!-- ============================================================== -->
+<section data-screen-label="06 Deneme" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-teal"></div>
+  <div class="absolute inset-0 scan-line" style="animation-duration:8s"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">06 / 15 · Deneme</div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
+    <div class="w-[700px]">
+      <div class="step-tag mb-6">Deneme Kulübü</div>
+      <h2 class="font-display font-black text-[80px] leading-[0.95] mb-8">
+        Deneme Kulübümüzle<br/>
+        <span class="text-grad-tech">sınav stresinizi azaltın.</span>
+      </h2>
+      <p class="text-2xl text-white/70 leading-[1.5] mb-8">
+        Gerçek sınav deneyimi sunan denemeler, detaylı analizler ve kişiye özel rehberlik. Türkiye Geneli karşılaştırmalarla nerede olduğunu net görmek.
+      </p>
+      <div class="space-y-2.5">
+        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-vkm-teal blink-dot"></span>Gerçek sınav deneyimi sunan denemeler</div>
+        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-vkm-teal blink-dot"></span>Detaylı analizler ve kişiye özel rehberlik</div>
+        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-vkm-teal blink-dot"></span>Türkiye Geneli karşılaştırma</div>
+      </div>
+    </div>
+
+    <div class="flex-1 grid grid-cols-2 gap-5">
+      <div class="glow-card p-7 text-center" style="border-color:rgba(0,188,212,0.3)">
+        <div class="font-display font-black text-7xl text-grad-tech mb-2">19</div>
+        <div class="font-mono text-xs text-vkm-teal uppercase tracking-widest mb-1">farklı yayın</div>
+        <div class="text-sm text-white/60">Özdebir, Sinan Kuzucu, Hız, Fenomen, Palme...</div>
+      </div>
+      <div class="glow-card glow-card-red p-7 text-center">
+        <div class="font-display font-black text-7xl text-grad-red mb-2">35+</div>
+        <div class="font-mono text-xs text-vkm-coral uppercase tracking-widest mb-1">yıllık deneme</div>
+        <div class="text-sm text-white/60">Yıl boyunca düzenli takvim</div>
+      </div>
+      <div class="glow-card col-span-2 p-7" style="border-color:rgba(255,202,40,0.3)">
+        <div class="flex items-center gap-5">
+          <div class="w-16 h-16 rounded-2xl bg-vkm-yellow grid place-items-center shrink-0">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0d1117" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="font-display font-extrabold text-2xl mb-1">Türkiye Geneli Sonuçlar</div>
+            <div class="text-base text-white/65 leading-snug">Her denemenin sonunda ülke genelinde sıralama — hedefe ne kadar yakınsın, net görmek için.</div>
+          </div>
+        </div>
+      </div>
+      <div class="glow-card col-span-2 p-7" style="border-color:rgba(34,197,94,0.3)">
+        <div class="flex items-center gap-5">
+          <div class="w-16 h-16 rounded-2xl bg-emerald-500 grid place-items-center shrink-0">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="font-display font-extrabold text-2xl mb-1">Zamanı Doğru Kullanmak</div>
+            <div class="text-base text-white/65 leading-snug">Soru çözüm hızı, zaman yönetimi — denemeyle kazanılan refleks. Sınav günü sürpriz olmaz.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 07 · VKM APP — SINAV & ANALİZ -->
+<!-- ============================================================== -->
+<section data-screen-label="07 App Sinav" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-red" style="background-position:30% 50%"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">07 / 15 · App · Sınav</div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
+    <div class="w-[760px]">
+      <div class="step-tag mb-6">VKM Uygulaması — Sınav Sonuç ve Analizleri</div>
+      <h2 class="font-display font-black text-[68px] leading-[0.98] mb-6">
+        VKM Mobil Uygulaması ile<br/>
+        <span class="text-grad-red">başarı hep yanınızda.</span>
+      </h2>
+      <p class="text-2xl text-white/75 leading-[1.5] mb-8">
+        VKM'nin mobil uygulamasıyla öğrencilerimiz ve velilerimiz, her an her yerde sınav sonuçlarını ve detaylı analizleri görebiliyor.
+      </p>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3"><span class="text-emerald-400 text-xl mt-0.5">✓</span><span class="text-lg text-white/85">Tüm sınav sonuçlarınıza anlık erişim</span></div>
+        <div class="flex items-start gap-3"><span class="text-emerald-400 text-xl mt-0.5">✓</span><span class="text-lg text-white/85">Güçlü ve gelişime açık yönlerinizi detaylı analiz</span></div>
+        <div class="flex items-start gap-3"><span class="text-emerald-400 text-xl mt-0.5">✓</span><span class="text-lg text-white/85">Yanlışlardan öğrenme — soru bazlı çözüm</span></div>
+        <div class="flex items-start gap-3"><span class="text-emerald-400 text-xl mt-0.5">✓</span><span class="text-lg text-white/85">Türkiye Geneli karşılaştırma</span></div>
+      </div>
+    </div>
+
+    <div class="flex-1 flex justify-center">
+      <div class="relative float-soft">
+        <div class="absolute -inset-10 grad-red rounded-[60px] blur-3xl opacity-25"></div>
+        <!-- iPhone mockup -->
+        <div class="relative w-[360px] h-[720px] bg-[#0a0e16] rounded-[52px] border-[10px] border-[#1a1f2e] shadow-2xl overflow-hidden">
+          <!-- Notch -->
+          <div class="absolute top-3 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#0a0e16] rounded-full z-30"></div>
+          <!-- Screen content -->
+          <div class="absolute inset-0 bg-white pt-12 overflow-hidden">
+            <div class="px-5 py-3 flex items-center justify-between border-b border-gray-100">
+              <div class="text-xs font-mono text-gray-400">15:09</div>
+              <div class="font-display font-black text-vkm-red text-sm">VKM</div>
+              <div class="text-xs font-mono text-gray-400">●●●</div>
+            </div>
+            <div class="px-5 py-4 bg-gradient-to-b from-vkm-red/5 to-white">
+              <div class="text-xs font-mono text-vkm-red font-bold mb-1">SINAV SONUÇLARI</div>
+              <div class="text-xl font-display font-black text-vkm-ink2">LGS Performansı</div>
+            </div>
+            <!-- Chart -->
+            <div class="px-5 py-3">
+              <svg viewBox="0 0 320 140" class="w-full h-32">
+                <g>
+                  <rect x="10" y="60" width="22" height="70" rx="3" fill="#3b82f6"/>
+                  <rect x="42" y="40" width="22" height="90" rx="3" fill="#3b82f6"/>
+                  <rect x="74" y="50" width="22" height="80" rx="3" fill="#3b82f6"/>
+                  <rect x="106" y="35" width="22" height="95" rx="3" fill="#3b82f6"/>
+                  <rect x="138" y="25" width="22" height="105" rx="3" fill="#e31e1b"/>
+                  <rect x="170" y="30" width="22" height="100" rx="3" fill="#3b82f6"/>
+                  <rect x="202" y="45" width="22" height="85" rx="3" fill="#3b82f6"/>
+                  <rect x="234" y="20" width="22" height="110" rx="3" fill="#3b82f6"/>
+                  <rect x="266" y="15" width="22" height="115" rx="3" fill="#e31e1b"/>
+                  <polyline points="21,55 53,40 85,48 117,33 149,23 181,28 213,42 245,18 277,13" fill="none" stroke="#1e3a8a" stroke-width="2" opacity="0.6"/>
+                </g>
+              </svg>
+            </div>
+            <!-- Detay -->
+            <div class="px-5 py-3 space-y-2">
+              <div class="bg-vkm-red/5 border border-vkm-red/20 rounded-xl p-3">
+                <div class="font-mono text-[10px] text-vkm-red font-bold mb-1">ÖNCELİKLİ KONULAR</div>
+                <div class="text-sm font-semibold text-vkm-ink2 mb-2">3 grupta toplam 29 konu</div>
+                <div class="grid grid-cols-3 gap-1.5 text-[10px]">
+                  <div class="bg-white rounded p-1.5 text-center"><div class="text-gray-400">Soru</div><div class="font-bold text-vkm-ink2">15</div></div>
+                  <div class="bg-white rounded p-1.5 text-center"><div class="text-gray-400">Doğru</div><div class="font-bold text-emerald-600">10</div></div>
+                  <div class="bg-white rounded p-1.5 text-center"><div class="text-gray-400">Yanlış</div><div class="font-bold text-vkm-red">2</div></div>
+                </div>
+                <div class="mt-2 h-1.5 bg-emerald-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-emerald-500" style="width:66%"></div>
+                </div>
+                <div class="text-[10px] font-mono text-gray-500 mt-1">%66.67 başarı</div>
+              </div>
+              <div class="bg-vkm-yellow/10 border border-vkm-yellow/30 rounded-xl p-2.5">
+                <div class="font-mono text-[10px] text-amber-700 font-bold">FEN BİLİMLERİ · Mutasyon, Modifikasyon</div>
+                <div class="h-1 bg-amber-100 rounded-full mt-2 overflow-hidden">
+                  <div class="h-full bg-vkm-yellow" style="width:40%"></div>
+                </div>
+                <div class="text-[10px] font-mono text-gray-500 mt-1">%40 — gelişime açık</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 08 · VKM APP — ÖDEV & HEDEF SORU -->
+<!-- ============================================================== -->
+<section data-screen-label="08 App Odev" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-red" style="background-position:70% 50%"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">08 / 15 · App · Ödev</div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
+    <div class="flex-1 flex justify-center">
+      <div class="relative float-soft">
+        <div class="absolute -inset-10 grad-red rounded-[60px] blur-3xl opacity-25"></div>
+        <div class="relative w-[360px] h-[720px] bg-[#0a0e16] rounded-[52px] border-[10px] border-[#1a1f2e] shadow-2xl overflow-hidden">
+          <div class="absolute top-3 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#0a0e16] rounded-full z-30"></div>
+          <div class="absolute inset-0 bg-white pt-12 overflow-hidden">
+            <div class="px-5 py-3 flex items-center justify-between border-b border-gray-100">
+              <div class="text-xs font-mono text-gray-400">15:17</div>
+              <div class="font-display font-black text-vkm-red text-sm">Aktif Ödevler</div>
+              <div class="text-xs font-mono text-gray-400">●●●</div>
+            </div>
+            <!-- Aktif Ödev 1 -->
+            <div class="m-4 bg-vkm-yellow/10 border-l-4 border-vkm-yellow rounded-lg p-3">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-base">📘</span>
+                <div class="font-display font-bold text-sm text-vkm-ink2">T.C. İnk. Tar. ve Atatürkçülük</div>
+              </div>
+              <div class="text-[10px] text-gray-500 space-y-0.5">
+                <div><span class="font-mono">Konu:</span> Ya İstiklal, Ya Ölüm</div>
+                <div><span class="font-mono">Süre:</span> 30.12.2024 – 06.01.2025</div>
+                <div><span class="font-mono">Öğretmen:</span> Tekin Doğru</div>
+              </div>
+              <div class="mt-2 h-1 bg-amber-200 rounded-full overflow-hidden">
+                <div class="h-full bg-vkm-yellow" style="width:60%"></div>
+              </div>
+              <div class="text-[10px] font-mono text-amber-700 mt-1">Kontrol edilmedi</div>
+            </div>
+            <!-- Aktif Ödev 2 -->
+            <div class="mx-4 mb-4 bg-vkm-yellow/10 border-l-4 border-vkm-yellow rounded-lg p-3">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-base">📘</span>
+                <div class="font-display font-bold text-sm text-vkm-ink2">Matematik</div>
+              </div>
+              <div class="text-[10px] text-gray-500 space-y-0.5">
+                <div><span class="font-mono">Konu:</span> Genel Tekrar</div>
+                <div><span class="font-mono">Süre:</span> 30.12.2024 – 06.01.2025</div>
+                <div><span class="font-mono">Öğretmen:</span> Mehmet Şahin</div>
+              </div>
+              <div class="mt-2 h-1 bg-amber-200 rounded-full overflow-hidden">
+                <div class="h-full bg-vkm-yellow" style="width:80%"></div>
+              </div>
+              <div class="text-[10px] font-mono text-amber-700 mt-1">Kontrol edilmedi</div>
+            </div>
+            <!-- Hedef Soru -->
+            <div class="mx-4 bg-vkm-red/5 border border-vkm-red/30 rounded-xl p-3">
+              <div class="font-mono text-[10px] text-vkm-red font-bold mb-2">HEDEF SORU TAKİBİ</div>
+              <div class="space-y-1.5 text-[11px]">
+                <div class="flex items-center justify-between">
+                  <span class="text-vkm-ink2">Fen · Çeşitlilik</span>
+                  <span class="font-bold text-emerald-600">10</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-vkm-ink2">Fen · Dünya & Ay</span>
+                  <span class="font-bold text-emerald-600">20</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-vkm-ink2">Matematik · Bölme</span>
+                  <span class="font-bold text-emerald-600">15</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-[760px]">
+      <div class="step-tag mb-6">VKM Uygulaması — Ödev ve Hedef Takibi</div>
+      <h2 class="font-display font-black text-[68px] leading-[0.98] mb-6">
+        Ödev takibi<br/>
+        <span class="text-grad-red">artık çok kolay.</span>
+      </h2>
+      <p class="text-2xl text-white/75 leading-[1.5] mb-8">
+        VKM Uygulaması, öğrencilerimizin ve velilerimizin ödev takibini daha düzenli ve etkili hale getiriyor.
+      </p>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-0.5">📌</span><span class="text-lg text-white/85"><span class="font-semibold text-white">Anlık ödev görüntüleme</span> — verilen tüm ödevlere erişim</span></div>
+        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-0.5">📌</span><span class="text-lg text-white/85"><span class="font-semibold text-white">Tamamlanan ve eksik ödevler</span> — anlık durum</span></div>
+        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-0.5">📌</span><span class="text-lg text-white/85"><span class="font-semibold text-white">Ödev hatırlatıcıları</span> — planı aksatmayın</span></div>
+        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-0.5">📌</span><span class="text-lg text-white/85"><span class="font-semibold text-white">Hedef soru takibi</span> — günlük çözüm + konu bazlı gelişim</span></div>
+        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-0.5">📌</span><span class="text-lg text-white/85"><span class="font-semibold text-white">Veliler için şeffaf takip</span> — destek için anlık görüntü</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 09 · VKM PUSULAM (YENİ) -->
+<!-- ============================================================== -->
+<section data-screen-label="09 Pusulam" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-red"></div>
+  <div class="absolute inset-0 scan-line" style="animation-duration:5s"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">09 / 15 · Koçluk Katmanı</div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
+    <div class="w-[700px]">
+      <div class="step-tag mb-6">VKM Pusulam — Koçluğun Gözü</div>
+      <h2 class="font-display font-black text-[72px] leading-[0.98] mb-6">
+        Verinin arkasındaki<br/>
+        <span class="text-grad-red">anlamı görün.</span>
+      </h2>
+      <p class="text-2xl text-white/70 leading-[1.5] mb-8">
+        VKM Uygulaması; sınav sonuçlarını, ödevleri ve devamsızlığı bağımsız veriler olarak gösterir. <span class="text-white font-semibold">VKM Pusulam</span> bu verileri birleştirir, yorumlar ve eksik gördüğü kısımları tamamlar — koça eyleme dönüştürür.
+      </p>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3"><span class="text-xl mt-0.5">🎯</span><span class="text-lg text-white/85"><span class="font-semibold text-white">Plan Uyumu</span> — bu hafta planın ne kadarı tamamlandı, anlık görün.</span></div>
+        <div class="flex items-start gap-3"><span class="text-xl mt-0.5">🗺️</span><span class="text-lg text-white/85"><span class="font-semibold text-white">Konu Haritası</span> — zayıf konuları renkli takip edin.</span></div>
+        <div class="flex items-start gap-3"><span class="text-xl mt-0.5">📊</span><span class="text-lg text-white/85"><span class="font-semibold text-white">Deneme Trendi</span> — net düşüşünü erken yakalayın.</span></div>
+        <div class="flex items-start gap-3"><span class="text-xl mt-0.5">❤️</span><span class="text-lg text-white/85"><span class="font-semibold text-white">Moral Barometresi</span> — motivasyon ve stres sinyallerini gözden kaçırmayın.</span></div>
+      </div>
+    </div>
+
+    <div class="flex-1 flex justify-center">
+      <div class="relative">
+        <div class="absolute -inset-8 grad-red rounded-[40px] blur-3xl opacity-25"></div>
+        <div class="relative bg-[#161c26] rounded-[28px] border border-white/10 p-7 w-[620px] shadow-2xl">
+          <div class="flex items-center justify-between mb-5 pb-4 border-b border-white/10">
+            <div>
+              <div class="font-mono text-[11px] text-vkm-coral uppercase tracking-widest">Aylık Koç Özeti</div>
+              <div class="font-display font-extrabold text-2xl mt-1">Mart 2026 — Örnek</div>
+            </div>
+            <div class="chip-mono text-xs flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>onaylı</div>
+          </div>
+
+          <div class="space-y-3 mb-5">
+            <div class="flex items-center justify-between text-base">
+              <span class="font-mono text-xs text-white/55 uppercase">PLAN UYUMU</span>
+              <span class="font-display font-bold text-2xl">82% <span class="text-emerald-400 text-sm">▲5</span></span>
+            </div>
+            <div class="flex items-center justify-between text-base">
+              <span class="font-mono text-xs text-white/55 uppercase">DENEME NET</span>
+              <span class="font-display font-bold text-2xl">74 <span class="text-emerald-400 text-sm">▲3</span></span>
+            </div>
+            <div class="flex items-center justify-between text-base">
+              <span class="font-mono text-xs text-white/55 uppercase">MORAL</span>
+              <span class="font-display font-bold text-2xl">6.8 <span class="text-vkm-coral text-sm">▼0.2</span></span>
+            </div>
+          </div>
+
+          <div class="bg-vkm-red/10 rounded-xl p-4 border-l-4 border-vkm-red mb-3">
+            <div class="font-mono text-[10px] font-bold text-vkm-coral mb-2 uppercase tracking-wider">📍 koç dikkat</div>
+            <p class="text-sm text-white/85 leading-relaxed">
+              Olasılık konusu son <span class="text-white font-semibold">3 deneme üst üste</span> zayıf. Bu hafta özel program planlandı.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2">
+            <div class="bg-emerald-500/10 rounded-lg p-2 text-center border border-emerald-500/30">
+              <div class="font-mono text-[9px] text-emerald-400 uppercase">A</div>
+              <div class="font-display font-black text-lg text-emerald-400">İYİ</div>
+            </div>
+            <div class="bg-vkm-yellow/10 rounded-lg p-2 text-center border border-vkm-yellow/30">
+              <div class="font-mono text-[9px] text-vkm-yellow uppercase">B</div>
+              <div class="font-display font-black text-lg text-vkm-yellow">ORTA</div>
+            </div>
+            <div class="bg-vkm-red/10 rounded-lg p-2 text-center border border-vkm-red/30">
+              <div class="font-mono text-[9px] text-vkm-coral uppercase">C/D</div>
+              <div class="font-display font-black text-lg text-vkm-coral">DİKKAT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-20 left-32 right-32 bg-[#161c26]/60 backdrop-blur-md border border-white/10 rounded-2xl p-5 flex items-center gap-5">
+    <div class="w-12 h-12 rounded-xl grad-red grid place-items-center shrink-0">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4-4-4 4M12 16V8"/></svg>
+    </div>
+    <div class="flex-1 text-base text-white/75 leading-relaxed">
+      <span class="text-white font-semibold">VKM Uygulaması</span> ham veriyi gösterir. <span class="text-white font-semibold">VKM Pusulam</span> o verinin anlamını çıkarır. Pusulam'ın detaylı tanıtımı ayrı sunumumuzda yer almaktadır.
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 10 · KAYNAK KİTAPLAR -->
+<!-- ============================================================== -->
+<section data-screen-label="10 Kaynak" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-red" style="background-position:30% 30%"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">10 / 15 · Kaynak</div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
+    <div class="w-[640px]">
+      <div class="step-tag mb-6">Kaynak Kitaplar</div>
+      <h2 class="font-display font-black text-[80px] leading-[0.95] mb-8">
+        Yıllık çalışma için<br/>
+        <span class="text-grad-red">tüm kaynaklar VKM'den.</span>
+      </h2>
+      <p class="text-2xl text-white/70 leading-[1.5]">
+        İhtiyaç duyulan tüm kaynak kitaplar VKM tarafından sağlanır — siz kitap araştırmakla uğraşmazsınız.
+      </p>
+    </div>
+
+    <div class="flex-1 grid grid-cols-2 gap-5">
+      <div class="glow-card p-7 flex items-center gap-4">
+        <div class="w-14 h-14 rounded-xl grad-red grid place-items-center shrink-0">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="font-mono text-[10px] text-vkm-coral mb-1">📌 SET 01</div>
+          <div class="font-display font-extrabold text-xl">Ara tatil kamp kitapları</div>
+        </div>
+      </div>
+      <div class="glow-card p-7 flex items-center gap-4">
+        <div class="w-14 h-14 rounded-xl bg-vkm-coral grid place-items-center shrink-0">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="font-mono text-[10px] text-vkm-coral mb-1">📌 SET 02</div>
+          <div class="font-display font-extrabold text-xl">Kişiye özel soru bankası</div>
+        </div>
+      </div>
+      <div class="glow-card p-7 flex items-center gap-4">
+        <div class="w-14 h-14 rounded-xl bg-vkm-yellow grid place-items-center shrink-0">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0d1117" stroke-width="2.4" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="font-mono text-[10px] text-vkm-yellow mb-1">📌 SET 03</div>
+          <div class="font-display font-extrabold text-xl">Sene sonu kamp kitabı</div>
+        </div>
+      </div>
+      <div class="glow-card p-7 flex items-center gap-4">
+        <div class="w-14 h-14 rounded-xl bg-emerald-500 grid place-items-center shrink-0">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="font-mono text-[10px] text-emerald-400 mb-1">📌 SET 04</div>
+          <div class="font-display font-extrabold text-xl">Farklı yayınlardan denemeler</div>
+        </div>
+      </div>
+      <div class="glow-card glow-card-red col-span-2 p-6 flex items-center gap-5">
+        <div class="text-4xl">📚</div>
+        <div class="text-base text-white/75 leading-snug">
+          <span class="text-white font-semibold">Yıl boyunca kitap sıkıntısı yaşamazsınız.</span> Tüm setler sezonunda hazır, dağıtım takvimi belirli.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 11 · ÖĞRETMEN KADROSU -->
+<!-- ============================================================== -->
+<section data-screen-label="11 Kadro" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-red" style="background-position:60% 60%"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">11 / 15 · Kadro</div>
+  </div>
+
+  <div class="absolute inset-0 px-32 pt-44 pb-24 flex flex-col">
+    <div class="step-tag mb-6">Öğretmen Kadrosu</div>
+    <h2 class="font-display font-black text-[88px] leading-[0.95] mb-12">
+      Alanında uzman ve<br/>
+      <span class="text-grad-red">deneyimli öğretmen kadromuz.</span>
+    </h2>
+
+    <div class="grid grid-cols-3 gap-6 flex-1">
+      <div class="glow-card glow-card-red p-10 flex flex-col">
+        <div class="w-16 h-16 rounded-2xl grad-red grid place-items-center mb-6 glow-red">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="8" r="6"/><path d="M9 21l3-3 3 3M9 21V14M15 21V14"/></svg>
+        </div>
+        <div class="font-mono text-xs text-vkm-coral uppercase tracking-widest mb-2">01</div>
+        <div class="font-display font-extrabold text-3xl mb-4">Deneyimin Farkı</div>
+        <p class="text-lg text-white/70 leading-relaxed">
+          Yılların getirdiği birikim ve deneyimle donatılmış, alanlarında uzmanlaşmış öğretmenlerimizle gurur duyuyoruz.
+        </p>
+      </div>
+      <div class="glow-card p-10 flex flex-col" style="border-color:rgba(0,188,212,0.3)">
+        <div class="w-16 h-16 rounded-2xl bg-vkm-teal grid place-items-center mb-6">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="font-mono text-xs text-vkm-teal uppercase tracking-widest mb-2">02</div>
+        <div class="font-display font-extrabold text-3xl mb-4">Öğrenci Odaklı Yaklaşım</div>
+        <p class="text-lg text-white/70 leading-relaxed">
+          Öğretmenlerimiz, her öğrenciye bireysel ilgi göstererek öğrenci merkezli bir eğitim anlayışını benimsiyor.
+        </p>
+      </div>
+      <div class="glow-card p-10 flex flex-col" style="border-color:rgba(255,202,40,0.3)">
+        <div class="w-16 h-16 rounded-2xl bg-vkm-yellow grid place-items-center mb-6">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0d1117" stroke-width="2.4" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="font-mono text-xs text-vkm-yellow uppercase tracking-widest mb-2">03</div>
+        <div class="font-display font-extrabold text-3xl mb-4">Motive Edici ve Etkili Yöntemler</div>
+        <p class="text-lg text-white/70 leading-relaxed">
+          Öğrencileri motive eden, yenilikçi ve etkili eğitim yöntemleri kullanan öğretmenlerimizle başarıya ulaşacaksınız.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 12 · TERCİH DÖNEMİ -->
+<!-- ============================================================== -->
+<section data-screen-label="12 Tercih" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-red" style="background-position:80% 30%"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">12 / 15 · Tercih</div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
+    <div class="w-[760px]">
+      <div class="step-tag mb-6">Tercih Dönemi</div>
+      <h2 class="font-display font-black text-[80px] leading-[0.95] mb-8">
+        Doğru tercih için<br/>
+        <span class="text-grad-red">yanınızdayız.</span>
+      </h2>
+      <p class="text-2xl text-white/75 leading-[1.5] mb-8">
+        Lise tercih dönemlerinde profesyonel birebir danışmanlık hizmeti ile doğru tercih yapmanızda yanınızda oluyoruz. Öğrencilere tercih listesi oluşturma ve analiz desteği sunuyoruz.
+      </p>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3"><span class="text-emerald-400 text-xl mt-0.5">✓</span><span class="text-lg text-white/85">Öğrencinin profilini ve hedeflerini analiz</span></div>
+        <div class="flex items-start gap-3"><span class="text-emerald-400 text-xl mt-0.5">✓</span><span class="text-lg text-white/85">Lise listesi oluşturma desteği</span></div>
+        <div class="flex items-start gap-3"><span class="text-emerald-400 text-xl mt-0.5">✓</span><span class="text-lg text-white/85">Tercih analizi ve birebir danışmanlık</span></div>
+      </div>
+    </div>
+
+    <div class="flex-1 flex justify-center">
+      <div class="relative">
+        <div class="absolute -inset-8 grad-red rounded-[40px] blur-3xl opacity-25"></div>
+        <div class="relative bg-[#161c26] rounded-[28px] border border-white/10 p-8 w-[560px] shadow-2xl">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+            <div>
+              <div class="font-mono text-xs text-vkm-coral uppercase tracking-widest">Tercih Akışı</div>
+              <div class="font-display font-extrabold text-xl mt-1">Haziran — Temmuz</div>
+            </div>
+            <div class="text-3xl">🎓</div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg grad-red grid place-items-center text-white font-display font-black shrink-0">1</div>
+              <div>
+                <div class="font-display font-extrabold text-lg">Profil Analizi</div>
+                <div class="text-sm text-white/60">Net puanı, ilgi alanları, hedef şehir</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-vkm-yellow grid place-items-center text-vkm-ink font-display font-black shrink-0">2</div>
+              <div>
+                <div class="font-display font-extrabold text-lg">Lise Araştırması</div>
+                <div class="text-sm text-white/60">Geçen yılki taban puanlar + uzaklık</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-vkm-teal grid place-items-center text-white font-display font-black shrink-0">3</div>
+              <div>
+                <div class="font-display font-extrabold text-lg">Liste Oluşturma</div>
+                <div class="text-sm text-white/60">Hedef + güvenli + esneklik bandı</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-emerald-500 grid place-items-center text-white font-display font-black shrink-0">4</div>
+              <div>
+                <div class="font-display font-extrabold text-lg">Birebir Danışmanlık</div>
+                <div class="text-sm text-white/60">Veli + öğrenci + uzman, son karar</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 13 · BAŞARI HİKAYELERİ -->
+<!-- ============================================================== -->
+<section data-screen-label="13 Basari" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-red"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">13 / 15 · Başarı</div>
+  </div>
+
+  <div class="absolute inset-0 px-32 pt-44 pb-24 flex flex-col">
+    <div class="step-tag mb-6">Başarı Hikayeleri</div>
+    <h2 class="font-display font-black text-[80px] leading-[0.95] mb-8">
+      Yüzlerce öğrencimizi<br/>
+      <span class="text-grad-red">hayallerindeki okullara uğurladık.</span>
+    </h2>
+    <p class="text-2xl text-white/70 leading-[1.5] max-w-5xl mb-10">
+      Vaditepe Kurs Merkezi olarak her öğrencimizin potansiyelini en üst seviyeye çıkarmayı hedefliyoruz. Bugüne kadar yüzlerce öğrencimizi hayallerindeki okullara ve bölümlere uğurlamanın gururunu yaşıyoruz. İşte azim, disiplin ve doğru rehberlik ile yazılmış başarı hikayelerimizden bazıları...
+    </p>
+
+    <div class="grid grid-cols-4 gap-4 flex-1">
+      <div class="glow-card glow-card-red p-6 flex flex-col justify-between">
+        <div>
+          <div class="font-mono text-[10px] text-vkm-coral uppercase tracking-widest mb-2">★ Fen Lisesi</div>
+          <div class="font-display font-extrabold text-2xl leading-tight">Robert Kolej</div>
+        </div>
+        <div class="text-sm text-white/55 mt-3">Çapa Fen · Hacı Şöhret · Doğan Cüceloğlu</div>
+      </div>
+      <div class="glow-card p-6 flex flex-col justify-between" style="border-color:rgba(0,188,212,0.3)">
+        <div>
+          <div class="font-mono text-[10px] text-vkm-teal uppercase tracking-widest mb-2">★ Anadolu Lisesi</div>
+          <div class="font-display font-extrabold text-2xl leading-tight">Kadıköy Anadolu</div>
+        </div>
+        <div class="text-sm text-white/55 mt-3">Yeşilköy · Hüseyin Yıldız · Gazi Anadolu</div>
+      </div>
+      <div class="glow-card p-6 flex flex-col justify-between" style="border-color:rgba(255,202,40,0.3)">
+        <div>
+          <div class="font-mono text-[10px] text-vkm-yellow uppercase tracking-widest mb-2">★ Özel Lise</div>
+          <div class="font-display font-extrabold text-2xl leading-tight">Tevitöl Özel</div>
+        </div>
+        <div class="text-sm text-white/55 mt-3">Avusturya Lisesi · Alkev Fen (Burslu)</div>
+      </div>
+      <div class="glow-card p-6 flex flex-col justify-between" style="border-color:rgba(34,197,94,0.3)">
+        <div>
+          <div class="font-mono text-[10px] text-emerald-400 uppercase tracking-widest mb-2">★ Diğer Liseler</div>
+          <div class="font-display font-extrabold text-2xl leading-tight">Işık · Sabahattin Zaim</div>
+        </div>
+        <div class="text-sm text-white/55 mt-3">Hacı Bektaş Veli · ve daha fazlası</div>
+      </div>
+    </div>
+
+    <div class="mt-8 inline-flex items-center gap-3 chip-mono w-fit">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 blink-dot"></span>
+      <span>Her yıl onlarca öğrencimiz hayallerindeki okullara giriyor</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 14 · ERKEN KAYIT -->
+<!-- ============================================================== -->
+<section data-screen-label="14 Kayit" class="grad-tech">
+  <div class="absolute inset-0 tech-grid-fine"></div>
+  <div class="absolute inset-0 grad-radial-red" style="background-position:80% 50%"></div>
+  <div class="absolute inset-0 scan-line" style="animation-duration:5s"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">14 / 15 · Kayıt</div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
+    <div class="w-[760px]">
+      <div class="step-tag mb-6">Erken Kayıt</div>
+      <h2 class="font-display font-black text-[88px] leading-[0.95] mb-8">
+        Yerinizi erken ayırın,<br/>
+        <span class="text-grad-red">avantajları kazanın.</span>
+      </h2>
+      <p class="text-2xl text-white/75 leading-[1.5] mb-8">
+        2026-2027 dönemi için erken kayıt başladı. Sınırlı kontenjan, özel avantajlar.
+      </p>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3"><span class="text-emerald-400 text-xl mt-0.5">✓</span><span class="text-lg text-white/85">Erken kayıt indirimi</span></div>
+        <div class="flex items-start gap-3"><span class="text-emerald-400 text-xl mt-0.5">✓</span><span class="text-lg text-white/85">Kontenjan garantisi</span></div>
+        <div class="flex items-start gap-3"><span class="text-emerald-400 text-xl mt-0.5">✓</span><span class="text-lg text-white/85">Birebir öğretmen seçim önceliği</span></div>
+        <div class="flex items-start gap-3"><span class="text-emerald-400 text-xl mt-0.5">✓</span><span class="text-lg text-white/85">Kaynak kitap setlerinde ilk pay</span></div>
+      </div>
+    </div>
+
+    <div class="flex-1 flex justify-center">
+      <div class="relative">
+        <div class="absolute -inset-10 grad-red rounded-[40px] blur-3xl opacity-30"></div>
+        <div class="relative bg-[#161c26] rounded-[28px] border border-vkm-red/30 p-8 w-[560px] shadow-2xl">
+          <div class="text-center mb-6">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-vkm-red/15 border border-vkm-red/30 rounded-full mb-5">
+              <span class="w-2 h-2 rounded-full bg-vkm-red blink-dot"></span>
+              <span class="font-mono text-xs text-vkm-coral uppercase tracking-widest">2026 — 2027 Dönemi</span>
+            </div>
+            <div class="font-display font-black text-5xl mb-2">Programlarımız</div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 mb-6">
+            <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
+              <div class="font-display font-extrabold text-lg">TYT-AYT Hazırlık</div>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
+              <div class="font-display font-extrabold text-lg">LGS Hazırlık</div>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
+              <div class="font-display font-extrabold text-lg">Yazılılara Hazırlık</div>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
+              <div class="font-display font-extrabold text-lg">Özel Ders</div>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
+              <div class="font-display font-extrabold text-lg">Öğrenci Koçluğu</div>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
+              <div class="font-display font-extrabold text-lg">Sınav Kulübü</div>
+            </div>
+          </div>
+
+          <div class="grad-red rounded-2xl p-5 text-center glow-red">
+            <div class="font-mono text-[11px] text-white/80 uppercase tracking-widest mb-1">Kayıt için</div>
+            <div class="font-display font-black text-2xl text-white mb-2">vaditepekurs.com</div>
+            <div class="text-sm text-white/85">Atakent · Bahçeşehir Şubeleri</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+<!-- ============================================================== -->
+<!-- 15 · TEŞEKKÜRLER -->
+<!-- ============================================================== -->
+<section data-screen-label="15 Tesekkurler" class="grad-tech">
+  <div class="absolute inset-0 tech-grid"></div>
+  <div class="absolute inset-0 grad-radial-red"></div>
+  <div class="absolute inset-0 scan-line" style="animation-duration:5s"></div>
+
+  <div class="slide-chrome">
+    <div class="chrome-logo">
+      <svg viewBox="0 0 100 100" width="44" height="44"><circle cx="50" cy="50" r="45" fill="#e31e1b"/><text x="50" y="62" text-anchor="middle" font-family="Nunito" font-size="30" font-weight="800" fill="#fff" letter-spacing="-1">VKM</text></svg>
+      <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
+    </div>
+    <div class="step-tag">15 / 15 · Kapanış</div>
+  </div>
+
+  <div class="absolute inset-0 flex items-center justify-center px-32">
+    <div class="text-center max-w-5xl">
+      <div class="step-tag mb-10">VKM · LGS 2026</div>
+      <h2 class="font-display font-black text-[200px] leading-[0.95] mb-10 display-xl">
+        <span class="text-grad-red">Teşekkürler.</span>
+      </h2>
+      <p class="text-4xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-4">
+        Çocuğunuzun başarısı için<br/>birlikte yürüyelim.
+      </p>
+      <p class="text-2xl text-white/55 mt-8">
+        Sorularınızı alabiliriz.
+      </p>
+
+      <div class="mt-20 flex items-center justify-center gap-4 flex-wrap">
+        <div class="chip-mono flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 blink-dot"></span>
+          @vaditepekurs
+        </div>
+        <div class="chip-mono">vaditepekurs.com</div>
+        <div class="chip-mono">Atakent · Bahçeşehir</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">VKM · LGS 2026</div>
+</section>
+
+</deck-stage>
+
+</body>
+</html>
