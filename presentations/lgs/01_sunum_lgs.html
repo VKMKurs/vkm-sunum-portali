@@ -257,6 +257,166 @@
     user-select: none;
   }
   .deco-num { aria-hidden: true; }
+
+  /* LGS deck visual refresh: light VKM brand system */
+  html, body { background: #f6f7fb; }
+  body { color: #17212b; }
+
+  deck-stage > section,
+  .grad-tech {
+    background:
+      radial-gradient(circle at 8% 12%, rgba(227,30,27,0.10) 0%, transparent 30%),
+      linear-gradient(135deg, #fffefd 0%, #f6f7fb 55%, #fff3f2 100%) !important;
+    color: #17212b;
+  }
+
+  .grad-radial-red { background: radial-gradient(ellipse at center, rgba(227,30,27,0.12) 0%, transparent 68%) !important; }
+  .grad-radial-teal { background: radial-gradient(ellipse at center, rgba(0,188,212,0.08) 0%, transparent 70%) !important; }
+  .tech-grid,
+  .tech-grid-fine {
+    background-image:
+      linear-gradient(rgba(227,30,27,0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23,33,43,0.035) 1px, transparent 1px) !important;
+  }
+  .scan-line,
+  .pulse-ring { display: none !important; }
+
+  .slide-chrome { top: 40px; left: 64px; right: 64px; }
+  .chrome-logo {
+    min-width: 250px;
+    min-height: 72px;
+    gap: 0;
+    color: #17212b;
+  }
+  .chrome-logo::before {
+    content: "";
+    display: block;
+    width: 230px;
+    height: 82px;
+    background: url("assets/logo-horizontal-transparent.png") left center / contain no-repeat;
+  }
+  .chrome-logo svg,
+  .chrome-logo .lwm { display: none !important; }
+
+  .slide-footer,
+  .slide-counter {
+    color: rgba(23,33,43,0.48) !important;
+  }
+
+  .chip-mono,
+  .step-tag {
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(227,30,27,0.18);
+    color: rgba(23,33,43,0.68) !important;
+    box-shadow: 0 12px 30px rgba(23,33,43,0.06);
+  }
+  .step-tag {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 20px;
+    line-height: 1.15;
+  }
+
+  .glow-card {
+    background: rgba(255,255,255,0.80) !important;
+    border: 1px solid rgba(23,33,43,0.10) !important;
+    box-shadow: 0 22px 48px rgba(23,33,43,0.10) !important;
+    color: #17212b !important;
+    backdrop-filter: none;
+  }
+  .glow-card-red {
+    background: linear-gradient(145deg, rgba(255,255,255,0.90), rgba(255,239,238,0.86)) !important;
+    border-color: rgba(227,30,27,0.22) !important;
+  }
+  .glow-red { animation: none !important; box-shadow: 0 18px 34px rgba(227,30,27,0.22) !important; }
+
+  .bg-\[\#161c26\],
+  .bg-\[\#161c26\]\/60,
+  .bg-vkm-ink,
+  .bg-vkm-ink2 {
+    background-color: rgba(255,255,255,0.86) !important;
+    color: #17212b !important;
+  }
+  .bg-\[\#161c26\]\/60 {
+    border-color: rgba(227,30,27,0.16) !important;
+    box-shadow: 0 18px 42px rgba(23,33,43,0.10) !important;
+  }
+  .bg-white\/5,
+  .bg-white\/10 {
+    background-color: rgba(255,255,255,0.72) !important;
+  }
+  .border-white\/10,
+  .border-white\/15,
+  .border-white\/20 {
+    border-color: rgba(23,33,43,0.12) !important;
+  }
+
+  .text-white,
+  .text-white\/55,
+  .text-white\/60,
+  .text-white\/65,
+  .text-white\/70,
+  .text-white\/75,
+  .text-white\/80,
+  .text-white\/85,
+  .text-white\/90 {
+    color: rgba(23,33,43,0.82) !important;
+  }
+  h1 .text-white,
+  h2 .text-white,
+  .font-semibold.text-white,
+  .font-bold.text-white {
+    color: #17212b !important;
+  }
+
+  .text-grad-tech {
+    background: linear-gradient(135deg, #e31e1b 0%, #ffca28 58%, #00a9bd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+  }
+
+  .grad-red,
+  .bg-vkm-red,
+  .bg-vkm-coral,
+  .bg-vkm-teal,
+  .bg-emerald-500 {
+    color: #fff !important;
+  }
+  .grad-red .text-white,
+  .grad-red .text-white\/55,
+  .grad-red .text-white\/60,
+  .grad-red .text-white\/70,
+  .grad-red .text-white\/75,
+  .grad-red .text-white\/80,
+  .grad-red .text-white\/85,
+  .bg-vkm-red .text-white,
+  .bg-vkm-red .text-white\/80,
+  .bg-vkm-coral .text-white,
+  .bg-vkm-teal .text-white,
+  .bg-emerald-500 .text-white {
+    color: #fff !important;
+  }
+
+  .lgs-cover-logo-card {
+    background: rgba(255,255,255,0.88);
+    border: 1px solid rgba(227,30,27,0.15);
+    box-shadow: 0 36px 80px rgba(23,33,43,0.13);
+    border-radius: 28px;
+  }
+  .lgs-cover-logo {
+    width: 520px;
+    height: auto;
+    display: block;
+  }
+  .lgs-brand-line {
+    height: 8px;
+    background: linear-gradient(90deg, #e31e1b, #ee7673);
+    border-radius: 999px;
+  }
 </style>
 </head>
 <body>
@@ -279,7 +439,7 @@
       </svg>
       <div class="lwm">Vaditepe<em>Kurs Merkezi</em></div>
     </div>
-    <div class="chip-mono">2025 — 2026 · LGS Veli Sunumu</div>
+    <div class="chip-mono">LGS Veli Sunumu</div>
   </div>
 
   <div class="absolute inset-0 flex flex-col justify-center px-32">
@@ -312,34 +472,19 @@
     </div>
   </div>
 
-  <div class="absolute top-1/2 right-32 -translate-y-1/2 w-[520px] h-[520px]">
-    <div class="absolute inset-0 rounded-full grad-radial-red"></div>
-    <div class="absolute inset-12">
-      <div class="pulse-ring"></div>
-      <div class="pulse-ring delay-1"></div>
-      <div class="pulse-ring delay-2"></div>
+  <div class="absolute top-1/2 right-24 -translate-y-1/2 w-[620px]">
+    <div class="lgs-cover-logo-card p-14">
+      <img class="lgs-cover-logo" src="assets/logo-cover.png" alt="Vaditepe Kurs Merkezi" />
+      <div class="lgs-brand-line mt-10"></div>
+      <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+        <div class="chip-mono">Plan</div>
+        <div class="chip-mono">Takip</div>
+        <div class="chip-mono">Rehberlik</div>
+      </div>
     </div>
-    <svg viewBox="0 0 520 520" class="absolute inset-0 w-full h-full">
-      <defs>
-        <linearGradient id="lgsArrow" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#e31e1b"/>
-          <stop offset="100%" stop-color="#ee7673"/>
-        </linearGradient>
-      </defs>
-      <circle cx="260" cy="260" r="200" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-      <circle cx="260" cy="260" r="160" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 6"/>
-      <circle cx="260" cy="260" r="120" fill="none" stroke="rgba(227,30,27,0.3)" stroke-width="1"/>
-      <g style="transform-origin:260px 260px;animation: spin 18s linear infinite;">
-        <polygon points="260,90 248,260 272,260" fill="url(#lgsArrow)"/>
-        <polygon points="260,430 248,260 272,260" fill="rgba(255,255,255,0.4)"/>
-      </g>
-      <circle cx="260" cy="260" r="14" fill="#0d1117" stroke="#e31e1b" stroke-width="3"/>
-      <circle cx="260" cy="260" r="5" fill="#e31e1b"/>
-    </svg>
-    <style>@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }</style>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -401,7 +546,7 @@
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -482,7 +627,7 @@
             </div>
             <div class="relative">
               <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-emerald-500 grid place-items-center text-[11px] font-black ring-4 ring-[#161c26]">★</div>
-              <div class="text-sm font-mono text-emerald-400 mb-1">14 HAZİRAN 2026</div>
+              <div class="text-sm font-mono text-emerald-400 mb-1">SINAV GÜNÜ</div>
               <div class="text-lg font-semibold">LGS</div>
             </div>
             <div class="relative">
@@ -496,7 +641,7 @@
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -582,7 +727,7 @@
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -705,7 +850,7 @@
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -748,8 +893,8 @@
         <div class="text-sm text-white/60">Özdebir, Sinan Kuzucu, Hız, Fenomen, Palme...</div>
       </div>
       <div class="glow-card glow-card-red p-7 text-center">
-        <div class="font-display font-black text-7xl text-grad-red mb-2">35+</div>
-        <div class="font-mono text-xs text-vkm-coral uppercase tracking-widest mb-1">yıllık deneme</div>
+        <div class="font-display font-black text-7xl text-grad-red mb-2">Düzenli</div>
+        <div class="font-mono text-xs text-vkm-coral uppercase tracking-widest mb-1">deneme takvimi</div>
         <div class="text-sm text-white/60">Yıl boyunca düzenli takvim</div>
       </div>
       <div class="glow-card col-span-2 p-7" style="border-color:rgba(255,202,40,0.3)">
@@ -777,7 +922,7 @@
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -877,7 +1022,7 @@
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -915,8 +1060,8 @@
               </div>
               <div class="text-[10px] text-gray-500 space-y-0.5">
                 <div><span class="font-mono">Konu:</span> Ya İstiklal, Ya Ölüm</div>
-                <div><span class="font-mono">Süre:</span> 30.12.2024 – 06.01.2025</div>
-                <div><span class="font-mono">Öğretmen:</span> Tekin Doğru</div>
+                <div><span class="font-mono">Süre:</span> Örnek hafta</div>
+                <div><span class="font-mono">Öğretmen:</span> Branş Öğretmeni</div>
               </div>
               <div class="mt-2 h-1 bg-amber-200 rounded-full overflow-hidden">
                 <div class="h-full bg-vkm-yellow" style="width:60%"></div>
@@ -931,8 +1076,8 @@
               </div>
               <div class="text-[10px] text-gray-500 space-y-0.5">
                 <div><span class="font-mono">Konu:</span> Genel Tekrar</div>
-                <div><span class="font-mono">Süre:</span> 30.12.2024 – 06.01.2025</div>
-                <div><span class="font-mono">Öğretmen:</span> Mehmet Şahin</div>
+                <div><span class="font-mono">Süre:</span> Örnek hafta</div>
+                <div><span class="font-mono">Öğretmen:</span> Branş Öğretmeni</div>
               </div>
               <div class="mt-2 h-1 bg-amber-200 rounded-full overflow-hidden">
                 <div class="h-full bg-vkm-yellow" style="width:80%"></div>
@@ -981,13 +1126,13 @@
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
-<!-- 09 · VKM PUSULAM (YENİ) -->
+<!-- 09 · KOÇLUK KATMANI -->
 <!-- ============================================================== -->
-<section data-screen-label="09 Pusulam" class="grad-tech">
+<section data-screen-label="09 Koçluk" class="grad-tech">
   <div class="absolute inset-0 tech-grid-fine"></div>
   <div class="absolute inset-0 grad-radial-red"></div>
   <div class="absolute inset-0 scan-line" style="animation-duration:5s"></div>
@@ -1002,13 +1147,13 @@
 
   <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
     <div class="w-[700px]">
-      <div class="step-tag mb-6">VKM Pusulam — Koçluğun Gözü</div>
+      <div class="step-tag mb-6">Koçluk Katmanı</div>
       <h2 class="font-display font-black text-[72px] leading-[0.98] mb-6">
-        Verinin arkasındaki<br/>
-        <span class="text-grad-red">anlamı görün.</span>
+        Uygulamadaki veri,<br/>
+        <span class="text-grad-red">görüşmeye yön verir.</span>
       </h2>
       <p class="text-2xl text-white/70 leading-[1.5] mb-8">
-        VKM Uygulaması; sınav sonuçlarını, ödevleri ve devamsızlığı bağımsız veriler olarak gösterir. <span class="text-white font-semibold">VKM Pusulam</span> bu verileri birleştirir, yorumlar ve eksik gördüğü kısımları tamamlar — koça eyleme dönüştürür.
+        VKM Uygulaması sınav, ödev ve devamsızlık verilerini görünür kılar. Pusulam ise bu verileri koçluk görüşmelerinde anlamlandıran ayrı bir destek katmanıdır.
       </p>
       <div class="space-y-3">
         <div class="flex items-start gap-3"><span class="text-xl mt-0.5">🎯</span><span class="text-lg text-white/85"><span class="font-semibold text-white">Plan Uyumu</span> — bu hafta planın ne kadarı tamamlandı, anlık görün.</span></div>
@@ -1025,7 +1170,7 @@
           <div class="flex items-center justify-between mb-5 pb-4 border-b border-white/10">
             <div>
               <div class="font-mono text-[11px] text-vkm-coral uppercase tracking-widest">Aylık Koç Özeti</div>
-              <div class="font-display font-extrabold text-2xl mt-1">Mart 2026 — Örnek</div>
+              <div class="font-display font-extrabold text-2xl mt-1">Örnek Ay</div>
             </div>
             <div class="chip-mono text-xs flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>onaylı</div>
           </div>
@@ -1076,11 +1221,11 @@
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4-4-4 4M12 16V8"/></svg>
     </div>
     <div class="flex-1 text-base text-white/75 leading-relaxed">
-      <span class="text-white font-semibold">VKM Uygulaması</span> ham veriyi gösterir. <span class="text-white font-semibold">VKM Pusulam</span> o verinin anlamını çıkarır. Pusulam'ın detaylı tanıtımı ayrı sunumumuzda yer almaktadır.
+      <span class="text-white font-semibold">VKM Uygulaması</span> takip ekranıdır. <span class="text-white font-semibold">Pusulam</span> bu takibin koçluk görüşmesine dönüşen yorum katmanıdır; detaylı tanıtımı ayrı sunumumuzda yer almaktadır.
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -1156,7 +1301,7 @@
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -1215,7 +1360,7 @@
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -1297,7 +1442,7 @@
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -1362,7 +1507,7 @@
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -1442,7 +1587,7 @@
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 <!-- ============================================================== -->
@@ -1463,12 +1608,12 @@
 
   <div class="absolute inset-0 flex items-center justify-center px-32">
     <div class="text-center max-w-5xl">
-      <div class="step-tag mb-10">VKM · LGS 2026</div>
+      <div class="step-tag mb-10">VKM · LGS Veli Sunumu</div>
       <h2 class="font-display font-black text-[200px] leading-[0.95] mb-10 display-xl">
         <span class="text-grad-red">Teşekkürler.</span>
       </h2>
       <p class="text-4xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-4">
-        Çocuğunuzun başarısı için<br/>birlikte yürüyelim.
+        Öğrencimizin başarısı için<br/>birlikte yürüyelim.
       </p>
       <p class="text-2xl text-white/55 mt-8">
         Sorularınızı alabiliriz.
@@ -1480,12 +1625,13 @@
           @vaditepekurs
         </div>
         <div class="chip-mono">vaditepekurs.com</div>
+        <div class="chip-mono">+90 212 669 62 70</div>
         <div class="chip-mono">Atakent · Bahçeşehir</div>
       </div>
     </div>
   </div>
 
-  <div class="slide-footer">VKM · LGS 2026</div>
+  <div class="slide-footer">VKM · LGS Veli Sunumu</div>
 </section>
 
 </deck-stage>
