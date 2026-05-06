@@ -1,0 +1,335 @@
+(function () {
+  const common = {
+    logoHorizontal: '../lgs/assets/logo-horizontal-transparent.png',
+    logoCover: '../lgs/assets/logo-cover.png',
+    promise: 'Vaditepe Kurs Merkezi olarak öğrencilerimizin yalnızca ders başarısını değil; çalışma alışkanlığını, sınav pratiğini ve veli bilgilendirmesini birlikte takip ederiz.',
+    promiseBullets: [
+      'Öğrencinin seviyesi düzenli ölçülür.',
+      'Eksikler haftalık çalışma planına bağlanır.',
+      'Veli, süreci sade ve anlaşılır biçimde görür.'
+    ],
+    promiseMetrics: [
+      { value: 'Ders', label: 'Konu anlatımı ve soru çözümü' },
+      { value: 'Deneme', label: 'Sınav pratiği ve analiz' },
+      { value: 'Ödev', label: 'Kaynak ve hedef takibi' },
+      { value: 'Görüşme', label: 'Düzenli veli bilgilendirmesi' }
+    ],
+    timelineTitle: 'Eylül → Haziran',
+    timeline: [
+      { title: 'Kurs Başlangıcı', copy: 'Seviye, hedef ve çalışma alışkanlığı birlikte görülür.' },
+      { title: 'Sömestr Kampı', copy: 'Sömestrin ilk haftası yoğunlaştırılmış tekrar ve eksik kapatma yapılır.' },
+      { title: 'Deneme Ritmi', copy: 'Denemeler analiz edilir, zayıf konular plana alınır.' },
+      { title: 'Dönem Sonu', copy: 'Gelişim özeti, yeni hedef ve sonraki dönem planı netleştirilir.' }
+    ],
+    timelineBullets: [
+      'Ara tatil yerine sömestr kampı ve düzenli tekrar ritmi kullanılır.',
+      'Deneme sonuçları yalnızca puan olarak kalmaz; çalışma planına dönüşür.',
+      'Program, öğrencinin okul temposu ve ihtiyacına göre dengelenir.'
+    ],
+    examCards: [
+      { kicker: 'Gerçek prova', title: 'Sınav atmosferi', note: 'Süre yönetimi ve sınav alışkanlığı güvenli ortamda gelişir.' },
+      { kicker: 'Analiz', title: 'Ders ders takip', note: 'Yanlışlar ve boşlar konu başlığına bağlanır.' },
+      { kicker: 'Rehberlik', title: 'Kişiye özel yön', note: 'Bir sonraki hafta nereden başlanacağı netleşir.' },
+      { kicker: 'Sonuç', title: 'Gelişim görünümü', note: 'Öğrenci ve veli ilerlemeyi aynı veriden takip eder.' }
+    ],
+    appBullets: [
+      'Sınav sonuçları ve analizler tek yerde görünür.',
+      'Ödev ve hedefler haftalık takip edilir.',
+      'Duyurular, program bilgileri ve raporlar daha erişilebilir olur.'
+    ],
+    analysisBullets: [
+      'Net, yanlış ve boşlar ders/kazanım düzeyinde okunur.',
+      'Gelişim çizgisi tek sınavla değil dönem boyunca takip edilir.',
+      'Zayıf başlıklar sonraki ders ve etüt planına bağlanır.'
+    ],
+    reportSteps: [
+      { title: 'Veri Toplanır', copy: 'Deneme, ödev ve katılım bilgileri bir araya gelir.' },
+      { title: 'Analiz Edilir', copy: 'Güçlü ve gelişmesi gereken alanlar ayrıştırılır.' },
+      { title: 'Planlanır', copy: 'Eksikler haftalık hedefe ve kaynağa bağlanır.' },
+      { title: 'Paylaşılır', copy: 'Veliye sade, anlaşılır ve uygulanabilir özet verilir.' }
+    ],
+    homeworkCards: [
+      { kicker: 'Anlık', title: 'Ödev durumu', note: 'Tamamlanan ve eksik kalan çalışmalar görünür hale gelir.' },
+      { kicker: 'Kaynak', title: 'Doğru materyal', note: 'Öğrencinin ihtiyacına uygun kitap ve test seçilir.' },
+      { kicker: 'Takip', title: 'Haftalık kontrol', note: 'Eksik kalan çalışmalar sonraki programa alınır.' },
+      { kicker: 'Destek', title: 'Etüt bağlantısı', note: 'Zorlanılan başlıklar birebir destek saatine taşınır.' }
+    ],
+    targetBullets: [
+      'Hedef soru sayısı öğrencinin seviyesine göre belirlenir.',
+      'Çözülen sorular ve zorlanılan konular takip edilir.',
+      'Haftalık hedef, ders planı ve etüt desteğiyle birlikte yürür.'
+    ],
+    targetMetrics: [
+      { value: 'Konu', label: 'Hangi başlık çalışılacak?' },
+      { value: 'Kaynak', label: 'Hangi kitaptan ilerlenecek?' },
+      { value: 'Soru', label: 'Hedef sayı kaç olacak?' },
+      { value: 'Kontrol', label: 'Sonuç nasıl değerlendirilecek?' }
+    ],
+    evaluationSteps: [
+      { title: 'Sınav', copy: 'Performans ve gelişim eğilimi okunur.' },
+      { title: 'Ödev', copy: 'Tamamlama, düzen ve süreklilik kontrol edilir.' },
+      { title: 'Katılım', copy: 'Derse devam, etüt ve soru çözümü birlikte değerlendirilir.' },
+      { title: 'Yol Haritası', copy: 'Veli, öğrenci ve kurum aynı hedefte buluşur.' }
+    ],
+    resourceBullets: [
+      'Konu anlatımı ve soru bankası dengeli kullanılır.',
+      'Deneme kaynakları öğrencinin sınav pratiğini genişletir.',
+      'Zorlanan öğrenciye farklı seviye ve destek kaynakları verilir.'
+    ],
+    resourceCards: [
+      { kicker: 'Seviye', title: 'Uygun kaynak', note: 'Öğrenciye ağır ya da hafif gelmeyen doğru kaynak seçilir.' },
+      { kicker: 'Çeşitlilik', title: 'Farklı yayınlar', note: 'Tek soru tarzına sıkışmadan geniş pratik yapılır.' },
+      { kicker: 'Tekrar', title: 'Konu pekiştirme', note: 'Eksik başlıklar kısa tekrar ve hedef testlerle kapatılır.' },
+      { kicker: 'Deneme', title: 'Sınav pratiği', note: 'Zaman ve strateji denemelerle güçlenir.' }
+    ],
+    teacherCards: [
+      { kicker: 'Deneyim', title: 'Alan hakimiyeti', note: 'Dersin kritik kazanımları ve sınav dili güçlü biçimde aktarılır.' },
+      { kicker: 'Yaklaşım', title: 'Öğrenci odaklılık', note: 'Aynı sınıfta farklı hızlara uygun yönlendirme yapılır.' },
+      { kicker: 'Takip', title: 'Geri bildirim', note: 'Ders, ödev ve deneme sonuçları öğretmen takibine girer.' },
+      { kicker: 'Motivasyon', title: 'Sürdürülebilir tempo', note: 'Öğrencinin yıl içinde kopmaması için düzenli ritim kurulur.' }
+    ],
+    registrationBullets: [
+      'Seviye ve hedef daha erken görülür.',
+      'Uygun sınıf ve program daha rahat planlanır.',
+      'Öğrencinin yılına hazırlık daha sakin başlar.'
+    ],
+    registrationMetrics: [
+      { value: 'Seviye', label: 'Başlangıç fotoğrafı' },
+      { value: 'Program', label: 'Uygun ders ritmi' },
+      { value: 'Takip', label: 'Ödev ve deneme planı' },
+      { value: 'Veli', label: 'Net bilgilendirme' }
+    ],
+    thanksLine: 'Öğrencinin hedefini birlikte planlayalım, süreci birlikte takip edelim.'
+  };
+
+  const lgsSuccess = [
+    { type: 'Fen Lisesi', name: 'Robert Koleji', note: 'Nitelikli hedefler için uzun vadeli takip.' },
+    { type: 'Anadolu Lisesi', name: 'Kadıköy Anadolu', note: 'Planlı çalışma ve düzenli deneme ritmi.' },
+    { type: 'Köklü Lise', name: 'İstanbul Erkek Lisesi', note: 'Yüksek hedefe uygun rehberlik.' },
+    { type: 'Fen Lisesi', name: 'Çapa Fen Lisesi', note: 'Akademik disiplin ve doğru kaynak.' }
+  ];
+
+  const yksSuccess = [
+    { type: 'Mühendislik', name: 'Boğaziçi Üniversitesi', note: 'TYT-AYT dengesi ve hedefli çalışma.' },
+    { type: 'Teknik Üniversite', name: 'İTÜ', note: 'Sayısal alanlarda güçlü deneme takibi.' },
+    { type: 'Üniversite', name: 'Yıldız Teknik', note: 'Alan derslerinde düzenli gelişim.' },
+    { type: 'Üniversite', name: 'Marmara Üniversitesi', note: 'Tercih sürecine kadar rehberlik.' }
+  ];
+
+  const configs = {
+    '6-sinif': {
+      ...common,
+      title: '6. Sınıf Sunumu',
+      shortTitle: '6. Sınıf',
+      coverTitle: '6. Sınıf',
+      coverMark: '6',
+      coverSmall: 'Kurs',
+      programTitle: 'Kurs Sistemi',
+      accent: '#2498f2',
+      accentSoft: '#63b3ff',
+      courseTitle: 'Temel derslerde güçlü başlangıç.',
+      courseLead: '6. sınıfta amaç; okul derslerini sağlam tutmak, düzenli çalışma alışkanlığı kazandırmak ve öğrenciyi üst sınıflara güvenle hazırlamaktır.',
+      courseBullets: ['Konu anlatımı ve soru çözümü birlikte ilerler.', 'Okul yazılıları ve dönem hedefleri takip edilir.', 'Mantık-muhakeme becerisi destek çalışmalarla güçlenir.'],
+      courses: [
+        { name: 'Matematik', icon: 'M', note: 'Temel beceri, problem ve işlem disiplini.' },
+        { name: 'Türkçe', icon: 'T', note: 'Okuduğunu anlama, dil bilgisi ve ifade.' },
+        { name: 'Fen Bilgisi', icon: 'F', note: 'Konu kavrama, deney mantığı ve test pratiği.' }
+      ],
+      programLead: 'Hafta içi dersler, hafta sonu destek ve deneme ritmiyle öğrencinin okul temposu dengelenir.',
+      programBullets: ['Hafta içi iki ders günü örneklenir.', 'Bir gün etüt/soru çözümü desteği ayrılır.', 'Pazar denemesi dönemsel ihtiyaca göre uygulanır.'],
+      programClass: '6-A · Örnek',
+      programRows: [
+        { day: 'Salı', time: '17:10-18:50', title: 'Matematik', note: 'Konu + soru çözümü' },
+        { day: 'Perşembe', time: '17:10-18:50', title: 'Türkçe / Fen', note: 'Dönüşümlü ders planı' },
+        { day: 'Cuma', time: '17:10-18:20', title: 'Etüt', note: 'Birebir destek ve eksik kapatma' },
+        { day: 'Cumartesi', time: '10:00-12:20', title: 'Tekrar Dersi', note: 'Haftalık pekiştirme' },
+        { day: 'Pazar', time: 'Örnek', title: 'Deneme / Analiz', note: 'Dönemsel sınav pratiği' }
+      ],
+      guidanceKicker: 'Süreç Rehberliği',
+      guidanceTitle: 'LGS yolculuğu tek yıla sıkıştırılmaz.',
+      guidanceLead: '6. sınıfta kurulan düzen, öğrencinin ilerleyen yıllarda sınav temposuna daha sağlıklı hazırlanmasını sağlar.',
+      guidanceBullets: ['Çalışma alışkanlığı erken yaşta oturur.', 'Eksikler büyümeden görülür.', 'Veli, süreci panik yerine veriyle takip eder.'],
+      guidanceSteps: [
+        { title: 'Alışkanlık', copy: 'Düzenli ders ve ödev ritmi kurulur.' },
+        { title: 'Temel', copy: 'Matematik, Türkçe ve Fen temeli güçlenir.' },
+        { title: 'Takip', copy: 'Deneme ve ödev verisi birlikte okunur.' },
+        { title: 'Hazırlık', copy: 'Üst sınıflar için sağlam zemin oluşur.' }
+      ],
+      successCards: lgsSuccess
+    },
+    '7-sinif': {
+      ...common,
+      title: '7. Sınıf Sunumu',
+      shortTitle: '7. Sınıf',
+      coverTitle: '7. Sınıf',
+      coverMark: '7',
+      coverSmall: 'Kurs',
+      programTitle: 'Kurs Sistemi',
+      accent: '#9c27b0',
+      accentSoft: '#c46ad4',
+      courseTitle: '7. sınıfta tempo ve temel birlikte güçlenir.',
+      courseLead: '7. sınıf, LGS öncesi en kritik hazırlık dönemlerinden biridir; ders başarısı, soru çözme alışkanlığı ve mantık-muhakeme birlikte yürür.',
+      courseBullets: ['Okul başarısı ve sınav alışkanlığı aynı anda desteklenir.', 'Soru çözüm hızı ve dikkat çalışmaları önem kazanır.', 'Eksikler 8. sınıfa taşınmadan kapatılır.'],
+      courses: [
+        { name: 'Matematik', icon: 'M', note: 'Yeni nesil soru dili ve problem becerisi.' },
+        { name: 'Türkçe', icon: 'T', note: 'Paragraf, anlam bilgisi ve dil çalışmaları.' },
+        { name: 'Fen Bilgisi', icon: 'F', note: 'Kavram, yorum ve deney mantığı.' },
+        { name: 'Sosyal Bilgiler', icon: 'S', note: 'Okuma, yorum ve kavram hakimiyeti.' },
+        { name: 'Mantık Muhakeme', icon: '✓', note: 'Dikkat, akıl yürütme ve strateji.' }
+      ],
+      programLead: 'Hafta içi dersler, etüt desteği ve hafta sonu uygulamasıyla öğrenci 8. sınıfa daha hazır girer.',
+      programBullets: ['Hafta içi iki gün ders yapılır.', 'Bir gün etüt ve soru çözümü ayrılır.', 'Hafta sonu tekrar ve deneme ritmi kurulur.'],
+      programClass: '7-A · Örnek',
+      programRows: [
+        { day: 'Salı', time: '17:10-18:50', title: 'Matematik', note: 'Yeni nesil soru pratiği' },
+        { day: 'Perşembe', time: '17:10-18:50', title: 'Türkçe / Fen', note: 'Dönüşümlü destek' },
+        { day: 'Cuma', time: '17:10-18:20', title: 'Etüt', note: 'Birebir soru çözümü' },
+        { day: 'Cumartesi', time: '10:00-12:20', title: 'Sosyal / Muhakeme', note: 'Haftalık pekiştirme' },
+        { day: 'Pazar', time: 'Örnek', title: 'Deneme / Analiz', note: 'Dönemsel ölçme' }
+      ],
+      guidanceKicker: 'Süreç Rehberliği',
+      guidanceTitle: '8. sınıfa hazırlık bugünden başlar.',
+      guidanceLead: '7. sınıfta yapılan doğru takip, 8. sınıfın yoğun temposuna öğrenciyi daha sakin ve hazır taşır.',
+      guidanceBullets: ['Soru çözüm disiplini oturur.', 'Kazanım eksikleri erken kapanır.', 'Veli, gelişimi yıl boyunca takip eder.'],
+      guidanceSteps: [
+        { title: 'Ölçme', copy: 'Temel derslerde başlangıç seviyesi görülür.' },
+        { title: 'Pekiştirme', copy: 'Haftalık ödev ve etüt planı kurulur.' },
+        { title: 'Deneme', copy: 'Sınav alışkanlığı kademeli gelişir.' },
+        { title: 'Geçiş', copy: '8. sınıf temposuna hazır zemin oluşur.' }
+      ],
+      successCards: lgsSuccess
+    },
+    '10-sinif': {
+      ...common,
+      title: '10. Sınıf Veli Sunumu',
+      shortTitle: '10. Sınıf',
+      coverTitle: '10. Sınıf',
+      coverMark: '10',
+      coverSmall: 'Hazırlık',
+      programTitle: 'Hazırlık Sistemi',
+      accent: '#ff9800',
+      accentSoft: '#ffc166',
+      courseTitle: 'Lise temelini doğru zamanda güçlendiriyoruz.',
+      courseLead: '10. sınıfta amaç; okul derslerini desteklemek, TYT temelini kaybetmemek ve öğrencinin alan derslerine hazır ilerlemesini sağlamaktır.',
+      courseBullets: ['Sayısal ve sözel temel derslerde düzenli takip yapılır.', 'Okul sınavları ve dönem hedefleri plana dahil edilir.', 'TYT alışkanlığı erken dönemde kontrollü biçimde kurulur.'],
+      courses: [
+        { name: 'Matematik', icon: 'M', note: 'TYT temeli ve okul kazanımları.' },
+        { name: 'Fizik', icon: 'F', note: 'Kavram ve problem çözme becerisi.' },
+        { name: 'Kimya', icon: 'K', note: 'Konu kavrama ve test pratiği.' },
+        { name: 'Biyoloji', icon: 'B', note: 'Sistematik tekrar ve yorum.' },
+        { name: 'Türk Dili ve Edebiyatı', icon: 'E', note: 'Okuma, anlam ve yazılı desteği.' }
+      ],
+      programLead: 'Ders günleri okul çıkış saatine uyumlu planlanır; etüt ve deneme verisiyle öğrencinin haftalık ritmi korunur.',
+      programBullets: ['Hafta içi iki gün ders yapılır.', 'Bir gün etüt ve soru çözümü ayrılır.', 'Cumartesi ders, pazar deneme örnek ritim olarak gösterilir.'],
+      programClass: '10-A · Örnek',
+      programRows: [
+        { day: 'Salı', time: '17:10-20:20', title: 'Matematik / Fizik', note: 'Okul + TYT temel' },
+        { day: 'Perşembe', time: '17:10-20:20', title: 'Kimya / Biyoloji', note: 'Konu + soru çözümü' },
+        { day: 'Cuma', time: '17:10-18:20', title: 'Etüt', note: 'Birebir destek' },
+        { day: 'Cumartesi', time: '10:00-13:00', title: 'Edebiyat / Tekrar', note: 'Haftalık pekiştirme' },
+        { day: 'Pazar', time: 'Örnek', title: 'Deneme / Analiz', note: 'TYT temel takibi' }
+      ],
+      guidanceKicker: 'Hedef Rehberliği',
+      guidanceTitle: 'TYT temeli 12. sınıfa bırakılmaz.',
+      guidanceLead: '10. sınıfta kurulan düzen, öğrencinin sonraki yıllarda hem okul hem sınav temposunu daha rahat yönetmesini sağlar.',
+      guidanceBullets: ['TYT temel kazanımları düzenli korunur.', 'Alan seçimi ve hedefler daha bilinçli ele alınır.', 'Öğrenci gereksiz panik yaşamadan ilerler.'],
+      guidanceSteps: [
+        { title: 'Temel', copy: 'TYT için kritik konular canlı tutulur.' },
+        { title: 'Okul', copy: 'Yazılı ve dönem hedefleri desteklenir.' },
+        { title: 'Alan', copy: 'Öğrencinin yönelimi izlenir.' },
+        { title: 'Hazırlık', copy: '11 ve 12. sınıf için zemin kurulur.' }
+      ],
+      successCards: yksSuccess
+    },
+    '11-sinif': {
+      ...common,
+      title: '11. Sınıf Veli Sunumu',
+      shortTitle: '11. Sınıf',
+      coverTitle: '11. Sınıf',
+      coverMark: '11',
+      coverSmall: 'Hazırlık',
+      programTitle: 'Hazırlık Sistemi',
+      accent: '#e91e63',
+      accentSoft: '#f36f9b',
+      courseTitle: '11. sınıfta alan dersleri ciddileşir.',
+      courseLead: '11. sınıf, AYT altyapısının kurulduğu ve TYT tekrarının ihmal edilmemesi gereken dönemdir; bu yüzden program çift yönlü ilerler.',
+      courseBullets: ['Alan derslerinde konu hakimiyeti güçlendirilir.', 'TYT temel başlıkları düzenli tekrar edilir.', 'Deneme ve ödev verisiyle öğrenci yakından izlenir.'],
+      courses: [
+        { name: 'Matematik TYT-AYT', icon: 'M', note: 'Temel tekrar ve alan derinliği.' },
+        { name: 'Fizik TYT-AYT', icon: 'F', note: 'Kavram, formül ve yorum.' },
+        { name: 'Kimya', icon: 'K', note: 'Konu anlatımı ve test pratiği.' },
+        { name: 'Biyoloji', icon: 'B', note: 'Sistematik konu takibi.' },
+        { name: 'Türkçe TYT', icon: 'T', note: 'Paragraf ve anlam çalışmaları.' },
+        { name: 'Geometri', icon: 'G', note: 'Görsel düşünme ve problem çözümü.' }
+      ],
+      programLead: '11. sınıf örnek programı, okul temposunu bozmadan alan dersleri ve TYT tekrarını aynı haftada tutar.',
+      programBullets: ['Hafta içi iki gün ders yapılır.', 'Bir gün etüt ve soru çözümü ayrılır.', 'Cumartesi alan dersi, pazar deneme örnek ritim olarak kullanılır.'],
+      programClass: '11-MF · Örnek',
+      programRows: [
+        { day: 'Salı', time: '17:10-20:20', title: 'Matematik / Fizik', note: 'AYT altyapı' },
+        { day: 'Perşembe', time: '17:10-20:20', title: 'Kimya / Biyoloji', note: 'Konu + test' },
+        { day: 'Cuma', time: '17:10-18:20', title: 'Etüt', note: 'Birebir destek' },
+        { day: 'Cumartesi', time: '10:00-13:00', title: 'TYT Tekrar', note: 'Türkçe + Geometri' },
+        { day: 'Pazar', time: 'Örnek', title: 'Deneme / Analiz', note: 'TYT-AYT takip' }
+      ],
+      guidanceKicker: 'Hedef Rehberliği',
+      guidanceTitle: '12. sınıfa güçlü dosyayla geçiş.',
+      guidanceLead: '11. sınıf sonunda öğrenci hangi konularda güçlü, hangi başlıklarda desteğe ihtiyaç duyuyor net biçimde görülmelidir.',
+      guidanceBullets: ['AYT konuları ertelenmeden işlenir.', 'TYT eksikleri yıl içinde kapatılır.', '12. sınıf planı veriye göre hazırlanır.'],
+      guidanceSteps: [
+        { title: 'Alan', copy: 'Alan derslerinde derinleşme başlar.' },
+        { title: 'TYT', copy: 'Temel konular düzenli canlı tutulur.' },
+        { title: 'Analiz', copy: 'Deneme sonuçları hedefe göre okunur.' },
+        { title: 'Geçiş', copy: '12. sınıfa hazır planla başlanır.' }
+      ],
+      successCards: yksSuccess
+    },
+    'yks': {
+      ...common,
+      title: 'YKS Veli Sunumu',
+      shortTitle: 'YKS',
+      coverTitle: 'YKS',
+      coverMark: 'YKS',
+      coverSmall: 'Hazırlık',
+      programTitle: 'Hazırlık Sistemi',
+      accent: '#00a5c8',
+      accentSoft: '#61cfe1',
+      courseTitle: 'TYT ve AYT’de çok yönlü destek.',
+      courseLead: 'YKS hazırlığında ders anlatımı, deneme analizi, hedef soru ve tercih rehberliği tek bir sistemin parçalarıdır.',
+      courseBullets: ['TYT ve AYT dengesi öğrencinin hedefine göre kurulur.', 'Sayısal, eşit ağırlık ve sözel alan ihtiyaçları ayrıştırılır.', 'Deneme sonuçları doğrudan haftalık plana bağlanır.'],
+      courses: [
+        { name: 'Matematik TYT-AYT', icon: 'M', note: 'Temel, problem ve alan derinliği.' },
+        { name: 'Türkçe', icon: 'T', note: 'Paragraf, anlam ve sınav dili.' },
+        { name: 'Fizik', icon: 'F', note: 'Kavram, yorum ve işlem.' },
+        { name: 'Kimya', icon: 'K', note: 'Konu takibi ve test pratiği.' },
+        { name: 'Biyoloji', icon: 'B', note: 'Sistematik tekrar ve yorum.' },
+        { name: 'Geometri', icon: 'G', note: 'Şekil okuma ve strateji.' },
+        { name: 'Edebiyat / Sosyal', icon: 'S', note: 'Alan ihtiyacına göre destek.' },
+        { name: 'Rehberlik', icon: 'R', note: 'Hedef, deneme ve tercih takibi.' }
+      ],
+      programLead: 'YKS programı öğrencinin alanına, hedef sıralamasına ve mevcut deneme verisine göre esnek biçimde planlanır.',
+      programBullets: ['TYT ve AYT dengesi haftalık olarak korunur.', 'Etüt ve soru çözümü zorlanılan başlığa göre açılır.', 'Pazar denemesi ve analiz görüşmesi ritmi güçlendirir.'],
+      programClass: '12 / Mezun · Örnek',
+      programRows: [
+        { day: 'Pazartesi', time: '17:10-20:20', title: 'TYT Matematik', note: 'Problem + temel tekrar' },
+        { day: 'Çarşamba', time: '17:10-20:20', title: 'AYT Alan Dersi', note: 'Hedefe göre branş' },
+        { day: 'Cuma', time: '17:10-18:20', title: 'Etüt', note: 'Birebir soru çözümü' },
+        { day: 'Cumartesi', time: '10:00-13:00', title: 'Paragraf / Geometri', note: 'Süreklilik çalışması' },
+        { day: 'Pazar', time: 'Örnek', title: 'YKS Denemesi', note: 'Analiz + hedef güncelleme' }
+      ],
+      guidanceKicker: 'Tercih Dönemi',
+      guidanceTitle: 'Sınavdan sonra tercih süreci başlar.',
+      guidanceLead: 'YKS sonrasında hedef, puan, sıralama ve bölüm beklentisi birlikte değerlendirilir; öğrencinin karar süreci profesyonel rehberlikle desteklenir.',
+      guidanceBullets: ['Puan ve sıralama birlikte okunur.', 'Bölüm ve üniversite seçenekleri gerçekçi biçimde değerlendirilir.', 'Tercih listesi öğrencinin hedefleriyle uyumlu hazırlanır.'],
+      guidanceSteps: [
+        { title: 'Sonuç', copy: 'Puan, sıralama ve alan bilgisi okunur.' },
+        { title: 'Hedef', copy: 'Öğrencinin bölüm beklentisi netleştirilir.' },
+        { title: 'Liste', copy: 'Güvenli ve dengeli tercih aralığı kurulur.' },
+        { title: 'Karar', copy: 'Veli ve öğrenci süreci bilinçli tamamlar.' }
+      ],
+      successCards: yksSuccess
+    }
+  };
+
+  window.VKM_DECK_CONFIG = configs[window.VKM_DECK_ID];
+})();

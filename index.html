@@ -638,19 +638,19 @@
         </div>
         
         <div class="menu-grid">
-            <button class="menu-btn blue" onclick="showPresentation('6-sinif')">
+            <button class="menu-btn blue" onclick="openHtmlPresentation('6-sinif')">
                 <div class="icon">6️⃣</div>
                 <div class="text">
                     <div class="title">6. Sınıf Sunumu</div>
-                    <div class="subtitle">18 slayt</div>
+                    <div class="subtitle">18 slayt · Yeni</div>
                 </div>
             </button>
 
-            <button class="menu-btn purple" onclick="showPresentation('7-sinif')">
+            <button class="menu-btn purple" onclick="openHtmlPresentation('7-sinif')">
                 <div class="icon">7️⃣</div>
                 <div class="text">
                     <div class="title">7. Sınıf Sunumu</div>
-                    <div class="subtitle">18 slayt</div>
+                    <div class="subtitle">18 slayt · Yeni</div>
                 </div>
             </button>
 
@@ -662,27 +662,27 @@
                 </div>
             </button>
 
-            <button class="menu-btn orange" onclick="showPresentation('10-sinif')">
+            <button class="menu-btn orange" onclick="openHtmlPresentation('10-sinif')">
                 <div class="icon">🔟</div>
                 <div class="text">
                     <div class="title">10. Sınıf Veli Sunumu</div>
-                    <div class="subtitle">18 slayt</div>
+                    <div class="subtitle">18 slayt · Yeni</div>
                 </div>
             </button>
 
-            <button class="menu-btn pink" onclick="showPresentation('11-sinif')">
+            <button class="menu-btn pink" onclick="openHtmlPresentation('11-sinif')">
                 <div class="icon">1️⃣1️⃣</div>
                 <div class="text">
                     <div class="title">11. Sınıf Veli Sunumu</div>
-                    <div class="subtitle">18 slayt</div>
+                    <div class="subtitle">18 slayt · Yeni</div>
                 </div>
             </button>
 
-            <button class="menu-btn purple" onclick="showPresentation('yks')">
+            <button class="menu-btn purple" onclick="openHtmlPresentation('yks')">
                 <div class="icon">🎓</div>
                 <div class="text">
                     <div class="title">YKS Veli Sunumu</div>
-                    <div class="subtitle">18 slayt</div>
+                    <div class="subtitle">18 slayt · Yeni</div>
                 </div>
             </button>
         </div>
@@ -805,6 +805,31 @@
 
         // HTML tabanlı sunumlar (kendi içinde slayt navigasyonu olan tek dosya)
         const htmlPresentations = {
+            '6-sinif': {
+                title: '6. Sınıf Sunumu',
+                icon: '6️⃣',
+                url: 'presentations/6-sinif/01_sunum_6_sinif.html'
+            },
+            '7-sinif': {
+                title: '7. Sınıf Sunumu',
+                icon: '7️⃣',
+                url: 'presentations/7-sinif/01_sunum_7_sinif.html'
+            },
+            '10-sinif': {
+                title: '10. Sınıf Veli Sunumu',
+                icon: '🔟',
+                url: 'presentations/10-sinif/01_sunum_10_sinif.html'
+            },
+            '11-sinif': {
+                title: '11. Sınıf Veli Sunumu',
+                icon: '1️⃣1️⃣',
+                url: 'presentations/11-sinif/01_sunum_11_sinif.html'
+            },
+            'yks': {
+                title: 'YKS Veli Sunumu',
+                icon: '🎓',
+                url: 'presentations/yks/01_sunum_yks.html'
+            },
             'vkm-pusulam': {
                 title: 'VKM Pusulam',
                 icon: '🧭',
