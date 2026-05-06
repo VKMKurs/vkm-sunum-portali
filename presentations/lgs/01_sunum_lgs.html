@@ -259,6 +259,7 @@
   .deco-num { aria-hidden: true; }
 
   /* LGS deck visual refresh: light VKM brand system */
+  deck-stage { --deck-stage-bg: #f6f7fb; }
   html, body { background: #f6f7fb; }
   body { color: #17212b; }
 
@@ -564,28 +565,28 @@
     <div class="step-tag">03 / 15 · Takvim</div>
   </div>
 
-  <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
-    <div class="w-[680px]">
+  <div class="absolute inset-0 flex items-center px-24 gap-14 pt-24">
+    <div class="w-[760px]">
       <div class="step-tag mb-6">Çalışma Takvimi</div>
       <h2 class="font-display font-black text-[80px] leading-[0.95] mb-8">
         Yıl boyunca<br/>
         <span class="text-grad-red">planlı çalışma.</span>
       </h2>
       <p class="text-2xl text-white/70 leading-[1.5] mb-8">
-        Kursun başlangıcından LGS gününe — her dönem belirli, her tatilin son üç günü ek tekrar için ayrılmış.
+        Kursun başlangıcından sınav gününe kadar ana dönem akışı nettir; sömestrin ilk haftası yoğunlaştırılmış kamp, sınav sonrası tercih danışmanlığı yapılır.
       </p>
       <div class="space-y-4">
         <div class="flex items-start gap-4">
           <div class="w-7 h-7 rounded-full grad-red grid place-items-center text-xs font-black mt-0.5 shrink-0">A</div>
-          <div class="text-xl text-white/80">1. ve 2. ara tatilde son 3 gün ek tekrar planlıyoruz.</div>
+          <div class="text-xl text-white/80">Dönem boyunca ders, etüt, deneme ve takip aynı çizgide ilerler.</div>
         </div>
         <div class="flex items-start gap-4">
           <div class="w-7 h-7 rounded-full grad-red grid place-items-center text-xs font-black mt-0.5 shrink-0">B</div>
-          <div class="text-xl text-white/80">Sömestr'da 2. hafta yoğunlaşma haftasıdır.</div>
+          <div class="text-xl text-white/80">Sömestrin ilk haftasında yoğunlaştırılmış kamp yapılır.</div>
         </div>
         <div class="flex items-start gap-4">
           <div class="w-7 h-7 rounded-full grad-red grid place-items-center text-xs font-black mt-0.5 shrink-0">C</div>
-          <div class="text-xl text-white/80">Diğer tatil günlerini öğrencilerin dinlenme ve kişisel tekrarları için ayırıyoruz.</div>
+          <div class="text-xl text-white/80">Sınavdan sonra tercih dönemi için birebir danışmanlık süreci başlar.</div>
         </div>
       </div>
     </div>
@@ -593,16 +594,16 @@
     <div class="flex-1 flex justify-center">
       <div class="relative">
         <div class="absolute -inset-8 grad-red rounded-[40px] blur-3xl opacity-20"></div>
-        <div class="relative bg-[#161c26] rounded-[28px] border border-white/10 p-8 w-[640px] shadow-2xl">
+        <div class="relative bg-[#161c26] rounded-[28px] border border-white/10 p-8 w-[720px] shadow-2xl">
           <div class="flex items-center justify-between mb-6 pb-5 border-b border-white/10">
             <div>
               <div class="font-mono text-xs text-vkm-coral uppercase tracking-widest">Yıllık Akış</div>
-              <div class="font-display font-extrabold text-2xl mt-1">Eylül → Haziran</div>
+              <div class="font-display font-extrabold text-2xl mt-1">Eylül → Tercih Dönemi</div>
             </div>
-            <div class="chip-mono text-xs">10 ay</div>
+            <div class="chip-mono text-xs">sezon akışı</div>
           </div>
 
-          <div class="relative pl-8 space-y-5">
+          <div class="relative pl-8 space-y-6">
             <div class="absolute left-[15px] top-3 bottom-3 w-0.5 bg-gradient-to-b from-vkm-red via-vkm-coral to-emerald-400"></div>
 
             <div class="relative">
@@ -611,17 +612,12 @@
               <div class="text-lg font-semibold">Kursun Başlangıcı</div>
             </div>
             <div class="relative">
-              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-vkm-coral grid place-items-center text-[11px] font-black ring-4 ring-[#161c26]">2</div>
-              <div class="text-sm font-mono text-vkm-coral mb-1">ARA TATİLLER</div>
-              <div class="text-lg font-semibold">Son 3 gün ek tekrar</div>
-            </div>
-            <div class="relative">
-              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-vkm-yellow grid place-items-center text-[11px] font-black text-vkm-ink ring-4 ring-[#161c26]">3</div>
+              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-vkm-yellow grid place-items-center text-[11px] font-black text-vkm-ink ring-4 ring-[#161c26]">2</div>
               <div class="text-sm font-mono text-vkm-yellow mb-1">SÖMESTR</div>
-              <div class="text-lg font-semibold">2. Hafta yoğunlaşma</div>
+              <div class="text-lg font-semibold">1. Hafta yoğunlaştırılmış kamp</div>
             </div>
             <div class="relative">
-              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-vkm-red grid place-items-center text-[11px] font-black glow-red ring-4 ring-[#161c26]">4</div>
+              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-vkm-red grid place-items-center text-[11px] font-black glow-red ring-4 ring-[#161c26]">3</div>
               <div class="text-sm font-mono text-vkm-coral mb-1">HAZİRAN</div>
               <div class="text-lg font-semibold">LGS Kampı · son sprint</div>
             </div>
@@ -631,9 +627,9 @@
               <div class="text-lg font-semibold">LGS</div>
             </div>
             <div class="relative">
-              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-vkm-teal grid place-items-center text-[11px] font-black ring-4 ring-[#161c26]">6</div>
-              <div class="text-sm font-mono text-vkm-teal mb-1">15 HAZ — 19 AĞU</div>
-              <div class="text-lg font-semibold">Tatil + Yaz Ödevi</div>
+              <div class="absolute -left-8 top-1 w-7 h-7 rounded-full bg-vkm-teal grid place-items-center text-[11px] font-black ring-4 ring-[#161c26]">4</div>
+              <div class="text-sm font-mono text-vkm-teal mb-1">LGS SONRASI</div>
+              <div class="text-lg font-semibold">Tercih Dönemi</div>
             </div>
           </div>
         </div>
@@ -663,11 +659,11 @@
     <div class="w-[640px]">
       <div class="step-tag mb-6">Dersler</div>
       <h2 class="font-display font-black text-[88px] leading-[0.95] mb-8">
-        LGS'in altı dersi,<br/>
-        <span class="text-grad-red">artı destek.</span>
+        Temel dersler,<br/>
+        <span class="text-grad-red">güçlü destekle ilerler.</span>
       </h2>
       <p class="text-2xl text-white/70 leading-[1.5] mb-8">
-        LGS müfredatının altı temel dersi, mantık-muhakeme çalışmaları ve günlük etüt programıyla birlikte yürür.
+        Matematik, Türkçe, Fen, İnkılap, Din Kültürü ve İngilizce; mantık-muhakeme çalışmaları ve etüt desteğiyle birlikte yürür.
       </p>
       <div class="space-y-2.5">
         <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-vkm-red"></span>Konu anlatımı + soru çözümü</div>
@@ -753,97 +749,68 @@
         <span class="text-grad-red">akşam VKM.</span>
       </h2>
       <p class="text-2xl text-white/70 leading-[1.5] mb-8">
-        17:00–20:00 ders bloğu, hafta sonu yoğun çalışma. Boş kareler kişisel çalışma için planlanmıştır.
+        Hafta içi dersler 17:10–20:20 arasında yapılır. Bu örnekte hafta içi iki ders günü, bir etüt günü, cumartesi ders ve pazar deneme akışı gösterilmiştir.
       </p>
       <div class="space-y-3">
-        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-1">▸</span><span class="text-lg text-white/80">Hafta içi 3 ders bloğu + her gün etüt</span></div>
-        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-1">▸</span><span class="text-lg text-white/80">Cumartesi deneme + Pazar tekrar & analiz</span></div>
-        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-1">▸</span><span class="text-lg text-white/80">Boş kareler kişisel çalışma için planlanmıştır</span></div>
+        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-1">▸</span><span class="text-lg text-white/80">Hafta içi 2 gün ders bloğu</span></div>
+        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-1">▸</span><span class="text-lg text-white/80">Hafta içi 1 gün etüt ve birebir destek</span></div>
+        <div class="flex items-start gap-3"><span class="text-vkm-coral text-xl mt-1">▸</span><span class="text-lg text-white/80">Cumartesi ders, pazar LGS denemesi</span></div>
       </div>
     </div>
 
     <div class="flex-1 flex justify-center">
       <div class="relative">
         <div class="absolute -inset-8 grad-red rounded-[40px] blur-3xl opacity-20"></div>
-        <div class="relative bg-[#161c26] rounded-[28px] border border-white/10 p-6 w-[760px] shadow-2xl">
+        <div class="relative bg-[#161c26] rounded-[28px] border border-white/10 p-7 w-[840px] shadow-2xl">
           <div class="flex items-center justify-between mb-4">
             <div>
               <div class="font-mono text-xs text-white/50 uppercase tracking-widest">Haftalık Program</div>
               <div class="font-display font-extrabold text-2xl mt-1">8-A · Örnek</div>
             </div>
             <div class="flex items-center gap-2">
-              <div class="chip-mono text-xs">17:00–20:00</div>
+              <div class="chip-mono text-xs">17:10–20:20</div>
               <div class="chip-mono text-xs flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>aktif</div>
             </div>
           </div>
 
-          <div class="grid grid-cols-8 gap-1.5 text-xs">
-            <div></div>
-            <div class="text-center font-mono text-white/55 py-2">17:00</div>
-            <div class="text-center font-mono text-white/55 py-2">17:50</div>
+          <div class="grid grid-cols-[70px_repeat(5,1fr)] gap-1.5 text-[12px]">
+            <div class="text-center font-mono text-white/45 py-2">Gün</div>
+            <div class="text-center font-mono text-white/55 py-2">17:10</div>
+            <div class="text-center font-mono text-white/55 py-2">18:00</div>
             <div class="text-center font-mono text-white/55 py-2">18:50</div>
-            <div class="text-center font-mono text-white/55 py-2">19:30</div>
-            <div class="text-center font-mono text-white/55 py-2">CMT</div>
-            <div class="text-center font-mono text-white/55 py-2">PAZ</div>
-            <div></div>
+            <div class="text-center font-mono text-white/55 py-2">19:40</div>
+            <div class="text-center font-mono text-white/55 py-2">20:20</div>
           </div>
 
           <div class="space-y-1.5">
-            <!-- Sa -->
-            <div class="grid grid-cols-8 gap-1.5">
+            <div class="grid grid-cols-[70px_repeat(5,1fr)] gap-1.5">
               <div class="text-center font-mono text-white/60 py-2 text-xs">Sa</div>
-              <div class="bg-vkm-teal/15 border border-vkm-teal/30 rounded p-2 text-[11px] font-semibold text-center">TÜRKÇE</div>
-              <div class="bg-purple-500/15 border border-purple-500/30 rounded p-2 text-[11px] font-semibold text-center">MANTIK</div>
-              <div class="bg-vkm-red/15 border border-vkm-red/30 rounded p-2 text-[11px] font-semibold text-center">MAT</div>
-              <div></div>
-              <div class="bg-emerald-500/15 border border-emerald-500/30 rounded p-2 text-[11px] font-semibold text-center row-span-2">DENEME</div>
-              <div class="bg-vkm-yellow/15 border border-vkm-yellow/30 rounded p-2 text-[11px] font-semibold text-center row-span-2">TEKRAR</div>
-              <div></div>
+              <div class="bg-vkm-red/15 border border-vkm-red/30 rounded p-2 text-[11px] font-semibold text-center col-span-2">MAT</div>
+              <div class="bg-vkm-coral/15 border border-vkm-coral/30 rounded p-2 text-[11px] font-semibold text-center col-span-3">İNKILAP</div>
             </div>
-            <!-- Ça -->
-            <div class="grid grid-cols-8 gap-1.5">
+            <div class="grid grid-cols-[70px_repeat(5,1fr)] gap-1.5">
               <div class="text-center font-mono text-white/60 py-2 text-xs">Ça</div>
-              <div class="bg-vkm-coral/15 border border-vkm-coral/30 rounded p-2 text-[11px] font-semibold text-center col-span-2">SORU ÇÖZÜMÜ</div>
-              <div class="bg-vkm-yellow/20 border border-vkm-yellow/50 rounded p-2 text-[11px] font-semibold text-center text-vkm-yellow">ETÜT</div>
-              <div></div>
-              <div></div>
-              <div></div>
+              <div class="bg-emerald-500/15 border border-emerald-500/30 rounded p-2 text-[11px] font-semibold text-center col-span-2">FEN</div>
+              <div class="bg-vkm-teal/15 border border-vkm-teal/30 rounded p-2 text-[11px] font-semibold text-center col-span-3">TÜRKÇE</div>
             </div>
-            <!-- Pe -->
-            <div class="grid grid-cols-8 gap-1.5">
+            <div class="grid grid-cols-[70px_repeat(5,1fr)] gap-1.5">
               <div class="text-center font-mono text-white/60 py-2 text-xs">Pe</div>
-              <div></div>
-              <div class="bg-vkm-coral/15 border border-vkm-coral/30 rounded p-2 text-[11px] font-semibold text-center">İNK</div>
-              <div class="bg-emerald-500/15 border border-emerald-500/30 rounded p-2 text-[11px] font-semibold text-center">FEN</div>
-              <div></div>
-              <div></div>
-              <div></div>
+              <div class="bg-vkm-yellow/20 border border-vkm-yellow/50 rounded p-2 text-[11px] font-semibold text-center text-vkm-yellow col-span-5">ETÜT · SORU ÇÖZÜMÜ · BİREBİR DESTEK</div>
             </div>
-            <!-- Cu -->
-            <div class="grid grid-cols-8 gap-1.5">
-              <div class="text-center font-mono text-white/60 py-2 text-xs">Cu</div>
-              <div></div>
-              <div class="bg-vkm-red/15 border border-vkm-red/30 rounded p-2 text-[11px] font-semibold text-center">MAT</div>
-              <div class="bg-purple-500/15 border border-purple-500/30 rounded p-2 text-[11px] font-semibold text-center">İNG</div>
-              <div class="bg-vkm-yellow/20 border border-vkm-yellow/40 rounded p-2 text-[11px] font-semibold text-center">DİN</div>
-              <div></div>
-              <div></div>
+            <div class="grid grid-cols-[70px_repeat(5,1fr)] gap-1.5">
+              <div class="text-center font-mono text-white/60 py-2 text-xs">Cmt</div>
+              <div class="bg-purple-500/15 border border-purple-500/30 rounded p-2 text-[11px] font-semibold text-center col-span-2">İNGİLİZCE</div>
+              <div class="bg-vkm-red/15 border border-vkm-red/30 rounded p-2 text-[11px] font-semibold text-center col-span-3">MATEMATİK · DERS BLOĞU</div>
             </div>
-            <!-- Pa -->
-            <div class="grid grid-cols-8 gap-1.5">
-              <div class="text-center font-mono text-white/60 py-2 text-xs">Pa</div>
-              <div class="bg-emerald-500/15 border border-emerald-500/30 rounded p-2 text-[11px] font-semibold text-center col-span-2">LGS DENEMESİ</div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+            <div class="grid grid-cols-[70px_repeat(5,1fr)] gap-1.5">
+              <div class="text-center font-mono text-white/60 py-2 text-xs">Paz</div>
+              <div class="bg-emerald-500/15 border border-emerald-500/30 rounded p-2 text-[11px] font-semibold text-center col-span-5">LGS DENEMESİ · ANALİZ</div>
             </div>
           </div>
 
           <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
-            <div class="font-mono text-[11px] text-white/50">boş kareler · kişisel çalışma</div>
-            <div class="font-mono text-[11px] text-vkm-coral">📌 etüt = birebir destek</div>
+            <div class="font-mono text-[11px] text-white/50">hafta içi 2 ders günü · 1 etüt günü</div>
+            <div class="font-mono text-[11px] text-vkm-coral">📌 cumartesi ders · pazar sınav</div>
           </div>
         </div>
       </div>
@@ -1262,7 +1229,7 @@
         </div>
         <div class="flex-1">
           <div class="font-mono text-[10px] text-vkm-coral mb-1">📌 SET 01</div>
-          <div class="font-display font-extrabold text-xl">Ara tatil kamp kitapları</div>
+          <div class="font-display font-extrabold text-xl">Sömestr kamp kitapları</div>
         </div>
       </div>
       <div class="glow-card p-7 flex items-center gap-4">
@@ -1473,31 +1440,31 @@
     <div class="grid grid-cols-4 gap-4 flex-1">
       <div class="glow-card glow-card-red p-6 flex flex-col justify-between">
         <div>
-          <div class="font-mono text-[10px] text-vkm-coral uppercase tracking-widest mb-2">★ Fen Lisesi</div>
+          <div class="font-mono text-[10px] text-vkm-coral uppercase tracking-widest mb-2">★ Özel Lise</div>
           <div class="font-display font-extrabold text-2xl leading-tight">Robert Kolej</div>
         </div>
-        <div class="text-sm text-white/55 mt-3">Çapa Fen · Hacı Şöhret · Doğan Cüceloğlu</div>
+        <div class="text-sm text-white/55 mt-3">Seçkin lise hedeflerinde güçlü rehberlik</div>
       </div>
       <div class="glow-card p-6 flex flex-col justify-between" style="border-color:rgba(0,188,212,0.3)">
         <div>
           <div class="font-mono text-[10px] text-vkm-teal uppercase tracking-widest mb-2">★ Anadolu Lisesi</div>
           <div class="font-display font-extrabold text-2xl leading-tight">Kadıköy Anadolu</div>
         </div>
-        <div class="text-sm text-white/55 mt-3">Yeşilköy · Hüseyin Yıldız · Gazi Anadolu</div>
+        <div class="text-sm text-white/55 mt-3">Anadolu lisesi hedeflerinde düzenli takip</div>
       </div>
       <div class="glow-card p-6 flex flex-col justify-between" style="border-color:rgba(255,202,40,0.3)">
         <div>
-          <div class="font-mono text-[10px] text-vkm-yellow uppercase tracking-widest mb-2">★ Özel Lise</div>
-          <div class="font-display font-extrabold text-2xl leading-tight">Tevitöl Özel</div>
+          <div class="font-mono text-[10px] text-vkm-yellow uppercase tracking-widest mb-2">★ Köklü Lise</div>
+          <div class="font-display font-extrabold text-2xl leading-tight">İstanbul Erkek Lisesi</div>
         </div>
-        <div class="text-sm text-white/55 mt-3">Avusturya Lisesi · Alkev Fen (Burslu)</div>
+        <div class="text-sm text-white/55 mt-3">Yüksek hedefler için planlı hazırlık</div>
       </div>
       <div class="glow-card p-6 flex flex-col justify-between" style="border-color:rgba(34,197,94,0.3)">
         <div>
-          <div class="font-mono text-[10px] text-emerald-400 uppercase tracking-widest mb-2">★ Diğer Liseler</div>
-          <div class="font-display font-extrabold text-2xl leading-tight">Işık · Sabahattin Zaim</div>
+          <div class="font-mono text-[10px] text-emerald-400 uppercase tracking-widest mb-2">★ Fen Lisesi</div>
+          <div class="font-display font-extrabold text-2xl leading-tight">Çapa Fen Lisesi</div>
         </div>
-        <div class="text-sm text-white/55 mt-3">Hacı Bektaş Veli · ve daha fazlası</div>
+        <div class="text-sm text-white/55 mt-3">Fen lisesi hedeflerinde güçlü sonuçlar</div>
       </div>
     </div>
 
