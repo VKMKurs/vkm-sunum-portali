@@ -5,7 +5,7 @@
 
   const logoHorizontal = deck.logoHorizontal || '../lgs/assets/logo-horizontal-transparent.png';
   const logoCover = deck.logoCover || '../lgs/assets/logo-cover.png';
-  const total = 18;
+  const total = 12;
   const palette = deck.palette || ['#e31e1b', '#00bcd4', '#ffca28', '#16b886', '#8e44ec', '#2498f2'];
 
   stage.style.setProperty('--deck-stage-bg', '#f6f7fb');
@@ -458,21 +458,15 @@
   const slides = [
     ['Kapak', coverSlide],
     ['VKM Yanınızda', supportSlide],
-    ['Takvim', timelineSlide],
     ['Dersler', coursesSlide],
     ['Örnek Program', programSlide],
     ['Deneme Kulübü', examClubSlide],
-    ['VKM Uygulaması', appSlide],
     ['Sınav Analizi', analysisSlide],
-    ['Deneme Raporları', reportSlide],
     ['Ödev Takibi', homeworkSlide],
-    ['Hedef Soru', targetSlide],
-    ['Genel Değerlendirme', evaluationSlide],
-    ['Kaynak Kitaplar', resourcesSlide],
     ['Öğretmen Kadrosu', teachersSlide],
+    ['Kaynak Kitaplar', resourcesSlide],
     [deck.guidanceKicker || 'Rehberlik', guidanceSlide],
     ['Başarı', successSlide],
-    ['Erken Kayıt', registrationSlide],
     ['Kapanış', thanksSlide]
   ];
 
