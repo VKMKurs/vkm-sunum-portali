@@ -284,6 +284,191 @@
       ],
       successCards: yksSuccess
     },
+    'ozel-ders': {
+      ...common,
+      title: 'VKM Özel Ders',
+      shortTitle: 'Özel Ders',
+      coverTitle: 'VKM Özel Ders',
+      coverMark: 'Ö',
+      coverSmall: 'Birebir',
+      programTitle: 'Birebir Destek Sistemi',
+      accent: '#1f6feb',
+      accentSoft: '#5a9bff',
+      slides: [
+        ['Kapak', 'cover'],
+        ['Neden Özel Ders', 'support'],
+        ['Hangi Derslerde', 'courses'],
+        ['Örnek Program', 'program'],
+        ['Öğretmen Kadrosu', 'teachers'],
+        ['Süreç', 'report'],
+        ['Ödev Takibi', 'homework'],
+        ['Rehberlik', 'guidance'],
+        ['Nasıl Başlanır', 'registration'],
+        ['Kapanış', 'thanks']
+      ],
+      promise: 'VKM Özel Ders, öğrencinin eksik kalan başlıklarını birebir öğretmenle, sade ve takip edilebilir biçimde kapatır.',
+      promiseBullets: [
+        'Öğrencinin gerçek seviyesi tek tek görülür.',
+        'Eksik başlıklar haftalık plana bağlanır.',
+        'Veli, süreci raporla takip eder.'
+      ],
+      promiseMetrics: [
+        { value: 'Tanışma', label: 'Seviye ve ihtiyaç tespiti' },
+        { value: 'Plan', label: 'Konu ve hedef belirleme' },
+        { value: 'Ders', label: 'Birebir konu ve soru çözümü' },
+        { value: 'Rapor', label: 'Veli ve öğrenci bilgilendirmesi' }
+      ],
+      courseTitle: 'Her seviye için birebir destek.',
+      courseLead: 'İlkokuldan üniversite hazırlığına kadar her sınıf seviyesinde, öğrencinin ihtiyacına göre birebir veya küçük grup özel ders düzenlenir.',
+      courseBullets: [
+        'Okul dersleri ve yazılı hazırlığı desteklenir.',
+        'Eksik konular kısa sürede kapatılır.',
+        'Sınav öncesi yoğun program kurulur.'
+      ],
+      courses: [
+        { name: 'Matematik', icon: 'M', note: 'Tüm seviyelerde temel ve problem desteği.' },
+        { name: 'Fen / Fizik / Kimya / Biyoloji', icon: 'F', note: 'Kavram, deney ve soru pratiği.' },
+        { name: 'Türkçe / Edebiyat', icon: 'T', note: 'Paragraf, anlam ve yazılı desteği.' },
+        { name: 'İngilizce', icon: 'E', note: 'Seviye tespiti ve birebir konuşma pratiği.' },
+        { name: 'LGS / YKS', icon: 'S', note: 'Sınav odaklı hedefli çalışma.' },
+        { name: 'İhtiyaca Özel', icon: '+', note: 'Talep edilen ders için öğretmen eşleştirilir.' }
+      ],
+      programLead: 'Özel ders programı öğrencinin okul temposuna göre planlanır; gün ve saat veliyle birlikte belirlenir.',
+      programBullets: [
+        'Ders günleri öğrencinin uygun saatine göre kurulur.',
+        'Haftalık 1, 2 veya 3 ders saati alternatifi sunulur.',
+        'İhtiyaç değişirse program yıl içinde güncellenir.'
+      ],
+      programClass: 'Birebir · Örnek Hafta',
+      programRows: [
+        { day: 'Pazartesi', time: '17:30-18:50', title: 'Matematik', note: 'Konu + soru çözümü' },
+        { day: 'Çarşamba', time: '17:30-18:50', title: 'Fen / Fizik', note: 'Eksik kapatma' },
+        { day: 'Cuma', time: '17:30-18:50', title: 'Tekrar', note: 'Haftalık özet ve test' },
+        { day: 'Cumartesi', time: 'Esnek', title: 'Yazılı Hazırlık', note: 'Dönemsel yoğunlaştırma' }
+      ],
+      reportSteps: [
+        { title: 'Tanışma', copy: 'Seviye ve ihtiyaç birlikte ölçülür.' },
+        { title: 'Plan', copy: 'Eksik konular ve hedefler netleştirilir.' },
+        { title: 'Ders', copy: 'Birebir veya küçük grup tempo ile ilerler.' },
+        { title: 'Geri Bildirim', copy: 'Veli düzenli raporla süreci görür.' }
+      ],
+      homeworkCards: [
+        { kicker: 'Birebir', title: 'Kişisel ödev', note: 'Ders sonunda öğrenciye özel çalışma verilir.' },
+        { kicker: 'Kontrol', title: 'Haftalık takip', note: 'Tamamlanan ve eksik kalan kısımlar görüşülür.' },
+        { kicker: 'Kaynak', title: 'Uygun materyal', note: 'Konuya ve seviyeye göre kitap-test seçilir.' },
+        { kicker: 'Esneklik', title: 'Tempo ayarı', note: 'Öğrenci zorlanırsa plan yumuşatılır.' }
+      ],
+      guidanceKicker: 'Veli İletişimi',
+      guidanceTitle: 'Veli süreci yakından takip eder.',
+      guidanceLead: 'Özel ders, sadece ders saati değildir; veli düzenli geri bildirim alır ve sürecin neresinde olduğunu görür.',
+      guidanceBullets: [
+        'Her ders sonrası kısa not paylaşılır.',
+        'Aylık genel değerlendirme yapılır.',
+        'İhtiyaç olursa program revize edilir.'
+      ],
+      guidanceSteps: [
+        { title: 'Ders Sonu', copy: 'Kısa not öğrencinin durumunu özetler.' },
+        { title: 'Haftalık', copy: 'Ödev ve devam bilgisi görüşülür.' },
+        { title: 'Aylık', copy: 'Genel gelişim veliyle paylaşılır.' },
+        { title: 'Dönem Sonu', copy: 'Yeni dönem için plan birlikte kurulur.' }
+      ],
+      registrationBullets: [
+        'Tanışma görüşmesi ücretsizdir.',
+        'Uygun öğretmen ve gün hızlıca eşleştirilir.',
+        'İlk hafta deneme dersleri ile süreç başlar.'
+      ],
+      registrationMetrics: [
+        { value: 'Görüşme', label: 'Ücretsiz tanışma' },
+        { value: 'Eşleşme', label: 'Uygun öğretmen seçimi' },
+        { value: 'Başlangıç', label: 'Hızlı program kurulumu' },
+        { value: 'Takip', label: 'Veli ile düzenli iletişim' }
+      ],
+      thanksLine: 'Öğrencinizin eksik kalan başlıklarını birlikte kapatalım.'
+    },
+    'deneme-kulubu': {
+      ...common,
+      title: 'VKM Deneme Kulübü',
+      shortTitle: 'Deneme Kulübü',
+      coverTitle: 'VKM Deneme Kulübü',
+      coverMark: 'D',
+      coverSmall: 'Sınav Pratiği',
+      programTitle: 'Sınav Pratiği Sistemi',
+      accent: '#16b886',
+      accentSoft: '#5fd1ad',
+      slides: [
+        ['Kapak', 'cover'],
+        ['Neden Deneme Kulübü', 'support'],
+        ['Deneme Akışı', 'examClub'],
+        ['Sınav Analizi', 'analysis'],
+        ['Deneme Raporları', 'report'],
+        ['Öğretmen Kadrosu', 'teachers'],
+        ['Eksik Konu Takibi', 'homework'],
+        ['Sonrası Rehberlik', 'guidance'],
+        ['Kayıt', 'registration'],
+        ['Kapanış', 'thanks']
+      ],
+      promise: 'VKM Deneme Kulübü, öğrencinin sınav pratiğini düzenli ritimle kurar; her deneme bir sonraki haftanın çalışma planına dönüşür.',
+      promiseBullets: [
+        'Düzenli sınav atmosferi prova edilir.',
+        'Her deneme analiz raporuyla okunur.',
+        'Eksik başlıklar haftalık plana bağlanır.'
+      ],
+      promiseMetrics: [
+        { value: 'Deneme', label: 'Düzenli sınav pratiği' },
+        { value: 'Analiz', label: 'Ders ve kazanım okuması' },
+        { value: 'Rapor', label: 'Veliye sade özet' },
+        { value: 'Plan', label: 'Bir sonraki hafta hedefi' }
+      ],
+      examCards: [
+        { kicker: 'LGS', title: '8. Sınıf', note: 'MEB takvimine uyumlu LGS denemeleri.' },
+        { kicker: 'YKS', title: '12 / Mezun', note: 'TYT ve AYT denemeleri ayrı ayrı düzenlenir.' },
+        { kicker: 'Hazırlık', title: '9-10-11', note: 'Seviyeye uygun TYT temel denemeleri yapılır.' },
+        { kicker: 'Ortaokul', title: '6 / 7', note: 'Erken sınav alışkanlığı kazandıran denemeler.' }
+      ],
+      analysisBullets: [
+        'Net, yanlış ve boşlar ders/kazanım düzeyinde okunur.',
+        'Gelişim çizgisi tek sınavla değil dönem boyunca takip edilir.',
+        'Zayıf başlıklar sonraki haftanın çalışma planına bağlanır.'
+      ],
+      reportSteps: [
+        { title: 'Sınav', copy: 'Deneme sınav atmosferinde uygulanır.' },
+        { title: 'Analiz', copy: 'Ders ders, kazanım bazında okunur.' },
+        { title: 'Rapor', copy: 'Veliye sade ve anlaşılır özet sunulur.' },
+        { title: 'Plan', copy: 'Eksikler bir sonraki haftaya bağlanır.' }
+      ],
+      homeworkCards: [
+        { kicker: 'Eksik', title: 'Konu listesi', note: 'Deneme sonrası eksik kazanımlar çıkarılır.' },
+        { kicker: 'Plan', title: 'Haftalık ödev', note: 'Eksikler ödev olarak öğrenciye verilir.' },
+        { kicker: 'Tekrar', title: 'Hedef test', note: 'Aynı konudan ek pratik yapılır.' },
+        { kicker: 'Kontrol', title: 'Yeni deneme', note: 'Gelişim bir sonraki denemede görülür.' }
+      ],
+      guidanceKicker: 'Sonrası Rehberlik',
+      guidanceTitle: 'Deneme sonucu yön bilgisidir.',
+      guidanceLead: 'Sonuçlar puan olarak kalmaz; veli ve öğrenci, neyi nasıl çalışacağını net biçimde görür.',
+      guidanceBullets: [
+        'Puan değil, gelişim eğilimi takip edilir.',
+        'Veli sade ve uygulanabilir özet alır.',
+        'Plan her hafta güncellenir.'
+      ],
+      guidanceSteps: [
+        { title: 'Sonuç', copy: 'Puan ve net bilgisi okunur.' },
+        { title: 'Yorum', copy: 'Hangi başlıklar güçlü, hangileri zayıf görülür.' },
+        { title: 'Plan', copy: 'Bir sonraki hafta hedefli açılır.' },
+        { title: 'Kontrol', copy: 'Yeni denemede ilerleme izlenir.' }
+      ],
+      registrationBullets: [
+        'Tek deneme veya paket katılım seçenekleri vardır.',
+        'Öğrenci kayıt olmadan da deneme deneyebilir.',
+        'Analiz ve rapor her katılımcıya sunulur.'
+      ],
+      registrationMetrics: [
+        { value: 'Tek', label: 'Sadece deneme katılımı' },
+        { value: 'Paket', label: 'Dönem boyunca ritim' },
+        { value: 'Analiz', label: 'Her sınava özel rapor' },
+        { value: 'Veli', label: 'Bilgilendirme görüşmeleri' }
+      ],
+      thanksLine: 'Sınav pratiğini birlikte düzene oturtalım.'
+    },
     'yks': {
       ...common,
       title: 'YKS Veli Sunumu',
