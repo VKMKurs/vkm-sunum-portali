@@ -601,7 +601,6 @@
                     <div class="title">Sınıf Sunumları</div>
                     <div class="subtitle">6, 7, 8, 10, 11 & YKS</div>
                 </div>
-                <div class="badge">6 hazır</div>
             </button>
             
             <button class="menu-btn green" onclick="showCategory('hizmetler')">
@@ -634,7 +633,6 @@
         
         <div class="category-header">
             <h1>📖 Sınıf Sunumları</h1>
-            <div class="count">6 / 6 hazır</div>
         </div>
         
         <div class="menu-grid">
@@ -642,7 +640,6 @@
                 <div class="icon">6️⃣</div>
                 <div class="text">
                     <div class="title">6. Sınıf Sunumu</div>
-                    <div class="subtitle">12 slayt · Yeni</div>
                 </div>
             </button>
 
@@ -650,7 +647,6 @@
                 <div class="icon">7️⃣</div>
                 <div class="text">
                     <div class="title">7. Sınıf Sunumu</div>
-                    <div class="subtitle">12 slayt · Yeni</div>
                 </div>
             </button>
 
@@ -658,7 +654,7 @@
                 <div class="icon">🎯</div>
                 <div class="text">
                     <div class="title">LGS Veli Sunumu</div>
-                    <div class="subtitle">8. Sınıf • 15 slayt · Yeni</div>
+                    <div class="subtitle">8. Sınıf</div>
                 </div>
             </button>
 
@@ -666,7 +662,6 @@
                 <div class="icon">🔟</div>
                 <div class="text">
                     <div class="title">10. Sınıf Veli Sunumu</div>
-                    <div class="subtitle">12 slayt · Yeni</div>
                 </div>
             </button>
 
@@ -674,7 +669,6 @@
                 <div class="icon">1️⃣1️⃣</div>
                 <div class="text">
                     <div class="title">11. Sınıf Veli Sunumu</div>
-                    <div class="subtitle">12 slayt · Yeni</div>
                 </div>
             </button>
 
@@ -682,7 +676,6 @@
                 <div class="icon">🎓</div>
                 <div class="text">
                     <div class="title">YKS Veli Sunumu</div>
-                    <div class="subtitle">12 slayt · Yeni</div>
                 </div>
             </button>
         </div>
@@ -695,12 +688,11 @@
         <button class="back-btn" onclick="showDashboard()">← Ana Menü</button>
         <div class="category-header">
             <h1>🎁 Hizmet Sunumları</h1>
-            <div class="count">1 / 3 hazır</div>
         </div>
         <div class="menu-grid">
             <button class="menu-btn purple" onclick="openHtmlPresentation('vkm-pusulam')"><div class="icon">🧭</div><div class="text"><div class="title">VKM Pusulam</div><div class="subtitle">Tanıtım Sunumu</div></div></button>
-            <button class="menu-btn blue disabled" disabled aria-disabled="true" tabindex="-1"><div class="icon">👤</div><div class="text"><div class="title">VKM Özel Ders</div><div class="subtitle">Yakında</div></div></button>
-            <button class="menu-btn green disabled" disabled aria-disabled="true" tabindex="-1"><div class="icon">📝</div><div class="text"><div class="title">VKM Deneme Kulübü</div><div class="subtitle">Yakında</div></div></button>
+            <button class="menu-btn blue" onclick="openHtmlPresentation('ozel-ders')"><div class="icon">👤</div><div class="text"><div class="title">VKM Özel Ders</div></div></button>
+            <button class="menu-btn green" onclick="openHtmlPresentation('deneme-kulubu')"><div class="icon">📝</div><div class="text"><div class="title">VKM Deneme Kulübü</div></div></button>
         </div>
         <div class="footer">💡 Kumanda: ↑↓←→ seçim • OK aç • Geri dön</div>
     </div>
@@ -710,7 +702,6 @@
         <button class="back-btn" onclick="showDashboard()">← Ana Menü</button>
         <div class="category-header">
             <h1>🏆 Burs Sınavı 2026</h1>
-            <div class="count">0 / 1 hazır</div>
         </div>
         <div class="menu-grid">
             <button class="menu-btn gold disabled" disabled aria-disabled="true" tabindex="-1"><div class="icon">🏆</div><div class="text"><div class="title">Burs Sınavı</div><div class="subtitle">Yeni tarih duyurulacak</div></div></button>
@@ -839,6 +830,16 @@
                 title: 'LGS Veli Sunumu',
                 icon: '🎯',
                 url: 'presentations/lgs/01_sunum_lgs.html'
+            },
+            'ozel-ders': {
+                title: 'VKM Özel Ders',
+                icon: '👤',
+                url: 'presentations/ozel-ders/01_sunum_ozel_ders.html'
+            },
+            'deneme-kulubu': {
+                title: 'VKM Deneme Kulübü',
+                icon: '📝',
+                url: 'presentations/deneme-kulubu/01_sunum_deneme_kulubu.html'
             }
         };
 

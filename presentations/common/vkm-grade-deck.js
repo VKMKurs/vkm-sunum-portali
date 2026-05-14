@@ -5,7 +5,7 @@
 
   const logoHorizontal = deck.logoHorizontal || '../lgs/assets/logo-horizontal-transparent.png';
   const logoCover = deck.logoCover || '../lgs/assets/logo-cover.png';
-  const total = 12;
+  let total = 12;
   const palette = deck.palette || ['#e31e1b', '#00bcd4', '#ffca28', '#16b886', '#8e44ec', '#2498f2'];
 
   stage.style.setProperty('--deck-stage-bg', '#f6f7fb');
@@ -455,20 +455,47 @@
     ].join('');
   }
 
-  const slides = [
-    ['Kapak', coverSlide],
-    ['VKM Yanınızda', supportSlide],
-    ['Dersler', coursesSlide],
-    ['Örnek Program', programSlide],
-    ['Deneme Kulübü', examClubSlide],
-    ['Sınav Analizi', analysisSlide],
-    ['Ödev Takibi', homeworkSlide],
-    ['Öğretmen Kadrosu', teachersSlide],
-    ['Kaynak Kitaplar', resourcesSlide],
-    [deck.guidanceKicker || 'Rehberlik', guidanceSlide],
-    ['Başarı', successSlide],
-    ['Kapanış', thanksSlide]
+  const slideFns = {
+    cover: coverSlide,
+    support: supportSlide,
+    timeline: timelineSlide,
+    courses: coursesSlide,
+    program: programSlide,
+    examClub: examClubSlide,
+    app: appSlide,
+    analysis: analysisSlide,
+    report: reportSlide,
+    homework: homeworkSlide,
+    target: targetSlide,
+    evaluation: evaluationSlide,
+    resources: resourcesSlide,
+    teachers: teachersSlide,
+    guidance: guidanceSlide,
+    success: successSlide,
+    registration: registrationSlide,
+    thanks: thanksSlide
+  };
+
+  const defaultDeck = [
+    ['Kapak', 'cover'],
+    ['VKM Yanınızda', 'support'],
+    ['Dersler', 'courses'],
+    ['Örnek Program', 'program'],
+    ['Deneme Kulübü', 'examClub'],
+    ['Sınav Analizi', 'analysis'],
+    ['Ödev Takibi', 'homework'],
+    ['Öğretmen Kadrosu', 'teachers'],
+    ['Kaynak Kitaplar', 'resources'],
+    [deck.guidanceKicker || 'Rehberlik', 'guidance'],
+    ['Başarı', 'success'],
+    ['Kapanış', 'thanks']
   ];
+
+  const slides = (deck.slides || defaultDeck)
+    .map(function (item) { return [item[0], slideFns[item[1]]]; })
+    .filter(function (item) { return typeof item[1] === 'function'; });
+
+  total = slides.length;
 
   slides.forEach(function (item, index) {
     stage.appendChild(makeSlide(index + 1, item[0], item[1](), index === 0 ? 'cover' : ''));
