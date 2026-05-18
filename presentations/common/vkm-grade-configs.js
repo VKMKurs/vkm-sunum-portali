@@ -133,10 +133,11 @@
       courses: [
         { name: 'Matematik', icon: 'M', note: 'Temel beceri, problem ve işlem disiplini.' },
         { name: 'Türkçe', icon: 'T', note: 'Okuduğunu anlama, dil bilgisi ve ifade.' },
-        { name: 'Fen Bilgisi', icon: 'F', note: 'Konu kavrama, deney mantığı ve test pratiği.' }
+        { name: 'Fen Bilgisi', icon: 'F', note: 'Konu kavrama, deney mantığı ve test pratiği.' },
+        { name: 'İngilizce', icon: 'İ', note: 'Dil becerisi ve okul desteği.' }
       ],
       programLead: 'Hafta içi dersler, hafta sonu destek ve deneme ritmiyle öğrencinin okul temposu dengelenir.',
-      programBullets: ['Hafta içi iki ders günü örneklenir.', 'Bir gün etüt/soru çözümü desteği ayrılır.', 'Pazar denemesi dönemsel ihtiyaca göre uygulanır.'],
+      programBullets: ['Hafta içi ders günleri öğrencinin programına göre düzenlenir.', 'Bir gün etüt/soru çözümü desteği ayrılır.', 'Pazar denemesi yıllık plana göre uygulanır.'],
       programClass: '6-A · Örnek',
       programRows: [
         { day: 'Salı', time: '17:10-18:50', title: 'Matematik', note: 'Konu + soru çözümü' },
@@ -169,7 +170,7 @@
       accentSoft: '#c46ad4',
       courseTitle: '7. sınıfta tempo ve temel birlikte güçlenir.',
       courseLead: '7. sınıf, LGS öncesi en kritik hazırlık dönemlerinden biridir; ders başarısı, soru çözme alışkanlığı ve mantık-muhakeme birlikte yürür.',
-      courseBullets: ['Okul başarısı ve sınav alışkanlığı aynı anda desteklenir.', 'Soru çözüm hızı ve dikkat çalışmaları önem kazanır.', 'Eksikler 8. sınıfa taşınmadan kapatılır.'],
+      courseBullets: ['Dersler okullardan bir hafta önce başlar, son haftalardan sonra biter.', 'Okul başarısı ve sınav alışkanlığı aynı anda desteklenir.', 'Soru çözüm hızı ve dikkat çalışmaları önem kazanır.', 'Eksikler 8. sınıfa taşınmadan kapatılır.'],
       courses: [
         { name: 'Matematik', icon: 'M', note: 'Yeni nesil soru dili ve problem becerisi.' },
         { name: 'Türkçe', icon: 'T', note: 'Paragraf, anlam bilgisi ve dil çalışmaları.' },
@@ -362,14 +363,14 @@
       guidanceTitle: 'Veli süreci yakından takip eder.',
       guidanceLead: 'Özel ders, sadece ders saati değildir; veli düzenli geri bildirim alır ve sürecin neresinde olduğunu görür.',
       guidanceBullets: [
-        'Her ders sonrası kısa not paylaşılır.',
+        'Düzenli aralıklarla veliye geri bildirim verilir.',
         'Aylık genel değerlendirme yapılır.',
         'İhtiyaç olursa program revize edilir.'
       ],
       guidanceSteps: [
-        { title: 'Ders Sonu', copy: 'Kısa not öğrencinin durumunu özetler.' },
         { title: 'Haftalık', copy: 'Ödev ve devam bilgisi görüşülür.' },
         { title: 'Aylık', copy: 'Genel gelişim veliyle paylaşılır.' },
+        { title: 'Dönem Ortası', copy: 'Program ve hedefler birlikte değerlendirilir.' },
         { title: 'Dönem Sonu', copy: 'Yeni dönem için plan birlikte kurulur.' }
       ],
       registrationBullets: [
