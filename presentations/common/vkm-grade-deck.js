@@ -251,6 +251,47 @@
     ].join('');
   }
 
+  function examScheduleSlide() {
+    const items = deck.examSchedule || [];
+    const rowStyle = 'display:grid;grid-template-columns:40px 1fr 1fr 1.6fr;gap:10px;align-items:center;padding:7px 12px;border-radius:10px;font-size:14px;line-height:1.25;';
+    const headStyle = rowStyle + 'background:#f1f3f7;color:#5b6478;font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;';
+    const altStyle = rowStyle + 'background:#fafbfd;';
+    const head = [
+      '<div style="' + headStyle + '">',
+      '<div>#</div><div>Atakent</div><div>Bahçeşehir</div><div>Deneme</div>',
+      '</div>'
+    ].join('');
+    const rows = items.map(function (row, i) {
+      const style = (i % 2 === 1) ? altStyle : rowStyle;
+      return [
+        '<div style="' + style + '">',
+        '<div style="font-weight:700;color:var(--accent);">' + esc(row.no || (i + 1)) + '</div>',
+        '<div>' + esc(row.date1 || '') + '</div>',
+        '<div>' + esc(row.date2 || '') + '</div>',
+        '<div style="font-weight:600;">' + esc(row.name || '') + '</div>',
+        '</div>'
+      ].join('');
+    }).join('');
+    return [
+      '<div class="split wide-right">',
+      '<div class="stack">',
+      '<div class="kicker">Deneme Takvimi</div>',
+      '<h1 class="title">Yıl boyunca <span class="accent">düzenli deneme ritmi.</span></h1>',
+      '<p class="lead">Atakent ve Bahçeşehir şubelerinde aynı yayınlardan, birbirine yakın tarihlerde denemeler uygulanır.</p>',
+      bullets([
+        'Ekim\'den Haziran\'a kadar düzenli takvim.',
+        'Her denemenin ardından detaylı analiz raporu paylaşılır.',
+        'Zayıf konular sonraki haftanın çalışma planına bağlanır.'
+      ]),
+      '</div>',
+      '<div class="panel panel-pad">',
+      '<div class="panel-header"><div><div class="panel-sub">2025-2026 sezonu</div><h2 class="panel-title">Atakent · Bahçeşehir takvimi</h2></div><span class="pill">' + items.length + ' deneme</span></div>',
+      '<div style="display:flex;flex-direction:column;gap:4px;">' + head + rows + '</div>',
+      '</div>',
+      '</div>'
+    ].join('');
+  }
+
   function examClubSlide() {
     return [
       '<div class="split">',
@@ -462,6 +503,7 @@
     courses: coursesSlide,
     program: programSlide,
     examClub: examClubSlide,
+    examSchedule: examScheduleSlide,
     app: appSlide,
     analysis: analysisSlide,
     report: reportSlide,
