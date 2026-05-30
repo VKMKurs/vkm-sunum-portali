@@ -523,6 +523,162 @@
       ],
       thanksLine: 'Sınav pratiğini birlikte düzene oturtalım.'
     },
+    'lgs': {
+      ...common,
+      title: 'LGS Veli Sunumu',
+      shortTitle: 'LGS',
+      coverTitle: 'LGS',
+      coverMark: 'LGS',
+      coverSmall: 'Hazırlık',
+      programTitle: 'Hazırlık Sistemi',
+      accent: '#e31e1b',
+      accentSoft: '#ee7673',
+      coverImage: 'assets/01-cover-student.png',
+      supportImage: 'assets/02-support-coaching.png',
+      teachersImage: 'assets/03-teachers.png',
+      successImage: 'assets/04-success-future.png',
+      resourcesImage: 'assets/05-books.png',
+      slides: [
+        ['Kapak', 'cover'],
+        ['VKM Yanınızda', 'support'],
+        ['Çalışma Takvimi', 'timeline'],
+        ['Dersler', 'courses'],
+        ['Örnek Program', 'program'],
+        ['Deneme Kulübü', 'examClub'],
+        ['Sınav Analizi', 'analysis'],
+        ['Ödev Takibi', 'homework'],
+        ['Koçluk Katmanı', 'evaluation'],
+        ['Kaynak Kitaplar', 'resources'],
+        ['Öğretmen Kadrosu', 'teachers'],
+        ['Tercih Dönemi', 'guidance'],
+        ['Başarı', 'success'],
+        ['Erken Kayıt', 'registration'],
+        ['Kapanış', 'thanks']
+      ],
+      promise: 'Vaditepe Kurs Merkezi olarak öğrencilerimizin başarı yolculuğunda yalnız olmadıklarını hissettirmeyi amaçlıyoruz. Akademik destekten rehberlik hizmetlerine, sınav hazırlık süreçlerinden bireysel gelişim programlarına kadar her alanda yanınızdayız.',
+      promiseBullets: [
+        'Akademik destek: ders, etüt ve soru çözümü birlikte ilerler.',
+        'Birebir öğrenci koçluğu yıl boyunca devam eder.',
+        'Veli, süreci VKM Focus paneli ile sade biçimde görür.'
+      ],
+      promiseMetrics: [
+        { value: 'Akademik', label: 'Konu anlatımı, soru çözümü ve etüt' },
+        { value: 'Rehberlik', label: 'Birebir öğrenci koçluğu' },
+        { value: 'Sınav', label: 'Deneme kulübü ve kamp programları' },
+        { value: 'Gelişim', label: 'Plan disiplini ve çalışma alışkanlığı' }
+      ],
+      timelineTitle: 'Eylül → Tercih Dönemi',
+      timeline: [
+        { title: 'Kursun Başlangıcı', copy: '17 Ağustos\'ta kurs başlar; seviye, hedef ve ritim birlikte kurulur.' },
+        { title: 'Sömestr Kampı', copy: 'Sömestrin ilk haftası yoğunlaştırılmış tekrar ve eksik kapatma yapılır.' },
+        { title: 'LGS Kampı', copy: 'Haziran\'da son sprint — sınavın hemen öncesinde yoğun deneme ve tekrar.' },
+        { title: 'Tercih Dönemi', copy: 'LGS sonrası birebir tercih danışmanlığı süreci başlar.' }
+      ],
+      timelineBullets: [
+        'Dönem boyunca ders, etüt, deneme ve takip aynı çizgide ilerler.',
+        'Sömestrin ilk haftasında yoğunlaştırılmış kamp yapılır.',
+        'Sınavdan sonra tercih dönemi için birebir danışmanlık süreci başlar.'
+      ],
+      courseTitle: 'Temel dersler, güçlü destekle ilerler.',
+      courseLead: 'Matematik, Türkçe, Fen Bilgisi, İnkılap, Din Kültürü ve İngilizce; mantık-muhakeme çalışmaları ve etüt desteğiyle birlikte yürür.',
+      courseBullets: [
+        'Konu anlatımı ve soru çözümü birlikte ilerler.',
+        'Günlük etüt ve birebir destek saati ayrılır.',
+        'Mantık-muhakeme için ayrı çalışma bloğu kurulur.'
+      ],
+      courses: [
+        { name: 'Matematik', icon: 'M', note: 'Yeni nesil soru dili ve problem disiplini.' },
+        { name: 'Türkçe', icon: 'T', note: 'Paragraf, anlam ve dil bilgisi.' },
+        { name: 'Fen Bilgisi', icon: 'F', note: 'Konu, deney ve test pratiği.' },
+        { name: 'İnkılap', icon: 'İ', note: 'Kronoloji, kavram ve yorum.' },
+        { name: 'Din Kültürü', icon: 'D', note: 'Kavram ve okuma anlama.' },
+        { name: 'İngilizce', icon: 'E', note: 'Okul desteği ve dil bilgisi.' },
+        { name: 'Mantık & Muhakeme', icon: '✓', note: 'Yeni nesil sorulara özel çalışma bloğu.' }
+      ],
+      programLead: 'Hafta içi dersler 17:10–20:20 arasında yapılır. Hafta içi iki ders günü, bir etüt günü, cumartesi ders ve pazar deneme örnek akışı kurulur.',
+      programBullets: [
+        'Hafta içi iki gün ders bloğu yapılır.',
+        'Bir gün etüt ve birebir destek saati ayrılır.',
+        'Cumartesi ders, pazar LGS denemesi örnek ritim olarak gösterilir.'
+      ],
+      programClass: '8-A · Örnek',
+      programRows: [
+        { day: 'Salı', time: '17:10-20:20', title: 'Matematik / İnkılap', note: 'Ders bloğu' },
+        { day: 'Çarşamba', time: '17:10-20:20', title: 'Fen / Türkçe', note: 'Ders bloğu' },
+        { day: 'Perşembe', time: '17:10-18:50', title: 'Etüt', note: 'Birebir destek ve soru çözümü' },
+        { day: 'Cumartesi', time: '17:10-20:20', title: 'İngilizce / Matematik', note: 'Haftalık pekiştirme' },
+        { day: 'Pazar', time: 'Örnek', title: 'LGS Denemesi', note: 'Analiz ve geri bildirim' }
+      ],
+      examCards: [
+        { kicker: 'Çeşitlilik', title: '25 farklı yayın', note: 'Özdebir, Sinan Kuzucu, Fenomen, Nartest, Eksen, Paraf gibi yayınlardan denemeler uygulanır.' },
+        { kicker: 'Düzenli', title: 'Sezon takvimi', note: 'Ekim\'den Haziran\'a kadar düzenli deneme ritmi.' },
+        { kicker: 'Karşılaştırma', title: 'Türkiye Geneli', note: 'Ülke geneli sıralama ile hedefe yakınlık net görülür.' },
+        { kicker: 'Zaman', title: 'Sınav refleksi', note: 'Soru çözüm hızı ve zaman yönetimi denemeyle güçlenir.' }
+      ],
+      analysisBullets: [
+        'Tüm sınav sonuçlarına anlık erişim sağlanır.',
+        'Güçlü ve gelişime açık yönler ders/kazanım düzeyinde okunur.',
+        'Yanlışlar soru bazlı çözümle öğrenmeye dönüşür.',
+        'Türkiye Geneli karşılaştırma ile hedef yakınlığı görülür.'
+      ],
+      homeworkCards: [
+        { kicker: 'Anlık', title: 'Ödev görüntüleme', note: 'Verilen tüm ödevlere uygulamadan tek tıkla erişilir.' },
+        { kicker: 'Durum', title: 'Tamamlanan / eksik', note: 'Hangi ödev tamam, hangisi açık — anlık takip edilir.' },
+        { kicker: 'Hatırlatma', title: 'Plan aksamasın', note: 'Ödev hatırlatıcıları ile günlük plan canlı tutulur.' },
+        { kicker: 'Veli', title: 'Şeffaf takip', note: 'Veli de sürece anlık bakar; destek olmak kolaylaşır.' }
+      ],
+      evaluationSteps: [
+        { title: 'Plan Uyumu', copy: 'Bu hafta planın ne kadarı tamamlandı, anlık görünür.' },
+        { title: 'Konu Haritası', copy: 'Zayıf konular renkli takip ekranında belirir.' },
+        { title: 'Deneme Trendi', copy: 'Net düşüşü erken yakalanır, hızlıca müdahale edilir.' },
+        { title: 'Moral Barometresi', copy: 'Motivasyon ve stres sinyalleri gözden kaçmaz.' }
+      ],
+      resourceBullets: [
+        'İhtiyaç duyulan tüm kaynak kitaplar VKM tarafından sağlanır.',
+        'Sömestr kampı, kişiye özel soru bankası ve sene sonu kampı setleri zamanında dağıtılır.',
+        'Veli ve öğrenci kitap araştırmakla uğraşmaz; süreç hazır gelir.'
+      ],
+      resourceCards: [
+        { kicker: 'Set 01', title: 'Sömestr kamp kitapları', note: 'Sömestr kampında kullanılan yoğun tekrar setleri.' },
+        { kicker: 'Set 02', title: 'Kişiye özel soru bankası', note: 'Öğrencinin ihtiyacına göre seçilmiş kaynaklar.' },
+        { kicker: 'Set 03', title: 'Sene sonu kamp kitabı', note: 'Son sprint döneminde uygulanan özel kaynak.' },
+        { kicker: 'Set 04', title: 'Farklı yayın denemeleri', note: '25\'i aşkın yayından deneme kitapçıkları.' }
+      ],
+      teacherCards: [
+        { kicker: 'Deneyim', title: 'Yılların birikimi', note: 'Alanlarında uzmanlaşmış, deneyimli kadromuzla gurur duyuyoruz.' },
+        { kicker: 'Yaklaşım', title: 'Öğrenci odaklılık', note: 'Her öğrenciye bireysel ilgi gösteren öğrenci merkezli eğitim anlayışı.' },
+        { kicker: 'Yöntem', title: 'Motive edici öğretim', note: 'Yenilikçi, etkili ve motive edici eğitim yöntemleri kullanılır.' },
+        { kicker: 'Takip', title: 'Geri bildirim', note: 'Ders, ödev ve deneme sonuçları VKM Focus paneline yansır.' }
+      ],
+      guidanceKicker: 'Tercih Dönemi',
+      guidanceTitle: 'Doğru tercih için yanınızdayız.',
+      guidanceLead: 'Lise tercih dönemlerinde profesyonel birebir danışmanlık ile öğrenciye doğru tercih listesinin kurulmasında destek olunur.',
+      guidanceBullets: [
+        'Öğrencinin profili ve hedefleri birlikte değerlendirilir.',
+        'Lise listesi puan, sıralama ve uzaklık ile birlikte oluşturulur.',
+        'Tercih analizi ve birebir veli-öğrenci görüşmesiyle son karar netleşir.'
+      ],
+      guidanceSteps: [
+        { title: 'Profil Analizi', copy: 'Net puanı, ilgi alanları ve hedef şehir birlikte okunur.' },
+        { title: 'Lise Araştırması', copy: 'Geçen yılki taban puanlar ve uzaklık değerlendirilir.' },
+        { title: 'Liste Oluşturma', copy: 'Hedef, güvenli ve esneklik bandı bir arada kurgulanır.' },
+        { title: 'Birebir Danışmanlık', copy: 'Veli, öğrenci ve uzman ile son karar birlikte verilir.' }
+      ],
+      successCards: lgsSuccess,
+      registrationBullets: [
+        'Erken kayıt avantajları ile yer önceden ayrılır.',
+        'Sınırlı kontenjanlarda sınıf yeri garantisi sağlanır.',
+        'Birebir öğretmen ve program seçim önceliği kazanılır.',
+        'Kaynak kitap setlerinden ilk pay alınır.'
+      ],
+      registrationMetrics: [
+        { value: 'İndirim', label: 'Erken kayıt avantajı' },
+        { value: 'Kontenjan', label: 'Sınıf yeri garantisi' },
+        { value: 'Öncelik', label: 'Öğretmen ve program seçimi' },
+        { value: 'Kaynak', label: 'Kitap setlerinde ilk pay' }
+      ],
+      thanksLine: 'Öğrencimizin başarısı için birlikte yürüyelim — sorularınızı bekliyoruz.'
+    },
     'yks': {
       ...common,
       title: 'YKS Veli Sunumu',
