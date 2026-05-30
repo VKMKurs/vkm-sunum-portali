@@ -659,29 +659,52 @@ deck-stage > section.grade-slide {
   display: block;
 }
 
-.success-hero {
-  margin: 0 0 22px 0;
-  height: 140px;
-  border-radius: 12px;
+.success-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  height: 100%;
+}
+.success-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 36px;
+  align-items: stretch;
+}
+.success-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+}
+.success-intro .title {
+  max-width: 100%;
+}
+.success-intro .lead {
+  max-width: 720px;
+}
+.success-portrait {
+  position: relative;
+  min-height: 440px;
+  border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(212,168,44,0.30);
-  box-shadow: 0 14px 40px rgba(80,45,15,0.10);
-  position: relative;
-  flex: 0 0 auto;
+  box-shadow: 0 24px 70px rgba(80,45,15,0.14);
 }
-.success-hero img {
+.success-portrait img {
   width: 100%;
   height: 100%;
+  min-height: 440px;
   object-fit: cover;
-  object-position: center 35%;
+  object-position: 70% 35%;
   display: block;
 }
-.success-hero::after {
+.success-portrait::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(90deg, rgba(251,246,236,0.10) 0%, transparent 30%, transparent 70%, rgba(251,246,236,0.20) 100%);
+  background: linear-gradient(180deg, transparent 70%, rgba(251,246,236,0.35) 100%);
 }
 
 .thanks {

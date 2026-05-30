@@ -472,12 +472,24 @@
   }
 
   function successSlide() {
-    var heroPhoto = deck.successImage
-      ? '<div class="success-hero"><img src="' + esc(deck.successImage) + '" alt=""></div>'
-      : '';
+    if (deck.successImage) {
+      return [
+        '<div class="success-layout">',
+          '<div class="success-top">',
+            '<div class="success-intro">',
+              '<div class="kicker">Başarı Hikayeleri</div>',
+              '<h1 class="title">Yüzlerce öğrencimizi <span class="accent">hedeflerine ulaştırdık.</span></h1>',
+              '<p class="lead">Başarıyı tek bir sınav sonucundan ibaret görmüyoruz; doğru tempo, doğru rehberlik ve düzenli takip birlikte sonuç üretiyor.</p>',
+              '<span class="pill" style="width:fit-content;">Her yıl düzenli başarı takibi</span>',
+            '</div>',
+            '<div class="success-portrait"><img src="' + esc(deck.successImage) + '" alt=""></div>',
+          '</div>',
+          successCards(deck.successCards),
+        '</div>'
+      ].join('');
+    }
     return [
       '<div class="stack" style="height:100%;">',
-      heroPhoto,
       '<div class="kicker">Başarı Hikayeleri</div>',
       '<h1 class="title" style="max-width:1380px;">Yüzlerce öğrencimizi <span class="accent">hedeflerine ulaştırdık.</span></h1>',
       '<p class="lead" style="max-width:1180px;">Başarıyı tek bir sınav sonucundan ibaret görmüyoruz; doğru tempo, doğru rehberlik ve düzenli takip birlikte sonuç üretiyor.</p>',
