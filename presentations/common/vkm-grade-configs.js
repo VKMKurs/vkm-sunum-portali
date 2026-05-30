@@ -12,7 +12,7 @@
       { value: 'Ders', label: 'Konu anlatımı ve soru çözümü' },
       { value: 'Deneme', label: 'Sınav pratiği ve analiz' },
       { value: 'Ödev', label: 'Kaynak ve hedef takibi' },
-      { value: 'Görüşme', label: 'Düzenli veli bilgilendirmesi' }
+      { value: 'Görüşme', label: 'VKM Focus paneli ile düzenli bilgilendirme' }
     ],
     timelineTitle: 'Eylül → Haziran',
     timeline: [
@@ -46,7 +46,7 @@
       { title: 'Veri Toplanır', copy: 'Deneme, ödev ve katılım bilgileri bir araya gelir.' },
       { title: 'Analiz Edilir', copy: 'Güçlü ve gelişmesi gereken alanlar ayrıştırılır.' },
       { title: 'Planlanır', copy: 'Eksikler haftalık hedefe ve kaynağa bağlanır.' },
-      { title: 'Paylaşılır', copy: 'Veliye sade, anlaşılır ve uygulanabilir özet verilir.' }
+      { title: 'Paylaşılır', copy: 'Veliye sade özet — VKM Focus paneli ve aylık Focus Raporu ile.' }
     ],
     homeworkCards: [
       { kicker: 'Anlık', title: 'Ödev durumu', note: 'Tamamlanan ve eksik kalan çalışmalar görünür hale gelir.' },
@@ -69,7 +69,7 @@
       { title: 'Sınav', copy: 'Performans ve gelişim eğilimi okunur.' },
       { title: 'Ödev', copy: 'Tamamlama, düzen ve süreklilik kontrol edilir.' },
       { title: 'Katılım', copy: 'Derse devam, etüt ve soru çözümü birlikte değerlendirilir.' },
-      { title: 'Yol Haritası', copy: 'Veli, öğrenci ve kurum aynı hedefte buluşur.' }
+      { title: 'Yol Haritası', copy: 'Veli, öğrenci ve kurum aynı hedefte — VKM Focus ile tek ekrandan.' }
     ],
     resourceBullets: [
       'Konu anlatımı ve soru bankası dengeli kullanılır.',
@@ -85,7 +85,7 @@
     teacherCards: [
       { kicker: 'Deneyim', title: 'Alan hakimiyeti', note: 'Dersin kritik kazanımları ve sınav dili güçlü biçimde aktarılır.' },
       { kicker: 'Yaklaşım', title: 'Öğrenci odaklılık', note: 'Aynı sınıfta farklı hızlara uygun yönlendirme yapılır.' },
-      { kicker: 'Takip', title: 'Geri bildirim', note: 'Ders, ödev ve deneme sonuçları öğretmen takibine girer.' },
+      { kicker: 'Takip', title: 'Geri bildirim', note: 'Ders, ödev ve deneme sonuçları VKM Focus paneline yansır.' },
       { kicker: 'Motivasyon', title: 'Sürdürülebilir tempo', note: 'Öğrencinin yıl içinde kopmaması için düzenli ritim kurulur.' }
     ],
     registrationBullets: [

@@ -1,8 +1,17 @@
-# Handoff: VKM "Benim Koçum" — Öğrenci Başarı Takip Platformu
+# Handoff: VKM Focus — Öğrenci Başarı Takip Platformu
+
+> **Marka:** VKM Focus (V = Vizyon · K = Koçluk · M = Motivasyon)
+> **Slogan:** "Hedefe odaklanan yeni nesil öğrenci takip sistemi"
+> **Domain:** vkmfocus.com
 
 ## Overview
 
-VKM "Benim Koçum" is a coaching-led student success platform for Vaditepe Kurs Merkezi. It tracks four parallel data streams per student — plan adherence, exam performance, monthly morale, and biweekly reading comprehension — and uses AI to synthesize a coach-approved monthly report for the parent.
+VKM Focus is a coaching-led student success platform for Vaditepe Kurs Merkezi. It tracks four parallel data streams per student — plan adherence, exam performance, monthly Moral Barometresi, and biweekly Anlama Pusulası — and uses AI to synthesize a coach-approved Focus Raporu for the parent.
+
+**Frequency decisions (2026-05-28):**
+- Moral Barometresi → monthly (1st of each month, 08:00 Istanbul time)
+- Anlama Pusulası → 2x/month (5th + 20th, 08:00 Istanbul time)
+- Initial assessments → instant on student registration
 
 This handoff package contains an HTML deck (16 slides, 1920×1080) that serves as the **product specification through visual storytelling**. Each slide describes one feature of the platform and shows the intended UI for that feature as a high-fidelity mockup.
 

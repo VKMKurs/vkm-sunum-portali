@@ -277,6 +277,59 @@
   .text-ink { color: var(--brand-charcoal); }
   .text-ink-soft { color: var(--ink-soft); }
   .text-ink-muted { color: var(--ink-muted); }
+
+  /* Slayt 02-16 dark theme override → krem palete */
+  /* Tüm text-white ve opacity varyantlarını charcoal'a kaydır */
+  deck-stage > section .text-white { color: var(--brand-charcoal) !important; }
+  deck-stage > section [class*="text-white/"] { color: var(--ink-soft) !important; }
+  deck-stage > section .text-white\/85,
+  deck-stage > section .text-white\/80 { color: var(--brand-charcoal) !important; }
+  deck-stage > section .text-white\/75,
+  deck-stage > section .text-white\/70,
+  deck-stage > section .text-white\/65 { color: var(--ink-soft) !important; }
+  deck-stage > section .text-white\/60,
+  deck-stage > section .text-white\/55,
+  deck-stage > section .text-white\/50,
+  deck-stage > section .text-white\/45,
+  deck-stage > section .text-white\/40 { color: var(--ink-muted) !important; }
+
+  /* bg-white opacity'leri → beyaz kart cream tema */
+  deck-stage > section .bg-white\/8,
+  deck-stage > section .bg-white\/6,
+  deck-stage > section .bg-white\/06,
+  deck-stage > section .bg-white\/4,
+  deck-stage > section .bg-white\/04,
+  deck-stage > section .bg-white\/05 {
+    background: #FFFFFF !important;
+    backdrop-filter: none !important;
+  }
+
+  /* border-white → altın sıcak border */
+  deck-stage > section [class*="border-white"] {
+    border-color: var(--border-warm) !important;
+  }
+
+  /* coral/teal/yellow text overrides (Pusulam dark accent colors) */
+  deck-stage > section .text-vkm-coral { color: var(--brand-red) !important; }
+  deck-stage > section .text-vkm-teal { color: #1A8FA0 !important; }
+  deck-stage > section .text-vkm-yellow { color: var(--brand-gold) !important; }
+
+  /* Emerald (success) kalsın → daha koyu yeşil */
+  deck-stage > section .text-emerald-400 { color: #047857 !important; }
+  deck-stage > section .bg-emerald-400 { background: #047857 !important; }
+
+  /* gradient text fix — text-grad-tech dark için coral/yellow/teal */
+  deck-stage > section .text-grad-tech {
+    background: linear-gradient(135deg, #E30613 0%, #D4A82C 50%, #B30410 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+  }
+
+  /* deco-num stroke krem temaya */
+  deck-stage > section .feat-num {
+    -webkit-text-stroke-color: rgba(31,31,31,0.06) !important;
+  }
 </style>
 </head>
 <body>
@@ -403,72 +456,65 @@
   <div class="absolute inset-0 flex items-center px-32 gap-24">
     <div class="w-[820px]">
       <div class="step-tag mb-6">Güven veren temel</div>
-      <h2 class="font-display font-black text-[104px] leading-[0.95] mb-10">
-        Kararı<br/>
-        <span class="text-grad-red">koç verir.</span><br/>Pusulam izler.
+      <h2 class="font-display font-black text-[96px] leading-[0.95] mb-8">
+        Üç katman,<br/>
+        <span class="text-grad-red">tek odak.</span>
       </h2>
-      <p class="text-3xl text-white/70 leading-[1.4] mb-10">
-        Pusulam verileri toplar, düzenler ve koça anlamlı bir özet sunar. Ama öğrencinizle ilgili her yorum ve yönlendirme <span class="text-white font-semibold">koç kontrolünden geçerek</span> veliyle paylaşılır.
+      <p class="text-2xl text-ink-soft leading-[1.5] mb-8 max-w-[760px]">
+        VKM Focus, <span class="font-semibold text-ink">hedefe odaklanan</span> bir öğrenci takip sistemidir. Üç katman birbirini destekler — her biri farklı sorumlulukta, ama hepsi aynı hedefte.
       </p>
-      <div class="space-y-4">
-        <div class="flex items-center gap-4">
-          <div class="w-3 h-3 rounded-full bg-vkm-red"></div>
-          <span class="text-2xl text-white/80"><span class="font-semibold text-white">Koç</span> programı kurar, süreci takip eder, yorumu onaylar.</span>
-        </div>
-        <div class="flex items-center gap-4">
-          <div class="w-3 h-3 rounded-full bg-vkm-teal"></div>
-          <span class="text-2xl text-white/80"><span class="font-semibold text-white">Öğrenci</span> planı uygular, geri bildirim verir, gelişimini gösterir.</span>
-        </div>
-        <div class="flex items-center gap-4">
-          <div class="w-3 h-3 rounded-full bg-vkm-yellow"></div>
-          <span class="text-2xl text-white/80"><span class="font-semibold text-white">Pusulam</span> veriyi toplar, güçlü ve zayıf sinyalleri görünür kılar.</span>
-        </div>
+      <div class="flex items-center gap-4 text-2xl font-display font-bold">
+        <span style="color: var(--brand-red);">Karar koçun</span>
+        <span class="text-ink-muted">·</span>
+        <span style="color: var(--brand-red);">Veri sistemin</span>
+        <span class="text-ink-muted">·</span>
+        <span style="color: var(--brand-red);">Sonuç öğrencinin</span>
       </div>
     </div>
 
-    <div class="flex-1 relative h-[760px]">
-      <!-- Center: summary -->
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 rounded-full bg-white/8 border border-white/15 flex items-center justify-center z-10">
-        <div class="text-center">
-          <div class="font-mono text-[12px] text-white/60 uppercase tracking-widest">Pusulam</div>
-          <div class="font-display font-black text-2xl">Sentez</div>
-          <div class="font-mono text-[11px] text-white/50">özet çıkarır</div>
-        </div>
-      </div>
-
-      <svg viewBox="0 0 700 760" class="absolute inset-0 w-full h-full">
-        <line x1="350" y1="380" x2="350" y2="120" stroke="rgba(238,118,115,0.6)" stroke-width="3" class="data-flow"/>
-        <line x1="350" y1="380" x2="350" y2="640" stroke="rgba(0,188,212,0.6)" stroke-width="3" class="data-flow"/>
-      </svg>
-
-      <!-- Top: KOÇ -->
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[440px]">
-        <div class="glow-card glow-card-red px-8 py-6 relative">
-          <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-2xl grad-red grid place-items-center glow-red">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m22 11-3 3-2-2"/></svg>
-            </div>
-            <div>
-              <div class="font-mono text-sm text-vkm-coral">Rol · Koç</div>
-              <div class="font-display font-extrabold text-4xl">Koç</div>
-              <div class="text-base text-white/55">karar verici · onay sahibi</div>
-            </div>
+    <!-- V/K/M üç sütun kart panosu -->
+    <div class="flex-1 grid grid-cols-1 gap-6">
+      <!-- V -->
+      <div class="glow-card-red rounded-[28px] px-8 py-7 relative overflow-hidden">
+        <div class="absolute top-0 right-0 font-display font-black text-[180px] leading-none opacity-[0.08]" style="color: var(--brand-red);">V</div>
+        <div class="relative flex items-start gap-5">
+          <div class="w-16 h-16 rounded-2xl grad-red grid place-items-center shrink-0 shadow-lg" style="box-shadow: 0 8px 20px rgba(227,6,19,0.25);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="font-mono text-sm uppercase tracking-widest mb-1" style="color: var(--brand-red);">V — Vizyon</div>
+            <div class="font-display font-extrabold text-3xl mb-2 text-ink">Hedef belirler, yol çizer</div>
+            <div class="text-lg text-ink-soft leading-relaxed">Çalışma davranışı testi, hedef envanteri, profil çıkarımı — öğrenci nereye gidecek?</div>
           </div>
         </div>
       </div>
 
-      <!-- Bottom: ÖĞRENCİ -->
-      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[440px]">
-        <div class="glow-card px-8 py-6 relative" style="border-color:rgba(0,188,212,0.3)">
-          <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-2xl bg-vkm-teal grid place-items-center">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            </div>
-            <div>
-              <div class="font-mono text-sm text-vkm-teal">Rol · Öğrenci</div>
-              <div class="font-display font-extrabold text-4xl">Öğrenci</div>
-              <div class="text-base text-white/55">uygulayıcı · gelişimin sahibi</div>
-            </div>
+      <!-- K -->
+      <div class="glow-card-gold rounded-[28px] px-8 py-7 relative overflow-hidden">
+        <div class="absolute top-0 right-0 font-display font-black text-[180px] leading-none opacity-[0.10]" style="color: var(--brand-gold);">K</div>
+        <div class="relative flex items-start gap-5">
+          <div class="w-16 h-16 rounded-2xl grid place-items-center shrink-0 shadow-lg" style="background: linear-gradient(135deg, #D4A82C 0%, #B38816 100%); box-shadow: 0 8px 20px rgba(212,168,44,0.25);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m22 11-3 3-2-2"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="font-mono text-sm uppercase tracking-widest mb-1" style="color: #8a6a14;">K — Koçluk</div>
+            <div class="font-display font-extrabold text-3xl mb-2 text-ink">İnsan koç + AI yardımcı</div>
+            <div class="text-lg text-ink-soft leading-relaxed">Plan, görüşme, deneme analizi, aksiyon önerileri — kararı koç verir, AI veriyi anlamlı kılar.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M -->
+      <div class="glow-card-red rounded-[28px] px-8 py-7 relative overflow-hidden">
+        <div class="absolute top-0 right-0 font-display font-black text-[180px] leading-none opacity-[0.08]" style="color: var(--brand-red);">M</div>
+        <div class="relative flex items-start gap-5">
+          <div class="w-16 h-16 rounded-2xl grad-red grid place-items-center shrink-0 shadow-lg" style="box-shadow: 0 8px 20px rgba(227,6,19,0.25);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="font-mono text-sm uppercase tracking-widest mb-1" style="color: var(--brand-red);">M — Motivasyon</div>
+            <div class="font-display font-extrabold text-3xl mb-2 text-ink">Sürdürülebilirlik ve moral</div>
+            <div class="text-lg text-ink-soft leading-relaxed">Moral Barometresi, Anlama Pusulası, sürekli destek — öğrencinin "ben yapabilirim" hissi korunsun.</div>
           </div>
         </div>
       </div>
@@ -599,13 +645,13 @@
 
   <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
     <div class="w-[680px]">
-      <div class="section-kicker text-vkm-coral mb-5">02 · Haftalık Program</div>
+      <div class="section-kicker text-vkm-coral mb-5">02 · Focus Planı</div>
       <h2 class="font-display font-black text-[80px] leading-[0.95] mb-8">
         Evde ne çalışılacak,<br/>
         <span class="text-grad-red">belirsiz kalmaz.</span>
       </h2>
       <p class="text-2xl text-white/70 leading-[1.5] mb-8">
-        Haftalık planda her gün için ders, konu, kaynak, sayfa aralığı ve soru hedefi görünür. Veli de koçla aynı plana bakar; evde sadece "çalıştın mı?" değil, <span class="text-white font-semibold">"bugünkü hedef neydi?"</span> diye sorabilir.
+        Focus Planı'nda her gün için ders, konu, kaynak, sayfa aralığı ve soru hedefi görünür. Veli de koçla aynı plana bakar; evde sadece "çalıştın mı?" değil, <span class="text-white font-semibold">"bugünkü hedef neydi?"</span> diye sorabilir.
       </p>
       <div class="grid grid-cols-2 gap-3">
         <div class="glow-card p-5">
@@ -638,7 +684,7 @@
         <div class="relative bg-[#161c26] rounded-[28px] border border-white/10 p-6 shadow-2xl">
           <div class="flex items-center justify-between mb-4">
             <div>
-              <div class="font-mono text-xs text-white/50 uppercase tracking-widest">Haftalık Program</div>
+              <div class="font-mono text-xs text-white/50 uppercase tracking-widest">Focus Planı</div>
               <div class="font-display font-extrabold text-2xl mt-1">3 — 9 Mart</div>
             </div>
             <div class="flex items-center gap-2">
@@ -1082,7 +1128,7 @@
         <span class="text-grad-red">erken fark edilir.</span>
       </h2>
       <p class="text-2xl text-white/70 leading-[1.5] mb-6">
-        Bazen düşüş nottan önce moralde başlar. Pusulam; motivasyon, enerji, stres, özgüven, odak, hedef ve destek başlıklarını izler. <span class="text-white font-semibold">Trend bozulduğunda</span> koç erken aksiyon alır.
+        Bazen düşüş nottan önce moralde başlar. VKM Focus; motivasyon, enerji, stres, özgüven, odak, hedef ve destek başlıklarını izler. <span class="text-white font-semibold">Her ayın 1'inde</span> sistem otomatik anket gönderir — trend bozulduğunda koç erken aksiyon alır.
       </p>
       <div class="grid grid-cols-2 gap-2.5 mb-6">
         <div class="chip-mono text-xs text-center !py-2.5">motivasyon</div>
@@ -1093,8 +1139,8 @@
         <div class="chip-mono text-xs text-center !py-2.5">hedef</div>
       </div>
       <div class="space-y-2.5">
-        <div class="flex items-start gap-3"><span class="text-vkm-yellow text-xl">▸</span><span class="text-lg text-white/80">Koç gerekli görürse ay içinde ek kontrol yapar</span></div>
-        <div class="flex items-start gap-3"><span class="text-vkm-yellow text-xl">▸</span><span class="text-lg text-white/80">Öğrenci kendi cümleleriyle nasıl hissettiğini yazar</span></div>
+        <div class="flex items-start gap-3"><span class="text-vkm-yellow text-xl">▸</span><span class="text-lg text-white/80">Aylık takvim — her ayın 1'inde otomatik tetiklenir</span></div>
+        <div class="flex items-start gap-3"><span class="text-vkm-yellow text-xl">▸</span><span class="text-lg text-white/80">Koç gerekli görürse ay içinde ek "acil nabız" kontrolü yapar</span></div>
         <div class="flex items-start gap-3"><span class="text-vkm-yellow text-xl">▸</span><span class="text-lg text-white/80">Kritik sinyaller veliye panik değil, doğru takip diliyle aktarılır</span></div>
       </div>
     </div>
@@ -1126,7 +1172,7 @@
         <span class="text-grad-tech">düzenli izlenir.</span>
       </h2>
       <p class="text-2xl text-white/70 leading-[1.5] mb-8">
-        Öğrenci iki haftada bir seviyesine uygun pasaj okur. <span class="text-white font-semibold">4 çoktan seçmeli + 2 açık uçlu</span> soruyla sadece doğru sayısı değil; anlama, yorumlama, dikkat ve ifade gücü de takip edilir.
+        Her ayın <span class="text-white font-semibold">5'i ve 20'sinde</span> öğrenci seviyesine uygun pasaj okur. <span class="text-white font-semibold">4 çoktan seçmeli + 2 açık uçlu</span> soruyla sadece doğru sayısı değil; anlama, yorumlama, dikkat ve ifade gücü de takip edilir.
       </p>
 
       <div class="grid grid-cols-2 gap-3 mb-6">
@@ -1142,8 +1188,8 @@
         </div>
         <div class="glow-card p-4">
           <div class="font-mono text-xs text-vkm-teal mb-1">sıklık</div>
-          <div class="font-display font-extrabold text-xl">2 haftada bir</div>
-          <div class="text-sm text-white/55">yıl boyunca</div>
+          <div class="font-display font-extrabold text-xl">Ayda 2 kez</div>
+          <div class="text-sm text-white/55">her ayın 5'i + 20'si</div>
         </div>
         <div class="glow-card p-4">
           <div class="font-mono text-xs text-vkm-teal mb-1">güven</div>
@@ -1265,7 +1311,7 @@
 
         <!-- Anlama Pusulası: every 2 weeks -->
         <div class="flex items-center gap-4 mb-4">
-          <div class="w-44 font-mono text-xs text-vkm-teal">ANLAMA P. · 2 haftada</div>
+          <div class="w-44 font-mono text-xs text-vkm-teal">ANLAMA P. · ayda 2</div>
           <div class="flex-1 grid grid-cols-24 gap-[6px] h-8" style="grid-template-columns: repeat(24,1fr)">
             <script>document.write('<div class="bg-vkm-teal/80 rounded-sm flex items-center justify-center text-[9px] font-mono">📘</div>'.repeat(24))</script>
           </div>
@@ -1300,7 +1346,7 @@
 
         <!-- Monthly report -->
         <div class="flex items-center gap-4">
-          <div class="w-44 font-mono text-xs text-white">AYLIK RAPOR</div>
+          <div class="w-44 font-mono text-xs text-white">FOCUS RAPORU</div>
           <div class="flex-1 grid grid-cols-12 gap-2 h-8">
             <script>document.write('<div class="grad-red rounded-md flex items-center justify-center text-[10px] font-bold">⚡</div>'.repeat(12))</script>
           </div>
@@ -1527,7 +1573,7 @@
         </svg>
         <div class="relative w-56 h-56 rounded-full grad-red glow-red flex items-center justify-center">
           <div class="text-center">
-            <div class="font-mono text-xs text-white/80 uppercase tracking-widest">Pusulam</div>
+            <div class="font-mono text-xs text-white/80 uppercase tracking-widest">VKM Focus</div>
             <div class="font-display font-black text-3xl text-white mt-1">Özet</div>
             <div class="font-mono text-xs text-white/80 mt-1">koç kontrolünde</div>
           </div>
@@ -1599,13 +1645,13 @@
 
   <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
     <div class="w-[680px]">
-      <div class="section-kicker text-vkm-coral mb-5">10 · Aylık Veli Raporu</div>
+      <div class="section-kicker text-vkm-coral mb-5">10 · Focus Raporu</div>
       <h2 class="font-display font-black text-[80px] leading-[0.95] mb-8">
-        Veliye giden<br/>
-        <span class="text-grad-red">tek sayfa.</span>
+        Aylık Focus Raporu —<br/>
+        <span class="text-grad-red">üç perspektif, tek veri.</span>
       </h2>
       <p class="text-2xl text-white/70 leading-[1.5] mb-8">
-        Ay sonunda veliye sade, tek sayfalık bir gelişim özeti verilir. Sistem ön özeti hazırlar; koç okur, düzenler ve onaylar. <span class="text-white font-semibold">Onaysız hiçbir yorum veliye gitmez.</span>
+        Sistem aynı veriden <span class="text-white font-semibold">koça klinik dil</span>, <span class="text-white font-semibold">öğrenciye motive edici dil</span>, <span class="text-white font-semibold">veliye yapıcı dil</span> üretir. Koç okur, düzenler ve onaylar — onaysız hiçbir yorum veliye gitmez.
       </p>
       <div class="space-y-3 mb-6">
         <div class="flex items-start gap-4">
@@ -1630,7 +1676,7 @@
           <div class="grad-red-ink px-7 py-5 text-white">
             <div class="flex items-start justify-between">
               <div>
-                <div class="font-mono text-[11px] text-white/70 uppercase tracking-widest">VKM Aylık Rapor · Mart 2026 (Örnek)</div>
+                <div class="font-mono text-[11px] text-white/70 uppercase tracking-widest">VKM Focus Raporu · Mart 2026 (Örnek)</div>
                 <div class="font-display font-extrabold text-2xl mt-1">Öğrenci D.K. · 12-SAY</div>
               </div>
               <div class="text-right">
@@ -1715,13 +1761,13 @@
 
   <div class="absolute inset-0 flex items-center px-32 gap-16 pt-24">
     <div class="w-[640px]">
-      <div class="section-kicker text-vkm-coral mb-5">11 · Bugün İlgilen</div>
+      <div class="section-kicker text-vkm-coral mb-5">11 · Focus Paneli — Bugün İlgilen</div>
       <h2 class="font-display font-black text-[80px] leading-[0.95] mb-8">
         Koç sabah açar.<br/>
         <span class="text-grad-red">Önceliği görür.</span>
       </h2>
       <p class="text-2xl text-white/70 leading-[1.5] mb-8">
-        Pusulam koça gün içinde hangi öğrencinin daha yakın takip istediğini gösterir. Böylece moral düşüşü, deneme gerilemesi ya da eksik anket <span class="text-white font-semibold">gözden kaçmadan</span> ele alınır.
+        VKM Focus paneli, koça gün içinde hangi öğrencinin daha yakın takip istediğini gösterir. Aksiyon Motoru sinyalleri (acil/dikkat/takip/iyiye gidiş) ile moral düşüşü, deneme gerilemesi ya da eksik anket <span class="text-white font-semibold">gözden kaçmadan</span> ele alınır.
       </p>
       <div class="space-y-3">
         <div class="glow-card p-4 flex items-center gap-3">
@@ -1734,11 +1780,11 @@
         </div>
         <div class="glow-card p-4 flex items-center gap-3">
           <div class="w-9 h-9 rounded-lg bg-vkm-yellow/20 grid place-items-center text-lg">📋</div>
-          <div class="flex-1"><div class="font-display font-extrabold text-base">Anketi Doldurmayanlar</div><div class="text-sm text-white/55">Bu ayın moral anketi eksik</div></div>
+          <div class="flex-1"><div class="font-display font-extrabold text-base">Moral Barometresi Eksik</div><div class="text-sm text-white/55">Bu ayki Moral Barometresi doldurulmamış</div></div>
         </div>
         <div class="glow-card p-4 flex items-center gap-3">
           <div class="w-9 h-9 rounded-lg bg-vkm-teal/20 grid place-items-center text-lg">📘</div>
-          <div class="flex-1"><div class="font-display font-extrabold text-base">Okuma Bekliyor</div><div class="text-sm text-white/55">Anlama Pusulası testine girmemiş</div></div>
+          <div class="flex-1"><div class="font-display font-extrabold text-base">Anlama Pusulası Bekliyor</div><div class="text-sm text-white/55">Bu ayki Anlama Pusulası testine girmemiş</div></div>
         </div>
         <div class="glow-card p-4 flex items-center gap-3">
           <div class="w-9 h-9 rounded-lg bg-purple-500/20 grid place-items-center text-lg">📉</div>
@@ -1946,13 +1992,13 @@
         <span class="text-grad-red">Doğru destek verir.</span>
       </h2>
       <p class="text-2xl text-white/70 leading-[1.5] mb-8">
-        Veli paneli bilgi amaçlıdır. Planı koç yönetir; veli aynı veriyi görür, evde doğru soruyu sorar ve koçla aynı hedefe bakar. <span class="text-white font-semibold">Destek olur, süreci dağıtmaz.</span>
+        Veli paneli bilgi amaçlıdır. "Çocuk Durumu Özeti" tek bakışta gösterir: son Focus Raporu, bu ayki Moral Barometresi <span class="text-white font-semibold">durumu</span>, Anlama Pusulası puanı, bu ay deneme sayısı ve haftalık plan uyumu. Planı koç yönetir; veli aynı veriyi görür, <span class="text-white font-semibold">destek olur, süreci dağıtmaz.</span>
       </p>
       <div class="space-y-3">
-        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>Öğrencinin haftalık programı · A4 yazdır</div>
-        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>Son görüşme özeti · senaryo &amp; uyum</div>
-        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>Aylık moral &amp; okuma takibi</div>
-        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>Onaylı aylık raporlar arşivi</div>
+        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>Çocuk Durumu Özeti · 4 metrik + plan uyum bar</div>
+        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>Kitap Takibi widget · atanmış kitaplar + konu ilerleme</div>
+        <div class="flex items-center gap-3 chip-mono"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>Onaylı Focus Raporları arşivi · PDF indir + aç</div>
+        <div class="flex items-center gap-3 chip-mono" style="background: rgba(212,168,44,0.18); border-color: rgba(212,168,44,0.35); color: #8a6a14;"><span class="w-2 h-2 rounded-full bg-vkm-yellow"></span>KVKK uyumu · Moral puanı veliye gösterilmez</div>
       </div>
     </div>
   </div>
@@ -2019,17 +2065,24 @@
 
   <div class="absolute inset-0 flex items-center justify-center px-32">
     <div class="text-center max-w-5xl">
-      <div class="step-tag mb-10">VKM Pusulam</div>
-      <h2 class="font-display font-black text-[200px] leading-[0.95] mb-12 display-xl">
+      <div class="step-tag mb-10" style="color: var(--brand-gold);">VKM Focus · Vizyon · Koçluk · Motivasyon</div>
+      <h2 class="font-display font-black text-[200px] leading-[0.95] mb-8 display-xl">
         <span class="text-grad-red">Teşekkürler.</span>
       </h2>
-      <p class="text-4xl text-white/75 max-w-3xl mx-auto leading-relaxed">
-        Aynı veriye bakıp aynı hedefe yürüyelim.
+      <p class="text-4xl text-white/75 max-w-3xl mx-auto leading-relaxed mb-8">
+        Hangi hizmeti seçerseniz, takip aynı —<br/>
+        <span class="text-white font-semibold">aynı veriye bakıp aynı hedefe yürüyelim.</span>
       </p>
 
-      <div class="mt-20 flex flex-col items-center gap-3">
+      <!-- Büyük URL vurgusu -->
+      <div class="inline-flex items-center gap-4 px-10 py-5 rounded-2xl mt-4 mb-12" style="background: linear-gradient(135deg, rgba(227,6,19,0.10), rgba(212,168,44,0.15)); border: 2px solid rgba(227,6,19,0.30);">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="font-display font-black text-5xl" style="color: var(--brand-red-deep);">vkmfocus.com</div>
+      </div>
+
+      <div class="flex flex-col items-center gap-3">
         <div class="inline-flex items-center gap-3 chip-mono text-base px-6 py-3">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 blink-dot"></span>
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
           Vaditepe Kurs Merkezi · 2026
         </div>
         <div class="font-mono text-base text-white/65">vaditepekurs.com · +90 212 669 62 70</div>
