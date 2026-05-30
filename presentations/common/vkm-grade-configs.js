@@ -449,6 +449,11 @@
       programTitle: 'Sınav Pratiği Sistemi',
       accent: '#16b886',
       accentSoft: '#5fd1ad',
+      coverImage: 'assets/01-cover-exam.png',
+      supportImage: 'assets/02-support-analysis.png',
+      teachersImage: 'assets/03-teachers-debrief.png',
+      examClubImage: 'assets/04-exam-atmosphere.png',
+      reportImage: 'assets/05-progress-chart.png',
       slides: [
         ['Kapak', 'cover'],
         ['Neden Deneme Kulübü', 'support'],

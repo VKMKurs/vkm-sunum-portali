@@ -300,6 +300,9 @@
   }
 
   function examClubSlide() {
+    var photoBlock = deck.examClubImage
+      ? '<div class="panel-photo"><img src="' + esc(deck.examClubImage) + '" alt=""></div>'
+      : '';
     return [
       '<div class="split">',
       '<div class="stack">',
@@ -308,6 +311,7 @@
       '<p class="lead">Denemeler sadece puan almak için değil; zamanı yönetmek, eksikleri görmek ve bir sonraki haftanın çalışma planını kurmak için kullanılır.</p>',
       '</div>',
       '<div class="panel panel-pad">',
+      photoBlock,
       '<div class="panel-header"><div><div class="panel-sub">Deneme sonrası</div><h2 class="panel-title">Sonuçtan aksiyona geçen takip</h2></div><span class="pill">Analiz</span></div>',
       infoCards(deck.examCards),
       '</div>',
@@ -349,6 +353,9 @@
   }
 
   function reportSlide() {
+    var photoBlock = deck.reportImage
+      ? '<div class="panel-photo"><img src="' + esc(deck.reportImage) + '" alt=""></div>'
+      : '';
     return [
       '<div class="split">',
       '<div class="stack">',
@@ -357,6 +364,7 @@
       '<p class="lead">Kapsamlı analizler; yanlışları, gelişim eğilimini ve öğrencinin bir sonraki hafta nereden başlaması gerektiğini netleştirir.</p>',
       '</div>',
       '<div class="panel panel-pad">',
+      photoBlock,
       '<div class="panel-header"><div><div class="panel-sub">Rapor akışı</div><h2 class="panel-title">Puan değil, yön bilgisi</h2></div><span class="pill">Kontrol</span></div>',
       processSteps(deck.reportSteps),
       '</div>',
