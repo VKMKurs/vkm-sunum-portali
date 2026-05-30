@@ -538,7 +538,7 @@
       '<div class="split">',
       '<div class="stack">',
       '<div class="kicker">VKM Focus</div>',
-      '<h1 class="title">' + esc(deck.focusTitle || 'Aynı kaynak — fark, kontrol bizde.') + '</h1>',
+      '<h1 class="title">' + esc(deck.focusTitle || 'Aynı kaynak, VKM Focus ile daha görünür takip.') + '</h1>',
       '<p class="lead">' + esc(deck.focusLead || 'VKM Focus, öğrencinin akademik durumunu, çalışma alışkanlığını ve motivasyonunu tek panelde görünür kılan takip sistemidir. Veli sade bir özet alır; öğretmen ve koç tüm veriye aynı yerden bakar.') + '</p>',
       bullets(deck.focusBullets),
       '</div>',

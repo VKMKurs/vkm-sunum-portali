@@ -212,7 +212,7 @@
       ],
       courseTitle: '7. sınıfta tempo ve temel birlikte güçlenir.',
       courseLead: '7. sınıf, LGS öncesi en kritik hazırlık dönemlerinden biridir; ders başarısı, soru çözme alışkanlığı ve mantık-muhakeme birlikte yürür.',
-      courseBullets: ['Dersler okullardan bir hafta önce başlar, son haftalardan sonra biter.', 'Okul başarısı ve sınav alışkanlığı aynı anda desteklenir.', 'Soru çözüm hızı ve dikkat çalışmaları önem kazanır.', 'Eksikler 8. sınıfa taşınmadan kapatılır.'],
+      courseBullets: ['Program okul takviminden önce başlar, yıl sonu tekrarlarıyla tamamlanır.', 'Okul başarısı ve sınav alışkanlığı aynı anda desteklenir.', 'Soru çözüm hızı ve dikkat çalışmaları önem kazanır.', 'Eksikler 8. sınıfa taşınmadan kapatılır.'],
       courses: [
         { name: 'Matematik', icon: 'M', note: 'Yeni nesil soru dili ve problem becerisi.' },
         { name: 'Türkçe', icon: 'T', note: 'Paragraf, anlam bilgisi ve dil çalışmaları.' },
@@ -370,7 +370,7 @@
         { value: 'Tanışma', label: 'Seviye ve ihtiyaç tespiti' },
         { value: 'Plan', label: 'Konu ve hedef belirleme' },
         { value: 'Ders', label: 'Birebir konu ve soru çözümü' },
-        { value: 'Rapor', label: 'Veli ve öğrenci bilgilendirmesi' }
+        { value: 'Rapor', label: 'VKM Focus paneli ile düzenli rapor' }
       ],
       courseTitle: 'Her seviye için birebir destek.',
       courseLead: 'İlkokuldan üniversite hazırlığına kadar her sınıf seviyesinde, öğrencinin ihtiyacına göre birebir veya küçük grup özel ders düzenlenir.',
@@ -470,7 +470,7 @@
       promiseMetrics: [
         { value: 'Deneme', label: 'Düzenli sınav pratiği' },
         { value: 'Analiz', label: 'Ders ve kazanım okuması' },
-        { value: 'Rapor', label: 'Veliye sade özet' },
+        { value: 'Rapor', label: 'VKM Focus paneli ile sade özet' },
         { value: 'Plan', label: 'Bir sonraki hafta hedefi' }
       ],
       examCards: [
@@ -569,7 +569,7 @@
       ],
       timelineTitle: 'Eylül → Tercih Dönemi',
       timeline: [
-        { title: 'Kursun Başlangıcı', copy: '17 Ağustos\'ta kurs başlar; seviye, hedef ve ritim birlikte kurulur.' },
+        { title: 'Kursun Başlangıcı', copy: '17 Ağustos 2026\'da kurs başlar; seviye, hedef ve ritim birlikte kurulur.' },
         { title: 'Sömestr Kampı', copy: 'Sömestrin ilk haftası yoğunlaştırılmış tekrar ve eksik kapatma yapılır.' },
         { title: 'LGS Kampı', copy: 'Haziran\'da son sprint — sınavın hemen öncesinde yoğun deneme ve tekrar.' },
         { title: 'Tercih Dönemi', copy: 'LGS sonrası birebir tercih danışmanlığı süreci başlar.' }
@@ -591,7 +591,7 @@
         { name: 'Türkçe', icon: 'T', note: 'Paragraf, anlam ve dil bilgisi.' },
         { name: 'Fen Bilgisi', icon: 'F', note: 'Konu, deney ve test pratiği.' },
         { name: 'İnkılap', icon: 'İ', note: 'Kronoloji, kavram ve yorum.' },
-        { name: 'Din Kültürü', icon: 'D', note: 'Kavram ve okuma anlama.' },
+        { name: 'Din Kültürü ve Ahlak Bilgisi', icon: 'D', note: 'Kavram ve okuma anlama.' },
         { name: 'İngilizce', icon: 'E', note: 'Okul desteği ve dil bilgisi.' },
         { name: 'Mantık & Muhakeme', icon: '✓', note: 'Yeni nesil sorulara özel çalışma bloğu.' }
       ],
@@ -610,7 +610,7 @@
         { day: 'Pazar', time: 'Örnek', title: 'LGS Denemesi', note: 'Analiz ve geri bildirim' }
       ],
       examCards: [
-        { kicker: 'Çeşitlilik', title: '25 farklı yayın', note: 'Özdebir, Sinan Kuzucu, Fenomen, Nartest, Eksen, Paraf gibi yayınlardan denemeler uygulanır.' },
+        { kicker: 'Çeşitlilik', title: '25 deneme · farklı yayınlar', note: 'Özdebir, Sinan Kuzucu, Fenomen, Nartest, Eksen, Paraf gibi yayınlardan deneme provası uygulanır.' },
         { kicker: 'Düzenli', title: 'Sezon takvimi', note: 'Ekim\'den Haziran\'a kadar düzenli deneme ritmi.' },
         { kicker: 'Karşılaştırma', title: 'Türkiye Geneli', note: 'Ülke geneli sıralama ile hedefe yakınlık net görülür.' },
         { kicker: 'Zaman', title: 'Sınav refleksi', note: 'Soru çözüm hızı ve zaman yönetimi denemeyle güçlenir.' }
@@ -719,11 +719,11 @@
       ],
       allstarMetrics: [
         { value: '77', label: 'Kitap kapsamı (TYT-AYT)' },
-        { value: '30B+', label: 'Konu anlatımı videosu' },
+        { value: '30 bin+', label: 'Konu anlatımı videosu' },
         { value: '40+', label: 'Uzman branş öğretmeni' },
         { value: 'Tek Set', label: 'Aynı kaynak, aynı standart' }
       ],
-      focusTitle: 'Aynı kaynak — fark, kontrol bizde.',
+      focusTitle: 'Aynı kaynak, VKM Focus ile daha görünür takip.',
       focusLead: 'VKM Focus, öğrencinizin akademik durumunu, çalışma alışkanlığını ve motivasyonunu tek panelde görünür kılan takip sistemidir. Veli sade bir özet alır; öğretmen ve koç tüm veriye aynı yerden bakar.',
       focusBullets: [
         'Aynı 3-4-5 All Star kaynağı — fark, üzerine eklenen takip katmanında.',
