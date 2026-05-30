@@ -50,8 +50,13 @@ deck-stage > section.grade-slide {
 
 .brand-logo {
   display: block;
-  height: 54px;
+  height: 80px;
   width: auto;
+}
+
+/* Kapak slaytında üst chrome-logo gizlenir — büyük cover-logo zaten sol panelde var */
+.grade-slide.cover .chrome .brand-logo {
+  visibility: hidden;
 }
 
 .slide-chip {

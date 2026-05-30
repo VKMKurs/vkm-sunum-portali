@@ -72,13 +72,13 @@
       { title: 'Yol Haritası', copy: 'Veli, öğrenci ve kurum aynı hedefte — VKM Focus ile tek ekrandan.' }
     ],
     resourceBullets: [
-      'Konu anlatımı ve soru bankası dengeli kullanılır.',
-      'Deneme kaynakları öğrencinin sınav pratiğini genişletir.',
-      'Zorlanan öğrenciye farklı seviye ve destek kaynakları verilir.'
+      'Tüm öğrenciler aynı, kanıtlanmış kaynak setiyle çalışır.',
+      'Konu anlatımı, soru bankası ve deneme kitapları bir bütün olarak ilerler.',
+      'Kaynak seçimi tecrübeyle yapılır — öğrenciye ek karar yükü bırakılmaz.'
     ],
     resourceCards: [
-      { kicker: 'Seviye', title: 'Uygun kaynak', note: 'Öğrenciye ağır ya da hafif gelmeyen doğru kaynak seçilir.' },
-      { kicker: 'Çeşitlilik', title: 'Farklı yayınlar', note: 'Tek soru tarzına sıkışmadan geniş pratik yapılır.' },
+      { kicker: 'Seçilmiş', title: 'Tek kaynak seti', note: 'VKM tarafından test edilmiş, sınava uyumlu kaynaklarla başlanır.' },
+      { kicker: 'Süreklilik', title: 'Aynı yayında bütünlük', note: 'Farklı kitap arayışına gerek kalmadan tüm yıl bütünleşik çalışılır.' },
       { kicker: 'Tekrar', title: 'Konu pekiştirme', note: 'Eksik başlıklar kısa tekrar ve hedef testlerle kapatılır.' },
       { kicker: 'Deneme', title: 'Sınav pratiği', note: 'Zaman ve strateji denemelerle güçlenir.' }
     ],
