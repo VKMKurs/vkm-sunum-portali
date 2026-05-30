@@ -516,6 +516,40 @@
     ].join('');
   }
 
+  function allstarSlide() {
+    return [
+      '<div class="split">',
+      '<div class="stack">',
+      '<div class="kicker">3-4-5 All Star</div>',
+      '<h1 class="title">' + esc(deck.allstarTitle || 'Aynı kaynak, aynı standart.') + '</h1>',
+      '<p class="lead">' + esc(deck.allstarLead || 'Türkiye genelinde binlerce öğrencinin kullandığı 3-4-5 All Star yayınları, VKM\'de de bütün öğrencilerimize sunulur.') + '</p>',
+      bullets(deck.allstarBullets),
+      '</div>',
+      '<div class="panel panel-pad">',
+      '<div class="panel-header"><div><div class="panel-sub">Kaynak Seti</div><h2 class="panel-title">Aynı kaynak, daha güçlü takip</h2></div><span class="pill">All Star</span></div>',
+      metrics(deck.allstarMetrics),
+      '</div>',
+      '</div>'
+    ].join('');
+  }
+
+  function vkmfocusSlide() {
+    return [
+      '<div class="split">',
+      '<div class="stack">',
+      '<div class="kicker">VKM Focus</div>',
+      '<h1 class="title">' + esc(deck.focusTitle || 'Aynı kaynak — fark, kontrol bizde.') + '</h1>',
+      '<p class="lead">' + esc(deck.focusLead || 'VKM Focus, öğrencinin akademik durumunu, çalışma alışkanlığını ve motivasyonunu tek panelde görünür kılan takip sistemidir. Veli sade bir özet alır; öğretmen ve koç tüm veriye aynı yerden bakar.') + '</p>',
+      bullets(deck.focusBullets),
+      '</div>',
+      '<div class="panel panel-pad">',
+      '<div class="panel-header"><div><div class="panel-sub">Veli Paneli</div><h2 class="panel-title">Tek ekran, üç perspektif</h2></div><span class="pill">vkmfocus.com</span></div>',
+      infoCards(deck.focusCards),
+      '</div>',
+      '</div>'
+    ].join('');
+  }
+
   function thanksSlide() {
     return [
       '<div class="thanks">',
@@ -546,6 +580,8 @@
     guidance: guidanceSlide,
     success: successSlide,
     registration: registrationSlide,
+    allstar: allstarSlide,
+    vkmfocus: vkmfocusSlide,
     thanks: thanksSlide
   };
 

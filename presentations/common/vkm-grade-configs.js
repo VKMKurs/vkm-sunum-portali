@@ -694,6 +694,48 @@
       teachersImage: 'assets/03-teachers.png',
       successImage: 'assets/04-success-future.png',
       resourcesImage: 'assets/05-books.png',
+      slides: [
+        ['Kapak', 'cover'],
+        ['VKM Yanınızda', 'support'],
+        ['3-4-5 All Star', 'allstar'],
+        ['VKM Focus', 'vkmfocus'],
+        ['Dersler', 'courses'],
+        ['Örnek Program', 'program'],
+        ['Deneme Kulübü', 'examClub'],
+        ['Sınav Analizi', 'analysis'],
+        ['Ödev Takibi', 'homework'],
+        ['Öğretmen Kadrosu', 'teachers'],
+        ['Kaynak Kitaplar', 'resources'],
+        ['Tercih Dönemi', 'guidance'],
+        ['Başarı', 'success'],
+        ['Kapanış', 'thanks']
+      ],
+      allstarTitle: 'Aynı 3-4-5 All Star — Türkiye’nin tercih ettiği kaynak.',
+      allstarLead: 'Türkiye genelinde binlerce öğrencinin çalıştığı 3-4-5 All Star yayınları, VKM YKS hazırlığında tüm öğrencilerimize sunulur. Konu anlatımı, soru bankası ve denemeler aynı kaynaktan, aynı standartta ilerler.',
+      allstarBullets: [
+        'Tüm VKM öğrencileri aynı kaynak setiyle çalışır — sayfa numarasına kadar aynı yerde.',
+        'Konu anlatımı + soru bankası + deneme aynı yayında bütünleşik kullanılır.',
+        'Öğrenci ve veli ek kaynak araştırmaz; sistem hazır gelir.'
+      ],
+      allstarMetrics: [
+        { value: '77', label: 'Kitap kapsamı (TYT-AYT)' },
+        { value: '30B+', label: 'Konu anlatımı videosu' },
+        { value: '40+', label: 'Uzman branş öğretmeni' },
+        { value: 'Tek Set', label: 'Aynı kaynak, aynı standart' }
+      ],
+      focusTitle: 'Aynı kaynak — fark, kontrol bizde.',
+      focusLead: 'VKM Focus, öğrencinizin akademik durumunu, çalışma alışkanlığını ve motivasyonunu tek panelde görünür kılan takip sistemidir. Veli sade bir özet alır; öğretmen ve koç tüm veriye aynı yerden bakar.',
+      focusBullets: [
+        'Aynı 3-4-5 All Star kaynağı — fark, üzerine eklenen takip katmanında.',
+        'Öğrencinin günlük çalışması, deneme trendleri ve motivasyonu tek ekranda görünür.',
+        'Veli sade aylık Focus Raporu alır; süreç sürpriz olmaz.'
+      ],
+      focusCards: [
+        { kicker: 'Aylık', title: 'Moral Barometresi', note: 'Motivasyon ve stres sinyalleri her ay sistemli ölçülür.' },
+        { kicker: '2x/ay', title: 'Anlama Pusulası', note: 'Yeni Maarif Sistemi ile öne çıkan okuduğunu anlama becerisi takip edilir.' },
+        { kicker: 'Aylık', title: 'Focus Raporu', note: 'Veliye sade bir sayfa özet — koç, öğretmen ve sınav perspektifi bir arada.' },
+        { kicker: 'Günlük', title: 'Focus Paneli', note: 'Öğretmen ve koç, öğrencinin gününe tek ekrandan bakar; gözden kaçma olmaz.' }
+      ],
       courseTitle: 'TYT ve AYT’de çok yönlü destek.',
       courseLead: 'YKS hazırlığında ders anlatımı, deneme analizi, hedef soru ve tercih rehberliği tek bir sistemin parçalarıdır.',
       courseBullets: ['TYT ve AYT dengesi öğrencinin hedefine göre kurulur.', 'Sayısal, eşit ağırlık ve sözel alan ihtiyaçları ayrıştırılır.', 'Deneme sonuçları doğrudan haftalık plana bağlanır.'],
