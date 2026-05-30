@@ -645,7 +645,7 @@ deck-stage > section.grade-slide {
 
 .panel-photo {
   margin: -28px -28px 22px -28px;
-  height: 220px;
+  height: 260px;
   overflow: hidden;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
@@ -655,23 +655,25 @@ deck-stage > section.grade-slide {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 22%;
   display: block;
 }
 
 .success-hero {
-  margin: 0 0 28px 0;
-  height: 380px;
-  border-radius: 14px;
+  margin: 0 0 22px 0;
+  height: 140px;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(212,168,44,0.30);
-  box-shadow: 0 20px 60px rgba(80,45,15,0.12);
+  box-shadow: 0 14px 40px rgba(80,45,15,0.10);
   position: relative;
+  flex: 0 0 auto;
 }
 .success-hero img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center 35%;
   display: block;
 }
 .success-hero::after {
@@ -679,7 +681,7 @@ deck-stage > section.grade-slide {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 60%, rgba(251,246,236,0.55) 100%);
+  background: linear-gradient(90deg, rgba(251,246,236,0.10) 0%, transparent 30%, transparent 70%, rgba(251,246,236,0.20) 100%);
 }
 
 .thanks {
