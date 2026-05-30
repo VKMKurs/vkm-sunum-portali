@@ -348,6 +348,11 @@
       programTitle: 'Birebir Destek Sistemi',
       accent: '#1f6feb',
       accentSoft: '#5a9bff',
+      coverImage: 'assets/01-cover-meeting.png',
+      supportImage: 'assets/02-support-tailored.png',
+      teachersImage: 'assets/03-teachers.png',
+      homeworkImage: 'assets/04-tailored-materials.png',
+      reportImage: 'assets/05-progress.png',
       slides: [
         ['Kapak', 'cover'],
         ['Neden Özel Ders', 'support'],

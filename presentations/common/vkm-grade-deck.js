@@ -373,6 +373,9 @@
   }
 
   function homeworkSlide() {
+    var photoBlock = deck.homeworkImage
+      ? '<div class="panel-photo"><img src="' + esc(deck.homeworkImage) + '" alt=""></div>'
+      : '';
     return [
       '<div class="split">',
       '<div class="stack">',
@@ -381,6 +384,7 @@
       '<p class="lead">Ödevin ne kadarının tamamlandığı, hangi kaynaktan çalışıldığı ve eksik kalan nokta koçluk ritmine bağlanır.</p>',
       '</div>',
       '<div class="panel panel-pad">',
+      photoBlock,
       '<div class="panel-header"><div><div class="panel-sub">Haftalık kontrol</div><h2 class="panel-title">Görünür ve takip edilebilir</h2></div><span class="pill">Uygulama</span></div>',
       infoCards(deck.homeworkCards),
       '</div>',
