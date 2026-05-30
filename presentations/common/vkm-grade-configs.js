@@ -284,6 +284,12 @@
       programTitle: 'Hazırlık Sistemi',
       accent: '#e91e63',
       accentSoft: '#f36f9b',
+      // Pilot: AI-generated görseller (nano-banana, krem palette + Vaditepe brand)
+      coverImage: 'assets/01-cover-student.png',
+      supportImage: 'assets/02-support-coaching.png',
+      teachersImage: 'assets/03-teachers.png',
+      successImage: 'assets/04-success-campus.png',
+      resourcesImage: 'assets/05-books.png',
       courseTitle: '11. sınıfta alan dersleri ciddileşir.',
       courseLead: '11. sınıf, AYT altyapısının kurulduğu ve TYT tekrarının ihmal edilmemesi gereken dönemdir; bu yüzden program çift yönlü ilerler.',
       courseBullets: ['Alan derslerinde konu hakimiyeti güçlendirilir.', 'TYT temel başlıkları düzenli tekrar edilir.', 'Deneme ve ödev verisiyle öğrenci yakından izlenir.'],

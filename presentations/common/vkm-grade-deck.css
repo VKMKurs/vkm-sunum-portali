@@ -613,6 +613,68 @@ deck-stage > section.grade-slide {
   text-transform: uppercase;
 }
 
+/* === Opsiyonel görsel slot'ları (config.coverImage, supportImage, vs.) === */
+.cover-photo {
+  position: relative;
+  min-height: 560px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 90px rgba(24,33,43,0.16);
+  border: 1px solid rgba(212,168,44,0.30);
+}
+.cover-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  object-fit: cover;
+  display: block;
+}
+.cover-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 60%, rgba(227,6,19,0.10) 100%);
+}
+
+.panel-photo {
+  margin: -28px -28px 22px -28px;
+  height: 220px;
+  overflow: hidden;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom: 1px solid rgba(212,168,44,0.22);
+}
+.panel-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.success-hero {
+  margin: 0 0 28px 0;
+  height: 280px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(212,168,44,0.25);
+  box-shadow: 0 20px 60px rgba(24,33,43,0.12);
+  position: relative;
+}
+.success-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.success-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 50%, rgba(255,255,255,0.45) 100%);
+}
+
 .thanks {
   height: 100%;
   display: grid;

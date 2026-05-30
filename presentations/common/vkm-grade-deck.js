@@ -168,6 +168,10 @@
   }
 
   function coverSlide() {
+    // Opsiyonel: deck.coverImage tanımlıysa sağ tarafta hero foto, yoksa eski büyük rakam
+    var rightPanel = deck.coverImage
+      ? '<div class="cover-photo"><img src="' + esc(deck.coverImage) + '" alt=""></div>'
+      : '<div class="cover-mark"><div class="big-number">' + esc(deck.coverMark) + '<small>' + esc(deck.coverSmall || 'Sistem') + '</small></div></div>';
     return [
       '<div class="cover-layout">',
       '<div>',
@@ -176,14 +180,16 @@
       '<h1 class="cover-title">' + esc(deck.coverTitle || deck.shortTitle) + '<span>' + esc(deck.programTitle) + '</span></h1>',
       '<div class="cover-sub">Tecrübenin Gücü, Başarının Adresi</div>',
       '</div>',
-      '<div class="cover-mark">',
-      '<div class="big-number">' + esc(deck.coverMark) + '<small>' + esc(deck.coverSmall || 'Sistem') + '</small></div>',
-      '</div>',
+      rightPanel,
       '</div>'
     ].join('');
   }
 
   function supportSlide() {
+    // Opsiyonel: deck.supportImage tanımlıysa panel'in üstüne foto eklenir
+    var photoBlock = deck.supportImage
+      ? '<div class="panel-photo"><img src="' + esc(deck.supportImage) + '" alt=""></div>'
+      : '';
     return [
       '<div class="split">',
       '<div class="stack">',
@@ -193,6 +199,7 @@
       bullets(deck.promiseBullets),
       '</div>',
       '<div class="panel panel-pad">',
+      photoBlock,
       '<div class="panel-header"><div><div class="panel-sub">Takip sistemi</div><h2 class="panel-title">Ders, deneme ve rehberlik aynı masada.</h2></div><span class="pill">Veli dili</span></div>',
       metrics(deck.promiseMetrics),
       '</div>',
@@ -407,6 +414,9 @@
   }
 
   function resourcesSlide() {
+    var photoBlock = deck.resourcesImage
+      ? '<div class="panel-photo"><img src="' + esc(deck.resourcesImage) + '" alt=""></div>'
+      : '';
     return [
       '<div class="split">',
       '<div class="stack">',
@@ -416,6 +426,7 @@
       bullets(deck.resourceBullets),
       '</div>',
       '<div class="panel panel-pad">',
+      photoBlock,
       '<div class="panel-header"><div><div class="panel-sub">Kaynak yaklaşımı</div><h2 class="panel-title">Geniş soru havuzu, doğru seçim</h2></div><span class="pill">Seviye</span></div>',
       infoCards(deck.resourceCards),
       '</div>',
@@ -424,6 +435,9 @@
   }
 
   function teachersSlide() {
+    var photoBlock = deck.teachersImage
+      ? '<div class="panel-photo"><img src="' + esc(deck.teachersImage) + '" alt=""></div>'
+      : '';
     return [
       '<div class="split">',
       '<div class="stack">',
@@ -432,6 +446,7 @@
       '<p class="lead">Ders anlatımı, soru çözümü ve bireysel yönlendirme aynı hedefe hizmet eder: öğrencinin sürdürülebilir ilerlemesi.</p>',
       '</div>',
       '<div class="panel panel-pad">',
+      photoBlock,
       '<div class="panel-header"><div><div class="panel-sub">Ekip yaklaşımı</div><h2 class="panel-title">Sadece anlatan değil, takip eden kadro</h2></div><span class="pill">VKM</span></div>',
       infoCards(deck.teacherCards),
       '</div>',
@@ -457,8 +472,12 @@
   }
 
   function successSlide() {
+    var heroPhoto = deck.successImage
+      ? '<div class="success-hero"><img src="' + esc(deck.successImage) + '" alt=""></div>'
+      : '';
     return [
       '<div class="stack" style="height:100%;">',
+      heroPhoto,
       '<div class="kicker">Başarı Hikayeleri</div>',
       '<h1 class="title" style="max-width:1380px;">Yüzlerce öğrencimizi <span class="accent">hedeflerine ulaştırdık.</span></h1>',
       '<p class="lead" style="max-width:1180px;">Başarıyı tek bir sınav sonucundan ibaret görmüyoruz; doğru tempo, doğru rehberlik ve düzenli takip birlikte sonuç üretiyor.</p>',
